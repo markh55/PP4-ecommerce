@@ -1,9 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
+from django.urls import reverse
 
 
 class Package(models.Model):
+    TIER_CHOICES = [
+         (1, 'Bronze'),
+        (2, 'Silver'),
+        (3, 'Gold'),
+        (4, 'Platinum'),
+    ]
+    tier = models.PositiveSmallIntegerField(choices=TIER_CHOICES, default=1)
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     description = models.TextField(blank=True)
@@ -30,3 +38,6 @@ class Package(models.Model):
         if not self.slug:
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('packages:package_detail', args=[self.slug])

@@ -18,4 +18,20 @@ This project is a web development agency that provides tiered service packages â
 
 ## Wireframes
 
+### Home Wirefram - Desktop
+
+This is the mock up of the home page when not signed in on desktop.
+<img width="603" height="596" alt="home-wireframe" src="https://github.com/user-attachments/assets/8b7f59ea-5db0-476d-b924-2629445604a4" />
+
+This is the mock up of the page when user is logged into their account.
+<img width="603" height="596" alt="LoggedIn-Wireframe" src="https://github.com/user-attachments/assets/22953f83-d952-4fba-b5db-4a1400d284a4" />
+
+### Wirefram - Mobile
+
+<img width="301" height="1266" alt="Mobile Wireframe" src="https://github.com/user-attachments/assets/f02c428e-fe9a-4748-87b5-5d78c78ef6de" />
+
+
+
+
+
 ## Colour Scheme

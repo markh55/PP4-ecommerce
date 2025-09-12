@@ -1,29 +1,28 @@
 {% extends "core/base.html" %}
+{% load static %}
 
 {% block content %}
-<section class="jumbotron text-center bg-light">
-  <div class="container">
-    <h1 class="display-4">Welcome to WebWorks!</h1>
-    <p class="lead">
-      We provide tiered web development packages — Bronze, Silver, Gold, and Platinum.
-      Choose the perfect plan for your business.
-    </p>
+
+<!-- Hero -->
+<section class="position-relative text-center">
+  <h1>Web Development</h1>
+  <h4>We build modern, responsive websites tailored for your business.</h4>
   </div>
 </section>
 
+<!-- What We Offer -->
 <section class="container my-5">
-  <div class="row">
-    {% for package in packages %}
-      <div class="col-md-3 text-center mb-4">
-        <a href="{{ package.get_absolute_url }}" class="text-decoration-none text-dark d-block p-4 border rounded hover-shadow">
-          {% if package.image %}
-            <img src="{{ package.image.url }}" alt="{{ package.name }}" class="img-fluid mb-2">
-          {% endif %}
-          <h4>{{ package.name }}</h4>
-          <p>{{ package.description }}</p>
-        </a>
-      </div>
-    {% endfor %}
-  </div>
+  <h3>What We Offer</h3>
 </section>
+
+<!-- Reviews -->
+<section class="container my-5">
+ <h3>Reviews</h3>
+</section>
+
+<!-- Contact Section -->
+<section class="container my-5">
+  <h3>Contact Us</h3>
+</section>
+
 {% endblock %}

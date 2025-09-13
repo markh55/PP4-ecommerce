@@ -21,7 +21,7 @@ class Package(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['name']
+        ordering = ['tier']
         indexes = [
             models.Index(fields=['id', 'slug']),
             models.Index(fields=['name']),

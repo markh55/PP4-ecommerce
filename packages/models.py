@@ -6,7 +6,7 @@ from django.urls import reverse
 
 class Package(models.Model):
     TIER_CHOICES = [
-         (1, 'Bronze'),
+        (1, 'Bronze'),
         (2, 'Silver'),
         (3, 'Gold'),
         (4, 'Platinum'),
@@ -15,6 +15,7 @@ class Package(models.Model):
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     description = models.TextField(blank=True)
+    intro = models.CharField(max_length=255, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     image = models.ImageField(upload_to='packages/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)

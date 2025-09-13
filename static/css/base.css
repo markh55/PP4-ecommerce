@@ -10,3 +10,14 @@
     max-width: 600px;
     margin: 0 auto;
 }
+
+/* Hero section styling */
+.hero-overlay h1,
+.hero-overlay h2 {
+    text-align: left;
+}
+
+/* Center align h3 elements */
+h3 {
+    text-align: center;
+}

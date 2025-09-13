@@ -5,15 +5,29 @@
 
 <!-- Hero -->
 <section class="position-relative text-center">
-  <h1>Web Development</h1>
-  <h4>We build modern, responsive websites tailored for your business.</h4>
+  <div class="hero-overlay">
+  <h1>We build modern,</h1>
+  <h2>Responsive websites tailored for your business.</h2>
   </div>
 </section>
 
 <!-- What We Offer -->
-<section class="container my-5">
+<section id="packages" class="container my-5">
   <h3>What We Offer</h3>
+  <div class="row">
+    {% for package in packages %}
+      <div class="col-md-4">
+        <h4>{{ package.name }}</h4>
+        <p>{{ package.price }}</p>
+        {% if package.image %}
+          <img src="{{ package.image.url }}" alt="{{ package.name }}">
+        {% endif %}
+        <button type="button" class="btn btn-primary">More Details</button>
+      </div>
+    {% endfor %}
+  </div>
 </section>
+
 
 <!-- Reviews -->
 <section class="container my-5">

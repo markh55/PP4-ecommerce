@@ -112,7 +112,10 @@
     {% block footer %}{% endblock %}
   </footer>
 
-  {% block postloadjs %}{% endblock %}
+  {% block postloadjs %}
+  <script src="{% static 'js/main.js' %}"></script>
+  {% endblock %}
+
 </body>
 
 </html>

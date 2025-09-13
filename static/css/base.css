@@ -1,0 +1,12 @@
+/* success message styling */
+.message-container {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    left: 20px;
+    z-index: 1050;
+}
+.message-container .alert {
+    max-width: 600px;
+    margin: 0 auto;
+}

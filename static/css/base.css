@@ -77,6 +77,24 @@ h3 {
   min-width: 100px;
 }
 
+/* reviews & contact sections styling */
+.reviews-contact {
+  display: flex;
+  border: 1px solid #ccc;
+}
+
+.reviews {
+  flex: 2;
+  border-right: 1px solid #ccc;
+  padding: 1rem;
+}
+
+.contact-us {
+  flex: 3;
+  padding: 1rem;
+}
+
+
 /* Responsive adjustments for different screen sizes */
 
 /* mobiles */

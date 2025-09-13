@@ -4,10 +4,17 @@
 {% block content %}
 
 <!-- Hero -->
-<section class="position-relative text-center">
-  <div class="hero-overlay">
-  <h1>We build modern,</h1>
-  <h2>Responsive websites tailored for your business.</h2>
+<section class="hero-section text-center">
+  <!-- Background image -->
+  <img src="{% static 'images/hero.png' %}" alt="Hero Image" class="hero-image">
+
+  <!-- Text overlay -->
+  <div class="hero-overlay d-flex flex-column justify-content-center align-items-center">
+    <h1>Build Your Online Presence with WebWorks.</h1>
+    <h2>Professional Web Design and Development Services</h2>
+    <p>From essential support to fully custom solutions, our tiered service packages.
+      Bronze, Silver, Gold, and Platinum,</p>
+    <p>Give your business exactly what it needs to thrive.</p>
   </div>
 </section>
 

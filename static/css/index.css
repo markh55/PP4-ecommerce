@@ -3,10 +3,12 @@
 /* Hero section styling */
 .hero-section {
   position: relative;
-  height: 500px;
+  height: 700px;
   margin: 0;
   padding: 0;
+  padding-top: 60px;
   overflow: hidden;
+  background: transparent !important;
 }
 
 .hero-image {
@@ -31,7 +33,8 @@
   color: white;
   background: rgba(0, 0, 0, 0.3);
   text-align: center;
-  padding: 2rem;
+  padding: 3rem 2rem;
+  box-sizing: border-box;
 }
 
 /* Enhanced hero text styling */
@@ -39,6 +42,8 @@
   font-weight: 700;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   margin-bottom: 1.5rem;
+  margin-top: 0;
+  line-height: 1.2;
 }
 
 .hero-overlay h2 {
@@ -56,23 +61,47 @@
 .fade-in-left, .fade-left {
   opacity: 0;
   transform: translateX(-500px);
+  -webkit-transform: translateX(-500px);
   transition: all 1.5s ease-out;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 .fade-in-left.visible, .fade-left.visible {
   opacity: 1;
   transform: translateX(0);
+  -webkit-transform: translateX(0);
 }
 
 .fade-in-right {
   opacity: 0;
   transform: translateX(500px);
+  -webkit-transform: translateX(500px);
   transition: all 1.5s ease-out;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 .fade-in-right.visible {
   opacity: 1;
   transform: translateX(0);
+  -webkit-transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+  .fade-in-left, .fade-left {
+    transform: translateX(-300px);
+    -webkit-transform: translateX(-300px);
+  }
+  
+  .fade-in-right {
+    transform: translateX(300px);
+    -webkit-transform: translateX(300px);
+  }
+  
+  .hero-section {
+    height: 700px;
+  }
 }
 
 /* Center align h3 elements */
@@ -84,7 +113,7 @@ h3 {
 #packages {
   min-height: 300px;
   padding: 4rem 0;
-  margin-bottom: 0; /* Remove bottom margin */
+  margin-bottom: 0;
 }
 
 #packages .row {
@@ -133,8 +162,8 @@ h3 {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  margin-bottom: 0; /* Ensure no bottom margin */
-  padding-bottom: 0; /* Ensure no bottom padding */
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .reviews-contact-image {

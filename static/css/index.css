@@ -34,6 +34,47 @@
   padding: 2rem;
 }
 
+/* Enhanced hero text styling */
+.hero-overlay h1 {
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1.5rem;
+}
+
+.hero-overlay h2 {
+  font-weight: 400;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1.5rem;
+}
+
+.hero-overlay p {
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+}
+
+.fade-in-left, .fade-left {
+  opacity: 0;
+  transform: translateX(-500px);
+  transition: all 1.5s ease-out;
+}
+
+.fade-in-left.visible, .fade-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(500px);
+  transition: all 1.5s ease-out;
+}
+
+.fade-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 /* Center align h3 elements */
 h3 {
   text-align: center;

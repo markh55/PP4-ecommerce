@@ -15,7 +15,12 @@
   {% block corecss %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
+
+    <!-- Google Fonts: Noto Serif + Open Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
   {% endblock %}
@@ -38,13 +43,13 @@
   <title>WebWorks {% block extra_title %}{% endblock %}</title>
 </head>
 
-<body>
+<body style="font-family: 'Open Sans', sans-serif;">
   <!-- Header -->
   <header class="container-fluid fixed-top bg-light">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <!-- Logo -->
       <a href="{% url 'index' %}" class="navbar-brand">
-        <h2 class="logo-font text-dark my-0"><strong>Web</strong>Works</h2>
+        <h2 class="logo-font text-dark my-0" style="font-family: 'Noto Serif', serif;"><strong>Web</strong>Works</h2>
       </a>
 
       <!-- Toggler / Hamburger -->

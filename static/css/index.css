@@ -1,3 +1,11 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Noto Serif', serif;
+}
+
 /* index.css */
 
 /* Hero section styling */
@@ -152,7 +160,7 @@ h3 {
   padding: 1rem;
 }
 
-/* Reviews & Contact like Hero */
+/* Reviews & Contact */
 .reviews-contact-section {
   position: relative;
   height: 500px;

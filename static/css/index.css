@@ -3,7 +3,7 @@
 /* Hero section styling */
 .hero-section {
   position: relative;
-  height: 600px;
+  height: 500px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -40,6 +40,12 @@ h3 {
 }
 
 /* Package cards styling */
+#packages {
+  min-height: 300px;
+  padding: 4rem 0;
+  margin-bottom: 0; /* Remove bottom margin */
+}
+
 #packages .row {
   display: flex;
   flex-wrap: wrap;
@@ -81,10 +87,13 @@ h3 {
 /* Reviews & Contact like Hero */
 .reviews-contact-section {
   position: relative;
-  height: 400px;
+  height: 500px;
+  flex-grow: 1;
   margin: 0;
   padding: 0;
   overflow: hidden;
+  margin-bottom: 0; /* Ensure no bottom margin */
+  padding-bottom: 0; /* Ensure no bottom padding */
 }
 
 .reviews-contact-image {

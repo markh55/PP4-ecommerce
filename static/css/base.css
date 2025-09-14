@@ -8,6 +8,7 @@
   left: 20px;
   z-index: 1050;
 }
+
 .message-container .alert {
   max-width: 400px;
   margin: 0 auto;
@@ -31,6 +32,15 @@ body {
 
 main {
   flex: 1; /* this pushes the footer down */
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  padding: 1rem 0;
+  margin-top: 0; /* Remove any top margin */
 }
 
 /* Responsive adjustments for different screen sizes */

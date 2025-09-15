@@ -1,0 +1,212 @@
+.reviews-contact-section {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.reviews-contact-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("{% static 'images/hero.png' %}") center/cover no-repeat;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.reviews-contact-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.reviews-contact-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 10rem;
+  padding: 2rem;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.reviews-card {
+  width: 350px;
+  height: 220px;
+  text-align: center;
+  align-items: center;
+}
+
+.reviews-card h3 {
+  margin-bottom: 1rem;
+}
+
+.contact-card {
+  width: 600px;
+  height: 350px;
+}
+
+.contact-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.form-row input,
+.form-row select {
+  flex: 1;
+}
+
+.contact-card input,
+.contact-card select,
+.contact-card textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  height: 52px; /* force consistent height */
+  border-radius: 0.6rem;
+  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  color: #fff !important;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+.contact-card select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.contact-card input::placeholder,
+.contact-card textarea::placeholder {
+  color: rgba(255,255,255,0.8);
+}
+
+.contact-card input:focus,
+.contact-card select:focus,
+.contact-card textarea:focus {
+  outline: none;
+  box-shadow: none;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.contact-card textarea {
+  resize: vertical;
+  min-height: 100px;
+  height: auto; /* let it expand */
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #00bfa5, #00d9bb);
+  color: #fff;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 0.6rem;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 191, 165, 0.25);
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 191, 165, 0.35);
+}
+
+@media (max-width: 992px) {
+  .reviews-contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .reviews-card,
+  .contact-card {
+    max-width: 90%;
+    min-height: auto;
+  }
+  .form-row {
+    flex-direction: column;
+  }
+}
+
+/* larger screens */
+@media (min-width: 1200px) {
+  .reviews-contact-container {
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .reviews-card {
+    width: 350px;
+    margin-bottom: 0;
+  }
+
+  .contact-card {
+    width: 600px;
+  }
+}
+
+/* tablets */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .reviews-contact-container {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap; /* allows wrapping if needed */
+  }
+
+  .reviews-card,
+  .contact-card {
+    flex: 1 1 45%; /* roughly half each */
+    max-width: 500px;
+    min-width: 300px;
+  }
+}
+
+/* mobile */
+@media (max-width: 767px) {
+  .reviews-contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .reviews-card,
+  .contact-card {
+    width: 100%;
+    max-width: 90%;
+  }
+
+  .reviews-card {
+    margin-bottom: 2rem; /* space between reviews + form */
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .form-row input,
+  .form-row select {
+    width: 100%;
+  }
+}

@@ -5,10 +5,8 @@
 
 <!-- Hero -->
 <section class="hero-section text-center">
-  <!-- Background image -->
   <img src="{% static 'images/hero.png' %}" alt="Hero Image" class="hero-image">
 
-  <!-- Text overlay -->
   <div class="hero-overlay d-flex flex-column justify-content-center align-items-center">
     <h1 class="fade-in-left">Build Your Online Presence with WebWorks.</h1>
     <h2 class="fade-left" style="animation-delay: 0.2s;">Professional Web Design and Development Services</h2>
@@ -31,7 +29,7 @@
           <div class="card-body">
             <h5 class="card-title">{{ package.name }}</h5>
             <p class="card-text">${{ package.price }}</p>
-             <p class="card-intro">{{ package.intro }}</p>
+            <p class="card-intro">{{ package.intro }}</p>
             <a href="{{ package.get_absolute_url }}" class="btn btn-primary">More Details</a>
           </div>
         </div>
@@ -42,19 +40,42 @@
 
 <!-- Reviews & Contact Section -->
 <section class="reviews-contact-section">
+  <div class=container">
   <img src="{% static 'images/hero.png' %}" alt="Background" class="reviews-contact-image">
 
   <div class="reviews-contact-overlay">
-  <!-- Reviews -->
-  <div class="reviews">
-    <h3>Reviews</h3>
-  </div>
+    <div class="container">
+      <div class="reviews-contact-container">
 
-  <!-- Contact Section -->
-  <div class="contact-us">
-    <h3>Contact Us</h3>
+        <div class="reviews-card">
+          <h3>Reviews</h3>
+          <p>Here is where the reviews will go.</p>
+        </div>
+
+<!-- Contact Form -->
+        <div class="contact-card">
+          <form method="post">
+            {% csrf_token %}
+            <div class="form-row">
+              {{ form.name }}
+              {{ form.email }}
+            </div>
+            <div class="form-row">
+              {{ form.number }}
+              {{ form.inquiry_type }}
+            </div>
+            {{ form.message }}
+
+            <button type="submit" class="btn-submit">Send Message</button>
+            <p class="form-note">We typically reply within 1–2 business days.</p>
+          </form>
+        </div>
+
+      </div>
+    </div>
   </div>
-  </div>
+</div>
 </section>
+
 
 {% endblock %}

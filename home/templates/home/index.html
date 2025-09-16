@@ -40,20 +40,20 @@
 
 <!-- Reviews & Contact Section -->
 <section class="reviews-contact-section">
-  <div class=container">
   <img src="{% static 'images/hero.png' %}" alt="Background" class="reviews-contact-image">
 
   <div class="reviews-contact-overlay">
     <div class="container">
       <div class="reviews-contact-container">
 
-        <div class="reviews-card">
+        <!-- Reviews -->
+        <div class="reviews">
           <h3>Reviews</h3>
           <p>Here is where the reviews will go.</p>
         </div>
 
-<!-- Contact Form -->
-        <div class="contact-card">
+        <!-- Contact Form -->
+        <div class="contact-us">
           <form method="post">
             {% csrf_token %}
             <div class="form-row">
@@ -74,8 +74,8 @@
       </div>
     </div>
   </div>
-</div>
 </section>
+
 
 
 {% endblock %}

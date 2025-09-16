@@ -13,8 +13,7 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   height: 700px;
   margin: 0;
-  padding: 0;
-  padding-top: 60px;
+  padding: 60px 0 0 0;
   overflow: hidden;
   background: transparent !important;
 }
@@ -49,8 +48,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero-overlay h1 {
   font-weight: 700;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  margin-bottom: 1.5rem;
-  margin-top: 0;
+  margin: 0 0 1.5rem 0;
   line-height: 1.2;
 }
 
@@ -66,38 +64,32 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1rem;
 }
 
-.fade-in-left, .fade-left {
+/* Fade animations */
+.fade-left, .fade-in-left, .fade-in-right {
   opacity: 0;
-  transform: translateX(-500px);
-  -webkit-transform: translateX(-500px);
   transition: all 1.5s ease-out;
   will-change: transform, opacity;
   backface-visibility: hidden;
 }
 
-.fade-in-left.visible, .fade-left.visible {
-  opacity: 1;
-  transform: translateX(0);
-  -webkit-transform: translateX(0);
+.fade-left, .fade-in-left {
+  transform: translateX(-500px);
+  -webkit-transform: translateX(-500px);
 }
 
 .fade-in-right {
-  opacity: 0;
   transform: translateX(500px);
   -webkit-transform: translateX(500px);
-  transition: all 1.5s ease-out;
-  will-change: transform, opacity;
-  backface-visibility: hidden;
 }
 
-.fade-in-right.visible {
+.fade-left.visible, .fade-in-left.visible, .fade-in-right.visible {
   opacity: 1;
   transform: translateX(0);
   -webkit-transform: translateX(0);
 }
 
 @media (max-width: 768px) {
-  .fade-in-left, .fade-left {
+  .fade-left, .fade-in-left {
     transform: translateX(-300px);
     -webkit-transform: translateX(-300px);
   }
@@ -138,25 +130,28 @@ h3 {
 }
 
 #packages .btn {
+  background: white;
   padding: 0.3rem 0.8rem;
   font-size: 0.85rem;
+  color: black;
+  border: 1px solid #00d9bb;
   min-width: 100px;
 }
 
-/* reviews & contact sections styling */
-.reviews-contact {
-  display: flex;
-  border: 1px solid #ccc;
+#packages .btn:hover, #packages .btn:focus {
+  background: linear-gradient(135deg, #00bfa5, #00d9bb);
+  color: white;
+  text-decoration: none;
 }
 
-.reviews {
-  flex: 2;
-  border-right: 1px solid #ccc;
-  padding: 1rem;
+.btn-primary {
+  background: #007bff;
+  border: none;
+  transition: background 0.3s ease;
 }
 
-.contact-us {
-  flex: 3;
-  padding: 1rem;
+.btn-primary:hover, .btn-primary:focus {
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
 }
-

@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}
+    {% if category %}{{ category.name }} - {% endif %}WebWorks - Packages
+{% endblock %}
+
+{% block content %}
+<section id="packages" class="container my-5">
+  <h3>Our Packages</h3>
+  <div class="row">
+    {% for package in packages %}
+      <div class="col-lg-3 col-md-6 col-sm-12 mb-4 d-flex">
+        <div class="card flex-fill h-100">
+          {% if package.image %}
+            <img src="{{ package.image.url }}" class="card-img-top" alt="{{ package.name }}">
+          {% else %}
+            <img src="{% static 'images/default-package.jpg' %}" class="card-img-top" alt="{{ package.name }}">
+          {% endif %}
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ package.name }}</h5>
+            <p class="card-text">${{ package.price }}</p>
+            <p class="card-intro">{{ package.intro }}</p>
+            <a href="{{ package.get_absolute_url }}" class="btn btn-primary mt-auto">More Details</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-muted">No packages available at the moment.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

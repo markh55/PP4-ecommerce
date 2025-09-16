@@ -39,13 +39,26 @@
 
       <form class="login" method="POST" action="{% url 'account_login' %}">
         {% csrf_token %}
-        {{ form.as_p }}
+        {% for field in form %}
+          {% if field.name != 'remember' %}
+            <p>
+              {{ field.label_tag }}
+              {{ field }}
+            </p>
+          {% endif %}
+        {% endfor %}
         {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
-        <div class="d-flex justify-content-between mt-3">
+        <div class="d-flex justify-content-between align-items-center mt-3 mb-3">
+          <div class="remember-me">
+            {{ form.remember }} {{ form.remember.label }}
+          </div>
           <a class="btn btn-link" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+        </div>
+        <div class="button-group">
           <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
+          <a class="btn btn-secondary" href="/">{% trans "Cancel" %}</a>
         </div>
       </form>
 

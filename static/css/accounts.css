@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Noto+Serif:wght@600&display=swap');
 
-/* Reset and base styles */
 * {
     margin: 0;
     padding: 0;
@@ -22,7 +21,6 @@ body {
     padding: 40px 20px;
 }
 
-/* Container and layout */
 .container {
     width: 100%;
     max-width: 1200px;
@@ -49,7 +47,6 @@ body {
     transform: translateY(-5px);
 }
 
-/* Typography */
 h1 {
     font-family: 'Noto Serif', serif;
     font-size: 2.8rem;
@@ -67,44 +64,26 @@ p {
     line-height: 1.6;
 }
 
-/* Form styles - works for both login and signup */
 .login, .signup {
     margin-top: 2rem;
 }
 
-/* Create a grid container for SIGNUP form fields */
 .signup {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
     margin-top: 2rem;
 }
 
-/* LOGIN form - keep simple layout */
 .login {
     margin-top: 2rem;
 }
 
-/* Make form paragraphs fit into grid - SIGNUP ONLY */
-.signup p {
+.signup p, .login p {
     text-align: left;
     margin-bottom: 0;
     display: flex;
     flex-direction: column;
-}
-
-/* LOGIN form paragraphs - simple stacked layout */
-.login p {
-    text-align: left;
-    margin-bottom: 2.5rem;
-    display: block;
-}
-
-/* Full width for specific fields in login */
-.login p:first-child,
-.login p:nth-child(2),
-.login p:last-child {
-    grid-column: 1 / -1;
 }
 
 .login label, .signup label {
@@ -163,16 +142,34 @@ p {
 .btn-primary {
     background: linear-gradient(135deg, #524BD2, #7c4dff);
     color: white;
-    grid-column: 1 / -1;
     margin-top: 1.5rem;
-    padding: 14px 32px;
-    justify-self: stretch;
+    padding: 18px 36px;
+    width: 100%;
+    text-align: center;
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: 0 12px 24px rgba(82, 75, 210, 0.3);
     color: white;
+    text-decoration: none;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #666;
+    border: 2px solid #e1e5e9;
+    margin-top: 1rem;
+    padding: 16px 36px;
+    width: 100%;
+    text-align: center;
+}
+
+.btn-secondary:hover {
+    background: #f8f9fa;
+    border-color: #d1d5db;
+    color: #555;
+    transform: translateY(-2px);
     text-decoration: none;
 }
 
@@ -188,7 +185,13 @@ p {
     text-decoration: underline;
 }
 
-/* Social login */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 2rem;
+}
+
 .socialaccount_ballot {
     margin: 3rem 0;
 }
@@ -247,7 +250,6 @@ p {
     position: relative;
 }
 
-/* Links */
 a {
     color: #524BD2;
     transition: color 0.3s ease;
@@ -257,7 +259,6 @@ a:hover {
     color: #4237a3;
 }
 
-/* Layout utilities */
 .d-flex {
     display: flex;
 }
@@ -278,25 +279,11 @@ a:hover {
     margin: 2.5rem 0;
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
     .col-md-6 {
         min-width: auto;
         max-width: 100%;
         padding: 60px 50px;
-    }
-    
-    .login, .signup {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .login p:first-child,
-    .login p:nth-child(2),
-    .login p:last-child,
-    .signup p:first-child,
-    .signup p:nth-child(2) {
-        grid-column: 1;
     }
     
     h1 {
@@ -312,11 +299,6 @@ a:hover {
     .col-md-6 {
         padding: 40px 30px;
         min-width: auto;
-    }
-    
-    .login, .signup {
-        grid-template-columns: 1fr;
-        gap: 15px;
     }
     
     h1 {

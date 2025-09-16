@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Noto+Serif:wght@600&display=swap');
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 50%, #9fa8da 100%);
+    color: #333;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+/* Container and layout */
+.container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+.col-md-6 {
+    width: 100%;
+    max-width: 650px;
+    min-width: 500px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 80px 70px;
+    box-shadow: 0 25px 50px rgba(82, 75, 210, 0.12);
+    transition: transform 0.3s ease;
+}
+
+.col-md-6:hover {
+    transform: translateY(-5px);
+}
+
+/* Typography */
+h1 {
+    font-family: 'Noto Serif', serif;
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: #524BD2;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+p {
+    font-size: 1.1rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+/* Form styles - works for both login and signup */
+.login, .signup {
+    margin-top: 2rem;
+}
+
+/* Create a grid container for SIGNUP form fields */
+.signup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px 30px;
+    margin-top: 2rem;
+}
+
+/* LOGIN form - keep simple layout */
+.login {
+    margin-top: 2rem;
+}
+
+/* Make form paragraphs fit into grid - SIGNUP ONLY */
+.signup p {
+    text-align: left;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* LOGIN form paragraphs - simple stacked layout */
+.login p {
+    text-align: left;
+    margin-bottom: 2.5rem;
+    display: block;
+}
+
+/* Full width for specific fields in login */
+.login p:first-child,
+.login p:nth-child(2),
+.login p:last-child {
+    grid-column: 1 / -1;
+}
+
+.login label, .signup label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.login input[type="text"],
+.login input[type="email"], 
+.login input[type="password"],
+.signup input[type="text"],
+.signup input[type="email"], 
+.signup input[type="password"] {
+    width: 100%;
+    padding: 18px 20px;
+    font-size: 1.1rem;
+    border: 1px solid #e1e5e9;
+    border-radius: 14px;
+    background: #fafbfc;
+    transition: all 0.3s ease;
+}
+
+.login input:focus,
+.signup input:focus {
+    outline: none;
+    border-color: #524BD2;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(82, 75, 210, 0.1);
+}
+
+.login input[type="checkbox"],
+.signup input[type="checkbox"] {
+    width: 20px !important;
+    height: 20px !important;
+    margin-right: 10px !important;
+    margin-bottom: 0 !important;
+    accent-color: #524BD2;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 18px 36px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #524BD2, #7c4dff);
+    color: white;
+    grid-column: 1 / -1;
+    margin-top: 1.5rem;
+    padding: 14px 32px;
+    justify-self: stretch;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(82, 75, 210, 0.3);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-link {
+    background: none;
+    color: #524BD2;
+    padding: 18px 0;
+    font-weight: 600;
+}
+
+.btn-link:hover {
+    color: #4237a3;
+    text-decoration: underline;
+}
+
+/* Social login */
+.socialaccount_ballot {
+    margin: 3rem 0;
+}
+
+.socialaccount_providers {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.socialaccount_providers a {
+    display: block;
+    padding: 16px 20px;
+    border: 1px solid #e1e5e9;
+    border-radius: 14px;
+    color: #666;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    background: #fafbfc;
+    transition: all 0.3s ease;
+}
+
+.socialaccount_providers a:hover {
+    border-color: #524BD2;
+    color: #524BD2;
+    background: #fff;
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.login-or {
+    text-align: center;
+    font-weight: 600;
+    color: #666;
+    margin: 2.5rem 0;
+    position: relative;
+}
+
+.login-or::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #e1e5e9;
+}
+
+.login-or {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0 25px;
+    display: inline-block;
+    position: relative;
+}
+
+/* Links */
+a {
+    color: #524BD2;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #4237a3;
+}
+
+/* Layout utilities */
+.d-flex {
+    display: flex;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-3 {
+    margin-top: 3rem;
+}
+
+.my-3 {
+    margin: 2.5rem 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .col-md-6 {
+        min-width: auto;
+        max-width: 100%;
+        padding: 60px 50px;
+    }
+    
+    .login, .signup {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .login p:first-child,
+    .login p:nth-child(2),
+    .login p:last-child,
+    .signup p:first-child,
+    .signup p:nth-child(2) {
+        grid-column: 1;
+    }
+    
+    h1 {
+        font-size: 2.4rem;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        padding: 20px 15px;
+    }
+    
+    .col-md-6 {
+        padding: 40px 30px;
+        min-width: auto;
+    }
+    
+    .login, .signup {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .d-flex {
+        flex-direction: column;
+        gap: 20px;
+        align-items: stretch;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}

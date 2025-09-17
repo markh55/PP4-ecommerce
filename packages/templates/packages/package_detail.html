@@ -10,7 +10,7 @@
     <!-- Package Image -->
     <div class="col-lg-6 col-md-12 mb-4">
       {% if package.image %}
-        <img src="{{ package.image.url }}" alt="{{ package.name }}" class="img-fluid rounded">
+        <img src="{{ package.image.url }}" alt="{{ package.name }}" class="img-fluid rounded" onerror="this.style.display='none'">
       {% else %}
         <img src="{% static 'images/default-package.png' %}" alt="No Image" class="img-fluid rounded">
       {% endif %}

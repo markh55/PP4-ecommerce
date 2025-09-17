@@ -1,0 +1,31 @@
+.section-title {
+    color: #333;
+    text-align: center;
+    margin-bottom: 90px;
+}
+
+#package-detail {
+    margin-top: 100px;
+    padding: 20px;
+}
+
+#package-detail .row {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#package-detail img {
+    width: 100%;
+    height: auto;
+}
+
+#package-detail h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#package-detail .btn {
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+}

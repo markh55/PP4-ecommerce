@@ -3,8 +3,10 @@
 
 {% block content %}
 
-<section id="package-detail" class="container my-5">
+<section id="package-detail" class="container my-6">
+    <h2 class="section-title"><strong>Package Details</strong></h2>
   <div class="row">
+
     <!-- Package Image -->
     <div class="col-lg-6 col-md-12 mb-4">
       {% if package.image %}
@@ -26,6 +28,7 @@
       <a href="{% url 'packages:package_list' %}" class="btn btn-secondary mt-2">Back to Packages</a>
     </div>
   </div>
+
 </section>
 
 {% endblock %}

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'webworks',
     'home',
     'packages',
+    'bag',
 ]
 
 MIDDLEWARE = [

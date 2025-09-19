@@ -65,7 +65,9 @@
               {{ form.number }}
               {{ form.inquiry_type }}
             </div>
-            {{ form.message }}
+            <div class="form-row">
+              {{ form.message }}
+            </div>
 
             <button type="submit" class="btn-submit">Send Message</button>
             <p class="form-note">We typically reply within 1–2 business days.</p>
@@ -76,7 +78,6 @@
     </div>
   </div>
 </section>
-
 
 
 {% endblock %}

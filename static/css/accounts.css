@@ -15,9 +15,9 @@ html, body {
 
 body {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    min-height: auto;
+    min-height: 100vh;
     padding: 40px 20px;
 }
 
@@ -126,7 +126,6 @@ p {
     accent-color: #524BD2;
 }
 
-/* Buttons */
 .btn {
     display: inline-block;
     padding: 18px 36px;

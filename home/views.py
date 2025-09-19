@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
+from django.contrib import messages
 from packages.models import Package
 from .forms import ContactForm
 
@@ -20,7 +21,8 @@ def index(request):
                 from_email=form.cleaned_data["email"],
                 recipient_list=["youremail@example.com"],
             )
-            return redirect("index")
+            messages.success(request, "Thank you for your message. A member of the team will get back to you.")
+            form = ContactForm()
     else:
         form = ContactForm()
 

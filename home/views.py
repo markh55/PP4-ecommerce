@@ -21,8 +21,10 @@ def index(request):
                 from_email=form.cleaned_data["email"],
                 recipient_list=["youremail@example.com"],
             )
+            # Add success message for visual confirmation
             messages.success(request, "Thank you for your message. A member of the team will get back to you.")
-            form = ContactForm()
+            # Redirect to prevent message showing on page refresh
+            return redirect('index')
     else:
         form = ContactForm()
 

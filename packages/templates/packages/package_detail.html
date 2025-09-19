@@ -24,7 +24,7 @@
       <p class="h5 mt-3"><strong>Price:</strong> £{{ package.price }}</p>
       
       <!-- Optional CTA Button -->
-      <a href="#" class="btn btn-primary mt-4 more-details">Buy Now</a>
+      <a href="{% url 'bag:view_bag' %}" class="btn btn-primary mt-4 more-details">Buy Now</a>
       <a href="{% url 'packages:package_list' %}" class="btn btn-secondary mt-2">Back to Packages</a>
     </div>
   </div>

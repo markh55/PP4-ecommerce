@@ -44,35 +44,7 @@ footer {
 }
 
 /* Responsive adjustments for different screen sizes */
-
-/* mobiles */
-@media screen and (max-width: 767px) {
-  #packages .card {
-    margin-bottom: 1.5rem;
-    min-height: 191px;
-  }
-}
-
-/* tablets */
-@media screen and (min-width: 768px) and (max-width: 991px) {
-  #packages .card {
-    margin-bottom: 1.5rem;
-    min-height: 191px;
-  }
-}
-
-/* laptops */
-@media screen and (min-width: 992px) and (max-width: 1199px) {
-  #packages .card {
-    margin-bottom: 1.5rem;
-    min-height: 191px;
-  }
-}
-
-/* XL screens */
-@media screen and (min-width: 1200px) {
-  #packages .card {
-    margin-bottom: 1.5rem;
-    min-height: 191px;
-  }
+#packages .card {
+  margin-bottom: 1.5rem;
+  min-height: 191px;
 }

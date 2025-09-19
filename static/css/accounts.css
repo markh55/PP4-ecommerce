@@ -231,6 +231,9 @@ p {
     color: #666;
     margin: 2.5rem 0;
     position: relative;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0 25px;
+    display: inline-block;
 }
 
 .login-or::before {
@@ -241,13 +244,6 @@ p {
     right: 0;
     height: 1px;
     background: #e1e5e9;
-}
-
-.login-or {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 0 25px;
-    display: inline-block;
-    position: relative;
 }
 
 a {

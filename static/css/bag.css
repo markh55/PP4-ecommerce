@@ -1,4 +1,3 @@
-
 .container.header-container h1 {
     font-family: 'Noto Serif', serif;
     font-weight: 700;
@@ -68,11 +67,30 @@
     text-decoration: none;
 }
 
+.btn-remove {
+    background: white;
+    color: black;
+    border: 1px solid #ff4d4f;
+    border-radius: 0.6rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    min-width: 100px;
+    transition: all 0.3s ease;
+}
+
+.btn-remove:hover,
+.btn-remove:focus {
+    background: linear-gradient(135deg, #ff4d4f, #ff7875);
+    color: white;
+    text-decoration: none;
+}
+
 @media (max-width: 768px) {
     .table-responsive {
         font-size: 0.9rem;
     }
-    .text-center .btn {
+    .text-center .btn,
+    .btn-remove {
         min-width: 120px;
         padding: 0.4rem 0.8rem;
         font-size: 0.85rem;

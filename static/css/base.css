@@ -48,3 +48,16 @@ footer {
   margin-bottom: 1.5rem;
   min-height: 191px;
 }
+
+/* Cart counter styling */
+#cart-count {
+  position: absolute;
+  top: 0;
+  right: -8px;
+  background: #00d9bb;
+  color: white;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: bold;
+}

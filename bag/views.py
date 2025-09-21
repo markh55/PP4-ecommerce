@@ -4,8 +4,8 @@ from django.shortcuts import render, redirect
 
 def view_bag(request):
     """ A view that renders the bag contents page """
-
     return render(request, 'bag/bag.html')
+
 
 def add_to_bag(request, items_id):
     quantity = 1
@@ -18,5 +18,16 @@ def add_to_bag(request, items_id):
         bag[items_id] = quantity
 
     request.session['bag'] = bag
-    print(request.session['bag'])
     return redirect(redirect_url)
+
+
+def remove_from_bag(request, items_id):
+    """ Remove an item from the shopping bag """
+    bag = request.session.get('bag', {})
+
+    items_id = str(items_id)
+    if items_id in bag:
+        del bag[items_id]
+        request.session['bag'] = bag
+
+    return redirect('bag:view_bag')

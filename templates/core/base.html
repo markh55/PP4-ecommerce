@@ -54,7 +54,6 @@
             <a class="nav-link" href="{% url 'packages:package_list' %}">Packages</a>
           </li>
 
-          <!-- Profile placeholder when adding more featurs it will become a dropdown menu to hold "My Account" "Logout" etc-->
           {% if user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" href="">
@@ -72,9 +71,11 @@
               <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
             </li>
           {% endif %}
-          <li class="nav-item">
+
+          <li class="nav-item position-relative">
             <a class="nav-link" href="{% url 'bag:view_bag' %}">
               <i class="fa-solid fa-cart-shopping"></i>
+              <span id="cart-count">{{ product_count }}</span>
             </a>
           </li>
         </ul>

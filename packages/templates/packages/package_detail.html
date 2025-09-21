@@ -38,19 +38,19 @@
         method="POST"
       >
         {% csrf_token %}
+        <div class="col-12 mb-4">
+          <input type="submit" class="btn-package mt-3" value="Add to Bag" />
+        </div>
         <div class="col-12 mb-3">
           <a
             href="{% url 'packages:package_list' %}"
-            class="btn btn-black rounded-0 mt-5"
+            class="btn-package"
           >
             <span class="icon">
               <i class="fas fa-chevron-left"></i>
             </span>
-            <span class="text-uppercase">Back to Packages</span>
+            <span class="text-uppercase">Back</span>
           </a>
-        </div>
-        <div class="col-12">
-          <input type="submit" class="btn-package mt-3" value="Add to Bag" />
         </div>
         <input type="hidden" name="redirect_url" value="{{ request.path }}" />
       </form>

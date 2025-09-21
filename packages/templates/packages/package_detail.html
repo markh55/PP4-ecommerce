@@ -32,20 +32,28 @@
       <p class="h5 mt-3"><strong>Price:</strong> £{{ package.price }}</p>
 
       <!-- CTA Button -->
-      <form class="form" action="{% url 'bag:add_to_bag' package.id %}" method="POST">
+      <form
+        class="form text-center"
+        action="{% url 'bag:add_to_bag' package.id %}"
+        method="POST"
+      >
         {% csrf_token %}
-        <div class="col-12">
-          <a href="{% url 'packages:package_list' %}" class="btn btn-outline-black rounded-0 mt-5">
+        <div class="col-12 mb-3">
+          <a
+            href="{% url 'packages:package_list' %}"
+            class="btn btn-black rounded-0 mt-5"
+          >
             <span class="icon">
               <i class="fas fa-chevron-left"></i>
             </span>
             <span class="text-uppercase">Back to Packages</span>
           </a>
-          <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Bag">
         </div>
-        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+        <div class="col-12">
+          <input type="submit" class="btn-package mt-3" value="Add to Bag" />
+        </div>
+        <input type="hidden" name="redirect_url" value="{{ request.path }}" />
       </form>
-
     </div>
   </div>
 </section>

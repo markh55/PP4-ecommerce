@@ -29,3 +29,19 @@
     margin: 5px 0;
     padding: 10px;
 }
+
+.btn-package {
+    background: white;
+    border-radius: 0.6rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: black;
+    border: 1px solid #00d9bb;
+    min-width: 120px;
+}
+
+.btn-package:hover, .btn-package:focus {
+    background: linear-gradient(135deg, #00bfa5, #00d9bb);
+    color: white;
+    text-decoration: none;
+}

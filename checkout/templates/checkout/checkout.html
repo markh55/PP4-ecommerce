@@ -1,110 +1,170 @@
-{% extends "core/base.html" %} {% load static %} {% block content %}
-<section class="container my-6">
-  <h2 class="section-title text-center"><strong>Checkout</strong></h2>
+{% extends "core/base.html" %}
+{% load static %}
 
-  <div class="row justify-content-center">
-    <div class="col-lg-8 col-md-12">
-      <form method="POST" action="{% url 'checkout:checkout' %}">
-        {% csrf_token %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
 
-        <!-- Billing Information -->
-        <h4 class="mt-4">Billing Details</h4>
-        <div class="mb-3">
-          <label for="full_name" class="form-label">Full Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="full_name"
-            name="full_name"
-            required
-          />
-        </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email Address</label>
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            name="email"
-            required
-          />
-        </div>
-        <div class="mb-3">
-          <label for="address" class="form-label">Address</label>
-          <input
-            type="text"
-            class="form-control"
-            id="address"
-            name="address"
-            required
-          />
-        </div>
-        <div class="mb-3">
-          <label for="city" class="form-label">City</label>
-          <input
-            type="text"
-            class="form-control"
-            id="city"
-            name="city"
-            required
-          />
-        </div>
-        <div class="mb-3">
-          <label for="postcode" class="form-label">Postcode</label>
-          <input
-            type="text"
-            class="form-control"
-            id="postcode"
-            name="postcode"
-            required
-          />
-        </div>
+{% block extra_js %}
+<script src="{% static 'checkout/js/checkout.js' %}"></script>
+{% endblock %}
 
-        <!-- Payment Information -->
-        <h4 class="mt-4">Payment Details</h4>
-        <div class="mb-3">
-          <label for="card_number" class="form-label">Card Number</label>
-          <input
-            type="text"
-            class="form-control"
-            id="card_number"
-            name="card_number"
-            required
-          />
-        </div>
-        <div class="mb-3 row">
-          <div class="col">
-            <label for="expiry" class="form-label">Expiry Date</label>
-            <input
-              type="text"
-              class="form-control"
-              id="expiry"
-              name="expiry"
-              placeholder="MM/YY"
-              required
-            />
-          </div>
-          <div class="col">
-            <label for="cvc" class="form-label">CVC</label>
-            <input
-              type="text"
-              class="form-control"
-              id="cvc"
-              name="cvc"
-              required
-            />
-          </div>
-        </div>
-
-        <!-- Buttons -->
-        <div class="text-center mt-5">
-          <a href="{% url 'bag:view_bag' %}" class="btn-package btn-lg no-hover"
-            >Back to Bag</a
-          >
-          <button type="submit" class="btn-package btn-lg">Place Order</button>
-        </div>
-      </form>
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
     </div>
-  </div>
-</section>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container my-6">
+    <div class="row">
+        <div class="col">
+            <h2 class="section-title text-center"><strong>CHECKOUT</strong></h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Order Summary Column - RIGHT SIDE -->
+        <div class="col-12 col-lg-6 order-lg-last mb-5">
+            <p class="text-muted">Order Summary ({{ services_summary|length }})</p>
+            <div class="row">
+                <div class="col-7 offset-2">
+                    <p class="mb-1 mt-0 small text-muted">Item</p>
+                </div>
+                <div class="col-3 text-right">
+                    <p class="mb-1 mt-0 small text-muted">Subtotal</p>
+                </div>
+            </div>
+            {% for item in services_summary %}
+                <div class="row">
+                    <div class="col-2 mb-1">
+                        {% if item.image %}
+                            <img class="w-100" src="{{ item.image.url }}" alt="{{ item.name }}">
+                        {% else %}
+                            <img class="w-100" src="{% static 'images/default-package.jpg' %}" alt="{{ item.name }}">
+                        {% endif %}
+                    </div>
+                    <div class="col-7">
+                        <p class="my-0"><strong>{{ item.name }}</strong></p>
+                        <p class="my-0 small text-muted">Qty: 1</p>
+                        <div class="mt-2">
+                            <a href="{% url 'bag:view_bag' %}" class="btn btn-sm btn-outline-secondary me-2">Edit</a>
+                        </div>
+                    </div>
+                    <div class="col-3 text-right">
+                        <p class="my-0 small text-muted">£{{ item.price }}</p>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="text-center text-muted">Your bag is empty</p>
+            {% endfor %}
+            <hr class="my-0">
+            <div class="row text-black text-right">
+                <div class="col-7 offset-2">
+                    <p class="my-0">Order Total:</p>
+                    <p class="my-0">Grand Total:</p>
+                </div>
+                <div class="col-3">
+                    <p class="my-0">£{{ total|floatformat:2 }}</p>
+                    <p class="my-0"><strong>£{{ grand_total|floatformat:2 }}</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkout Form Column - LEFT SIDE -->
+        <div class="col-12 col-lg-6">
+            <p class="text-muted">Please fill out the form below to complete your order</p>
+
+            <form method="POST" action="{% url 'checkout:checkout' %}">
+                {% csrf_token %}
+
+                <!-- Details Section -->
+                <fieldset class="rounded px-3 mb-5">
+                    <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name *" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="surname" name="surname" placeholder="Surname *" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="business_name" name="business_name" placeholder="Business Name (Optional)">
+                    </div>
+                </fieldset>
+
+                <!-- Contact Information Section -->
+                <fieldset class="rounded px-3 mb-5">
+                    <legend class="fieldset-label small text-black px-2 w-auto">Contact Information</legend>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email Address *" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number *" required>
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-control" id="preferred_contact" name="preferred_contact">
+                            <option value="">Preferred Contact Method</option>
+                            <option value="email">Email</option>
+                            <option value="phone">Phone</option>
+                            <option value="both">Both Email & Phone</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-control" id="preferred_contact_time" name="preferred_contact_time">
+                            <option value="">Preferred Contact Time</option>
+                            <option value="morning">Morning (9am - 12pm)</option>
+                            <option value="afternoon">Afternoon (12pm - 5pm)</option>
+                            <option value="evening">Evening (5pm - 8pm)</option>
+                            <option value="anytime">Anytime</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" id="special_requirements" name="special_requirements" rows="3" placeholder="Additional Notes (Optional)"></textarea>
+                    </div>
+                </fieldset>
+
+                <!-- Payment Information -->
+                <fieldset class="px-3">
+                    <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="card_number" name="card_number" placeholder="Card Number *" required>
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col">
+                            <input type="text" class="form-control" id="expiry" name="expiry" placeholder="MM/YY" required>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" id="cvc" name="cvc" placeholder="CVC *" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Buttons -->
+                <div class="submit-button text-right mt-5 mb-2">
+                    <a href="{% url 'bag:view_bag' %}" class="btn-package btn-lg no-hover">
+                        <span class="icon">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="text-uppercase">Back</span>
+                    </a>
+                    <button type="submit" class="btn-package btn-lg">
+                        <span class="text-uppercase">Complete Order</span>
+                        <span class="icon">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </button>
+                    <p class="small text-danger my-0">
+                        <span class="icon">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </span>
+                        <span>Your card will be charged <strong>£{{ grand_total|floatformat:2 }}</strong></span>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

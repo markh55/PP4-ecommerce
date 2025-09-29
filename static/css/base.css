@@ -2,11 +2,14 @@
 
 /* success message styling */
 .message-container {
-  position: fixed;
-  top: 70px;
-  right: 20px;
-  left: 20px;
-  z-index: 1050;
+  position: fixed !important;
+  top: 80px !important;
+  right: 20px !important;
+  z-index: 9999 !important;
+}
+
+.toast {
+  min-width: 350px;
 }
 
 .message-container .alert {

@@ -87,12 +87,17 @@
   {% if messages %}
     <div class="message-container">
       {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} alert-dismissible fade show mt-3" role="alert">
-          {{ message }}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
+        {% with message.level as level %}
+          {% if level == 40 %}
+            {% include 'toasts/toast_error.html' %}
+          {% elif level == 30 %}
+            {% include 'toasts/toast_warning.html' %}
+          {% elif level == 25 %}
+            {% include 'toasts/toast_success.html' %}
+          {% elif level == 20 %}
+            {% include 'toasts/toast_info.html' %}
+          {% endif %}
+        {% endwith %}
       {% endfor %}
     </div>
   {% endif %}

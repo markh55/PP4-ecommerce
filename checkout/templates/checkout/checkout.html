@@ -78,7 +78,7 @@
         <div class="col-12 col-lg-6">
             <p class="text-muted">Please fill out the form below to complete your order</p>
 
-            <form method="POST" action="{% url 'checkout:checkout' %}">
+            <form id="payment-form" method="POST" action="{% url 'checkout:checkout' %}">
                 {% csrf_token %}
 
                 <!-- Details Section -->
@@ -126,20 +126,15 @@
                     </div>
                 </fieldset>
 
-                <!-- Payment Information -->
+                <!-- Payment Information Section -->
                 <fieldset class="px-3">
                     <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="card_number" name="card_number" placeholder="Card Number *" required>
-                    </div>
-                    <div class="mb-3 row">
-                        <div class="col">
-                            <input type="text" class="form-control" id="expiry" name="expiry" placeholder="MM/YY" required>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" id="cvc" name="cvc" placeholder="CVC *" required>
+                        <div id="card-element" class="form-control">
+                            <!-- Stripe Elements will be inserted here -->
                         </div>
                     </div>
+                    <div id="card-errors" role="alert" class="text-danger mt-2"></div>
                 </fieldset>
 
                 <!-- Buttons -->

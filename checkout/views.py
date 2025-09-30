@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
-from django.views.decorators.http import require_POST
+from django.conf import settings
+import stripe
 from packages.models import Package
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 @login_required
 def checkout(request):
@@ -24,11 +26,23 @@ def checkout(request):
         })
         total += float(package.price)
 
+    intent = stripe.PaymentIntent.create(
+        amount=int(total * 100),
+        currency='gbp',
+    )
+
     context = {
         'services_summary': services_summary,
         'total': total,
         'grand_total': total,
         'stripe_public_key': 'pk_test_51RxZrIJDNpQfwITIBNzdHHtSpMiKd1j704EBaWx8dTlLQLY9DfaVWUJYLEZFegHT1s5ovLo7wcUXAv0TlrjDmIZL00Ekdcxt6M',
+        'client_secret': intent.client_secret,
     }
 
     return render(request, 'checkout/checkout.html', context)
+
+
+@login_required
+def checkout_success(request):
+    """Render the checkout success page"""
+    return render(request, 'checkout/checkout_success.html')

@@ -1,5 +1,39 @@
 .text-center .btn-lg {
     margin-right: 15px;
 }
+.text-center .btn-lg {
+    margin-right: 15px;
+}
 
 
+.form-control:focus {
+    border-color: #00d9bb;
+    box-shadow: 0 0 0 0.2rem rgba(0, 217, 187, 0.25);
+}
+
+/* Button styling */
+.btn-package {
+    border: 2px solid #00d9bb;
+    transition: all 0.3s ease;
+    margin: 0 10px;
+}
+
+.btn-package:hover {
+    background: linear-gradient(135deg, #00bfa5, #00d9bb);
+    color: white;
+}
+
+/* Edit button */
+.btn-outline-secondary {
+    border-color: #00d9bb;
+}
+
+.btn-outline-secondary:hover {
+    background: linear-gradient(135deg, #00bfa5, #00d9bb);
+    color: white;
+}
+
+/* Order summary line */
+hr.my-0 {
+    border-top: 2px solid #00d9bb;
+}

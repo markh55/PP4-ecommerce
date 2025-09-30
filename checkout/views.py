@@ -28,6 +28,7 @@ def checkout(request):
         'services_summary': services_summary,
         'total': total,
         'grand_total': total,
+        'stripe_public_key': 'pk_test_51RxZrIJDNpQfwITIBNzdHHtSpMiKd1j704EBaWx8dTlLQLY9DfaVWUJYLEZFegHT1s5ovLo7wcUXAv0TlrjDmIZL00Ekdcxt6M',
     }
 
     return render(request, 'checkout/checkout.html', context)

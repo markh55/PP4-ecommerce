@@ -1,90 +1,111 @@
 {% load static %}
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    {% block meta %}
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    {% endblock %}
+    {% block extra_meta %}{% endblock %}
+    {% block corecss %}
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="{% static 'home/css/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'home/css/form.css' %}" />
+    <link rel="stylesheet" href="{% static 'packages/css/package_detail.css' %}" />
+    <link rel="stylesheet" href="{% static 'bag/css/bag.css' %}" />
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    {% endblock %}
+    {% block extra_css %}{% endblock %}
 
-<head>
-  {% block meta %}
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  {% endblock %}
-
-  {% block extra_meta %}{% endblock %}
-
-  {% block corecss %}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
-  {% endblock %}
-
-  {% block extra_css %}{% endblock %}
-  <link rel="stylesheet" href="{% static 'css/form.css' %}">
-  <link rel="stylesheet" href="{% static 'css/package_detail.css' %}">
-  <link rel="stylesheet" href="{% static 'css/bag.css' %}">
-  <link rel="stylesheet" href="{% static 'css/checkout.css'%}">
-
-  {% block corejs %}
+    {% block corejs %}
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
-  {% endblock %}
 
-  {% block extra_js %}{% endblock %}
+    <!-- Stripe JS for payments -->
+    <script src="https://js.stripe.com/v3/"></script>
+    {% endblock %}
+    {% block extra_js %}{% endblock %}
 
-  <title>WebWorks {% block extra_title %}{% endblock %}</title>
-</head>
+    <title>WebWorks {% block extra_title %}{% endblock %}</title>
+  </head>
 
-<body style="font-family: 'Open Sans', sans-serif;">
-  <header class="container-fluid fixed-top bg-light">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a href="{% url 'index' %}" class="navbar-brand">
-        <h2 class="logo-font text-dark my-0" style="font-family: 'Noto Serif', serif;"><strong>Web</strong>Works</h2>
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
-        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'packages:package_list' %}">Packages</a>
-          </li>
-
-          {% if user.is_authenticated %}
+  <body style="font-family: 'Open Sans', sans-serif">
+    <header class="container-fluid fixed-top bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a href="{% url 'index' %}" class="navbar-brand">
+          <h2 class="logo-font text-dark my-0" style="font-family: 'Noto Serif', serif">
+            <strong>Web</strong>Works
+          </h2>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarContent"
+          aria-controls="navbarContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+          <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="">
-                <i class="fa-solid fa-circle-user"></i>
+              <a class="nav-link" href="{% url 'packages:package_list' %}">Packages</a>
+            </li>
+
+            {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="">
+                  <i class="fa-solid fa-circle-user"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+              </li>
+            {% endif %}
+
+            <li class="nav-item position-relative">
+              <a class="nav-link" href="{% url 'bag:view_bag' %}">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-count">{{ product_count }}</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
-            </li>
-          {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'account_login' %}">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
-            </li>
-          {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </header>
 
-          <li class="nav-item position-relative">
-            <a class="nav-link" href="{% url 'bag:view_bag' %}">
-              <i class="fa-solid fa-cart-shopping"></i>
-              <span id="cart-count">{{ product_count }}</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-
-  {% if messages %}
+    {% if messages %}
     <div class="message-container">
       {% for message in messages %}
         {% with message.level as level %}
@@ -100,30 +121,29 @@
         {% endwith %}
       {% endfor %}
     </div>
-  {% endif %}
+    {% endif %}
 
-  <main>
-    {% block page_header %}{% endblock %}
-    {% block content %}{% endblock %}
-  </main>
+    <main>
+      {% block page_header %}{% endblock %}
+      {% block content %}{% endblock %}
+    </main>
 
-  <footer class="container-fluid bg-light border-top">
-    <div class="container py-3">
-      <div class="row">
-        <div class="col-md-6">
-          <p class="mb-0">&copy; {% now "Y" %} WebWorks. All rights reserved.</p>
-        </div>
-        <div class="col-md-6 text-md-right">
-          <ul class="list-inline mb-0"></ul>
+    <footer class="container-fluid bg-light border-top">
+      <div class="container py-3">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="mb-0">&copy; {% now "Y" %} WebWorks. All rights reserved.</p>
+          </div>
+          <div class="col-md-6 text-md-right">
+            <ul class="list-inline mb-0"></ul>
+          </div>
         </div>
       </div>
-    </div>
-    {% block footer %}{% endblock %}
-  </footer>
+      {% block footer %}{% endblock %}
+    </footer>
 
-  {% block postloadjs %}
+    {% block postloadjs %}
     <script src="{% static 'js/main.js' %}"></script>
-  {% endblock %}
-
-</body>
+    {% endblock %}
+  </body>
 </html>

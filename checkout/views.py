@@ -28,14 +28,14 @@ def checkout(request):
 
     intent = stripe.PaymentIntent.create(
         amount=int(total * 100),
-        currency='gbp',
+        currency=settings.STRIPE_CURRENCY,
     )
 
     context = {
         'services_summary': services_summary,
         'total': total,
         'grand_total': total,
-        'stripe_public_key': 'pk_test_51RxZrIJDNpQfwITIBNzdHHtSpMiKd1j704EBaWx8dTlLQLY9DfaVWUJYLEZFegHT1s5ovLo7wcUXAv0TlrjDmIZL00Ekdcxt6M',
+        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
         'client_secret': intent.client_secret,
     }
 
@@ -44,5 +44,4 @@ def checkout(request):
 
 @login_required
 def checkout_success(request):
-    """Render the checkout success page"""
     return render(request, 'checkout/checkout_success.html')

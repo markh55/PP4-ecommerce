@@ -1,13 +1,15 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 import stripe
+
 from packages.models import Package
 from .forms import CheckoutForm
 from .models import Order, OrderLineItem
 
 
+# handle checkout process
 @login_required
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
@@ -40,7 +42,7 @@ def checkout(request):
                     quantity=1
                 )
             request.session['bag'] = {}
-            return redirect(reverse('checkout:checkout_success'))
+            return redirect(reverse('checkout:checkout_success', args=[order.order_number]))
         else:
             messages.error(request, "There was an error with your form. Please check your details.")
 
@@ -73,6 +75,23 @@ def checkout(request):
     return render(request, 'checkout/checkout.html', context)
 
 
+# view for successful checkout
 @login_required
-def checkout_success(request):
-    return render(request, 'checkout/checkout_success.html')
+def checkout_success(request, order_number):
+    save_info = request.session.get('save_info')
+    order = get_object_or_404(Order, order_number=order_number)
+
+    messages.success(request, f'Order successfully processed! '
+        f'Your order number is {order_number}. A confirmation '
+        f'email will be sent to {order.email}.')
+
+    # Remove bag from session after success
+    if 'bag' in request.session:
+        del request.session['bag']
+
+    template = 'checkout/checkout_success.html'
+    context = {
+        'order': order,
+    }
+
+    return render(request, template, context)

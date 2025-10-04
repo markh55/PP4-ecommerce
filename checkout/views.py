@@ -8,8 +8,6 @@ from packages.models import Package
 from .forms import CheckoutForm
 from .models import Order, OrderLineItem
 
-
-# handle checkout process
 @login_required
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
@@ -42,7 +40,7 @@ def checkout(request):
                     quantity=1
                 )
             request.session['bag'] = {}
-            return redirect(reverse('checkout:checkout_success', args=[order.order_number]))
+            return redirect(reverse('checkout:checkout_success', args=[order.id]))
         else:
             messages.error(request, "There was an error with your form. Please check your details.")
 
@@ -75,17 +73,14 @@ def checkout(request):
     return render(request, 'checkout/checkout.html', context)
 
 
-# view for successful checkout
 @login_required
-def checkout_success(request, order_number):
-    save_info = request.session.get('save_info')
-    order = get_object_or_404(Order, order_number=order_number)
+def checkout_success(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
 
     messages.success(request, f'Order successfully processed! '
-        f'Your order number is {order_number}. A confirmation '
+        f'Your order number is {order.id}. A confirmation '
         f'email will be sent to {order.email}.')
 
-    # Remove bag from session after success
     if 'bag' in request.session:
         del request.session['bag']
 

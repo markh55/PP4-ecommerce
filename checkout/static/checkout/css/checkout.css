@@ -11,7 +11,7 @@
   transition: box-shadow 150ms ease;
 }
 
-.StripeElement--focus{
+.StripeElement--focus {
   box-shadow: 0 1px 3px 0 #cfd7df;
 }
 
@@ -19,53 +19,70 @@
   background-color: #fefde5 !important;
 }
 
-
 .fieldset-label {
-    position: relative;
-    right: .5rem;
+  position: relative;
+  right: 0.5rem;
 }
 
 #payment-form .form-control,
 #card-element {
-    color: #000;
-    border: 1px solid #000;
+  color: #000;
+  border: 1px solid #000;
 }
 
 .text-center .btn-lg {
-    margin-right: 15px;
+  margin-right: 15px;
 }
 .text-center .btn-lg {
-    margin-right: 15px;
+  margin-right: 15px;
 }
 
 .form-control:focus {
-    border-color: #00d9bb;
-    box-shadow: 0 0 0 0.2rem rgba(0, 217, 187, 0.25);
+  border-color: #00d9bb;
+  box-shadow: 0 0 0 0.2rem rgba(0, 217, 187, 0.25);
 }
 
 /* Button styling */
 .btn-package {
-    border: 2px solid #00d9bb;
-    transition: all 0.3s ease;
-    margin: 0 10px;
+  border: 2px solid #00d9bb;
+  transition: all 0.3s ease;
+  margin: 0 10px;
 }
 
 .btn-package:hover {
-    background: linear-gradient(135deg, #00bfa5, #00d9bb);
-    color: white;
+  background: linear-gradient(135deg, #00bfa5, #00d9bb);
+  color: white;
 }
 
 /* Edit button */
 .btn-outline-secondary {
-    border-color: #00d9bb;
+  border-color: #00d9bb;
 }
 
 .btn-outline-secondary:hover {
-    background: linear-gradient(135deg, #00bfa5, #00d9bb);
-    color: white;
+  background: linear-gradient(135deg, #00bfa5, #00d9bb);
+  color: white;
 }
 
 /* Order summary line */
 hr.my-0 {
-    border-top: 2px solid #00d9bb;
+  border-top: 2px solid #00d9bb;
+}
+
+#loading-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(23, 162, 184, 0.85);
+  z-index: 9999;
+}
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: 100%;
 }

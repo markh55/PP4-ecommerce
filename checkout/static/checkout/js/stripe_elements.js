@@ -47,6 +47,9 @@ var form = document.getElementById('payment-form');
 form.addEventListener('submit', function (ev) {
     ev.preventDefault();
 
+    // Show loading overlay
+    $('#loading-overlay').fadeToggle(100);
+
     // Disable submit button to prevent multiple clicks
     form.querySelector("button[type='submit']").disabled = true;
 
@@ -66,8 +69,9 @@ form.addEventListener('submit', function (ev) {
             errorDiv.textContent = result.error.message;
             // Re-enable submit button
             form.querySelector("button[type='submit']").disabled = false;
+            // Hide loading overlay
+            $('#loading-overlay').fadeToggle(100);
         } else if (result.paymentIntent.status === 'succeeded') {
-            // Payment successful, submit form to Django to finalize order
             form.submit();
         }
     });

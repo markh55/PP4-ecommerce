@@ -4,6 +4,20 @@
 <div class="container my-6 text-center">
     <h2 class="section-title"><strong>Thank You!</strong></h2>
     <p>Your payment was successful. We’ve received your order and will be in touch soon.</p>
-    <a href="{% url 'products' %}" class="btn btn-primary mt-4">Continue Shopping</a>
+
+    {% if services_summary %}
+        <h4 class="mt-4">Your Order:</h4>
+        <ul class="list-group mb-4">
+            {% for item in services_summary %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ item.name }} (x{{ item.quantity }})
+                    <span>£{{ item.price }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+        <p><strong>Total: £{{ grand_total }}</strong></p>
+    {% endif %}
+
+    <a href="{% url 'packages:package_list' %}" class="btn btn-primary mt-4">Continue Shopping</a>
 </div>
 {% endblock %}

@@ -12,7 +12,7 @@ def checkout(request):
     bag = request.session.get('bag', {})
     if not bag:
         messages.error(request, "There's nothing in your bag at the moment")
-        return redirect(reverse('products'))
+        return redirect(reverse('packages:package_list'))
 
     services_summary = []
     total = 0
@@ -22,9 +22,28 @@ def checkout(request):
             'id': package.id,
             'name': package.name,
             'image': package.image,
-            'price': package.price
+            'price': float(package.price),
+            'quantity': bag.get(package_id, 1)
         })
-        total += float(package.price)
+        total += float(package.price) * services_summary[-1]['quantity']
+
+    if request.method == 'POST':
+        order_summary = []
+        for item in services_summary:
+            order_summary.append({
+                'id': item['id'],
+                'name': item['name'],
+                'price': item['price'],
+                'quantity': item['quantity'],
+                'image_url': item['image'].url if item['image'] else None
+            })
+
+        request.session['order_summary'] = {
+            'services_summary': order_summary,
+            'grand_total': total
+        }
+        request.session['bag'] = {}
+        return redirect('checkout:checkout_success')
 
     intent = stripe.PaymentIntent.create(
         amount=int(total * 100),
@@ -35,7 +54,7 @@ def checkout(request):
         'services_summary': services_summary,
         'total': total,
         'grand_total': total,
-        'stripe_public_key': 'pk_test_51RxZrIJDNpQfwITIBNzdHHtSpMiKd1j704EBaWx8dTlLQLY9DfaVWUJYLEZFegHT1s5ovLo7wcUXAv0TlrjDmIZL00Ekdcxt6M',
+        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
         'client_secret': intent.client_secret,
     }
 
@@ -44,5 +63,9 @@ def checkout(request):
 
 @login_required
 def checkout_success(request):
-    """Render the checkout success page"""
-    return render(request, 'checkout/checkout_success.html')
+    order_summary = request.session.pop('order_summary', None)
+    context = {
+        'services_summary': order_summary['services_summary'] if order_summary else [],
+        'grand_total': order_summary['grand_total'] if order_summary else 0,
+    }
+    return render(request, 'checkout/checkout_success.html', context)

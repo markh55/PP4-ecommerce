@@ -72,6 +72,7 @@ form.addEventListener('submit', function (ev) {
             // Hide loading overlay
             $('#loading-overlay').fadeToggle(100);
         } else if (result.paymentIntent.status === 'succeeded') {
+            // Submit the form so Django can save the order
             form.submit();
         }
     });

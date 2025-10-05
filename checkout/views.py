@@ -1,48 +1,18 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 import stripe
-
 from packages.models import Package
-from .forms import CheckoutForm
-from .models import Order, OrderLineItem
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 @login_required
 def checkout(request):
-    stripe_public_key = settings.STRIPE_PUBLIC_KEY
-    stripe_secret_key = settings.STRIPE_SECRET_KEY
-    stripe.api_key = stripe_secret_key
-
     bag = request.session.get('bag', {})
     if not bag:
         messages.error(request, "There's nothing in your bag at the moment")
-        return redirect(reverse('products:products'))
-
-    if request.method == 'POST':
-        form = CheckoutForm(request.POST)
-        if form.is_valid():
-            order = Order.objects.create(
-                first_name=form.cleaned_data['first_name'],
-                surname=form.cleaned_data['surname'],
-                business_name=form.cleaned_data['business_name'],
-                email=form.cleaned_data['email'],
-                phone_number=form.cleaned_data['phone_number'],
-                preferred_contact_method=form.cleaned_data['preferred_contact_method'],
-                preferred_contact_time=form.cleaned_data['preferred_contact_time'],
-                additional_notes=form.cleaned_data['additional_notes'],
-            )
-            for package_id, quantity in bag.items():
-                package = Package.objects.get(pk=package_id)
-                OrderLineItem.objects.create(
-                    order=order,
-                    package=package,
-                    quantity=1
-                )
-            request.session['bag'] = {}
-            return redirect(reverse('checkout:checkout_success', args=[order.id]))
-        else:
-            messages.error(request, "There was an error with your form. Please check your details.")
+        return redirect(reverse('products'))
 
     services_summary = []
     total = 0
@@ -58,35 +28,21 @@ def checkout(request):
 
     intent = stripe.PaymentIntent.create(
         amount=int(total * 100),
-        currency=settings.STRIPE_CURRENCY,
+        currency='gbp',
     )
 
     context = {
         'services_summary': services_summary,
         'total': total,
         'grand_total': total,
-        'stripe_public_key': stripe_public_key,
+        'stripe_public_key': 'pk_test_51RxZrIJDNpQfwITIBNzdHHtSpMiKd1j704EBaWx8dTlLQLY9DfaVWUJYLEZFegHT1s5ovLo7wcUXAv0TlrjDmIZL00Ekdcxt6M',
         'client_secret': intent.client_secret,
-        'form': CheckoutForm(),
     }
 
     return render(request, 'checkout/checkout.html', context)
 
 
 @login_required
-def checkout_success(request, order_id):
-    order = get_object_or_404(Order, id=order_id)
-
-    messages.success(request, f'Order successfully processed! '
-        f'Your order number is {order.id}. A confirmation '
-        f'email will be sent to {order.email}.')
-
-    if 'bag' in request.session:
-        del request.session['bag']
-
-    template = 'checkout/checkout_success.html'
-    context = {
-        'order': order,
-    }
-
-    return render(request, template, context)
+def checkout_success(request):
+    """Render the checkout success page"""
+    return render(request, 'checkout/checkout_success.html')

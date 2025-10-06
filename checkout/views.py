@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 import stripe
 from packages.models import Package
+from checkout.models import Order
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -27,6 +28,11 @@ def checkout(request):
         })
         total += float(package.price) * services_summary[-1]['quantity']
 
+    intent = stripe.PaymentIntent.create(
+        amount=int(total * 100),
+        currency='gbp',
+    )
+
     if request.method == 'POST':
         order_summary = []
         for item in services_summary:
@@ -38,17 +44,19 @@ def checkout(request):
                 'image_url': item['image'].url if item['image'] else None
             })
 
-        request.session['order_summary'] = {
-            'services_summary': order_summary,
-            'grand_total': total
-        }
-        request.session['bag'] = {}
-        return redirect('checkout:checkout_success')
+        order = Order.objects.create(
+            user=request.user,
+            full_name=request.user.get_full_name(),
+            email=request.user.email,
+            phone_number='N/A',
+            order_total=total,
+            original_bag=str(order_summary),
+            stripe_pid=intent.id
+        )
 
-    intent = stripe.PaymentIntent.create(
-        amount=int(total * 100),
-        currency='gbp',
-    )
+        request.session['bag'] = {}
+        request.session['order_number'] = order.order_number
+        return redirect('checkout:checkout_success')
 
     context = {
         'services_summary': services_summary,
@@ -63,9 +71,12 @@ def checkout(request):
 
 @login_required
 def checkout_success(request):
-    order_summary = request.session.pop('order_summary', None)
+    order_number = request.session.pop('order_number', None)
+    order = Order.objects.filter(order_number=order_number).first()
+
     context = {
-        'services_summary': order_summary['services_summary'] if order_summary else [],
-        'grand_total': order_summary['grand_total'] if order_summary else 0,
+        'order': order,
+        'services_summary': [],
+        'grand_total': order.order_total if order else 0,
     }
     return render(request, 'checkout/checkout_success.html', context)

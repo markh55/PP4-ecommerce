@@ -46,13 +46,13 @@ def checkout(request):
 
         order = Order.objects.create(
             user=request.user,
-            full_name=request.user.get_full_name(),
-            email=request.user.email,
-            phone_number='N/A',
+            full_name=request.POST.get('first_name') + ' ' + request.POST.get('surname'),
+            email=request.POST.get('email'),
+            phone_number=request.POST.get('phone_number'),
             order_total=total,
             original_bag=str(order_summary),
             stripe_pid=intent.id
-        )
+)
 
         request.session['bag'] = {}
         request.session['order_number'] = order.order_number

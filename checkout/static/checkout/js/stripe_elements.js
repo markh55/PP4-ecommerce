@@ -73,9 +73,15 @@ form.addEventListener('submit', function (ev) {
             card.update({ 'disabled': false});
             // Hide loading overlay
             $('#loading-overlay').fadeToggle(100);
+            // Show temporary error message
+            $('#status-message').text('Payment failed. Please try again.').fadeIn().delay(2000).fadeOut();
         } else if (result.paymentIntent.status === 'succeeded') {
+            // Show success message
+            $('#status-message').text('Payment successful! Redirecting...').fadeIn();
             // Submit the form so Django can save the order
+            setTimeout(function() {
             form.submit();
+        }, 800);
         }
     });
 });

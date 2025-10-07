@@ -53,6 +53,20 @@ form.addEventListener('submit', function (ev) {
     // Disable submit button to prevent multiple clicks
     form.querySelector("button[type='submit']").disabled = true;
 
+    // Save info checkbox value
+    var saveInfo = Boolean($('#id-save-info').attr('checked'));
+    var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+    var postData = {
+        'csrfmiddlewaretoken': csrfToken,
+        'client_secret': client_secret,
+        'save_info': saveInfo,
+    };
+    var url = '/checkout/cache_checkout_data/';
+
+    // Post to cache_checkout_data view to set up payment intent
+    $.post(url, postData).done(function () {
+
+    // Confirm the card payment
     stripe.confirmCardPayment(client_secret, {
         payment_method: {
             card: card,
@@ -84,4 +98,8 @@ form.addEventListener('submit', function (ev) {
         }, 800);
         }
     });
+});
+}).fail(function () {
+    // Just reload the page, the error will be in django messages
+    location.reload();
 });

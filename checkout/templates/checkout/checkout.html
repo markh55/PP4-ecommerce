@@ -30,7 +30,7 @@
 <div class="container my-6">
     <div class="row">
         <div class="col">
-            <h2 class="section-title text-center"><strong>CHECKOUT</strong></h2>
+            <h2 class="section-title text-center mt-5 pt-5"><strong>CHECKOUT</strong></h2>
         </div>
     </div>
 
@@ -86,86 +86,89 @@
         <div class="col-12 col-lg-6">
             <p class="text-muted">Please fill out the form below to complete your order</p>
 
-            <form id="payment-form" method="POST" action="{% url 'checkout:checkout' %}">
-                {% csrf_token %}
+            <div class="checkout-box">
+                <form id="payment-form" method="POST" action="{% url 'checkout:checkout' %}">
+                    {% csrf_token %}
 
-                <!-- Details Section -->
-                <fieldset class="rounded px-3 mb-5">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name *" required>
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="surname" name="surname" placeholder="Surname *" required>
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="business_name" name="business_name" placeholder="Business Name (Optional)">
-                    </div>
-                </fieldset>
-
-                <!-- Contact Information Section -->
-                <fieldset class="rounded px-3 mb-5">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Contact Information</legend>
-                    <div class="mb-3">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Email Address *" required>
-                    </div>
-                    <div class="mb-3">
-                        <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number *" required>
-                    </div>
-                    <div class="mb-3">
-                        <select class="form-control" id="preferred_contact" name="preferred_contact">
-                            <option value="">Preferred Contact Method</option>
-                            <option value="email">Email</option>
-                            <option value="phone">Phone</option>
-                            <option value="both">Both Email & Phone</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <select class="form-control" id="preferred_contact_time" name="preferred_contact_time">
-                            <option value="">Preferred Contact Time</option>
-                            <option value="morning">Morning (9am - 12pm)</option>
-                            <option value="afternoon">Afternoon (12pm - 5pm)</option>
-                            <option value="evening">Evening (5pm - 8pm)</option>
-                            <option value="anytime">Anytime</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <textarea class="form-control" id="special_requirements" name="special_requirements" rows="3" placeholder="Additional Notes (Optional)"></textarea>
-                    </div>
-                </fieldset>
-
-                <!-- Payment Information Section -->
-                <fieldset class="px-3">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
-                    <div class="mb-3">
-                        <div id="card-element" class="form-control">
+                    <!-- Details Section -->
+                    <fieldset class="mb-3">
+                        <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name *" required>
                         </div>
-                    </div>
-                    <div id="card-errors" role="alert" class="text-danger mt-2"></div>
-                </fieldset>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="surname" name="surname" placeholder="Surname *" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="business_name" name="business_name" placeholder="Business Name (Optional)">
+                        </div>
+                    </fieldset>
 
-                <!-- Buttons -->
-                <div class="submit-button text-right mt-5 mb-2">
-                    <a href="{% url 'bag:view_bag' %}" class="btn-package btn-lg no-hover">
-                        <span class="icon">
-                            <i class="fas fa-chevron-left"></i>
-                        </span>
-                        <span class="text-uppercase">Back</span>
-                    </a>
-                    <button type="submit" class="btn-package btn-lg">
-                        <span class="text-uppercase">Complete Order</span>
-                        <span class="icon">
-                            <i class="fas fa-lock"></i>
-                        </span>
-                    </button>
-                    <p class="small text-danger my-0">
-                        <span class="icon">
-                            <i class="fas fa-exclamation-circle"></i>
-                        </span>
-                        <span>Your card will be charged <strong>£{{ grand_total|floatformat:2 }}</strong></span>
-                    </p>
-                </div>
-            </form>
+                    <!-- Contact Information Section -->
+                    <fieldset class="mb-3">
+                        <legend class="fieldset-label small text-black px-2 w-auto">Contact Information</legend>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email Address *" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number *" required>
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-control" id="preferred_contact" name="preferred_contact">
+                                <option value="">Preferred Contact Method</option>
+                                <option value="email">Email</option>
+                                <option value="phone">Phone</option>
+                                <option value="both">Both Email & Phone</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-control" id="preferred_contact_time" name="preferred_contact_time">
+                                <option value="">Preferred Contact Time</option>
+                                <option value="morning">Morning (9am - 12pm)</option>
+                                <option value="afternoon">Afternoon (12pm - 5pm)</option>
+                                <option value="evening">Evening (5pm - 8pm)</option>
+                                <option value="anytime">Anytime</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" id="special_requirements" name="special_requirements" rows="3" placeholder="Additional Notes (Optional)"></textarea>
+                        </div>
+                    </fieldset>
+
+                    <!-- Save Info Checkbox -->
+                    <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" id="id-save-info" name="save-info">
+                        <label class="form-check-label" for="id-save-info">
+                            Save Information
+                        </label>
+                    </div>
+
+                    <!-- Payment Information Section -->
+                    <fieldset class="mb-3">
+                        <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
+                        <div class="mb-3">
+                            <div id="card-element" class="form-control"></div>
+                        </div>
+                        <div id="card-errors" role="alert" class="text-danger mt-2"></div>
+                    </fieldset>
+
+                    <!-- Buttons -->
+                    <div class="submit-button text-right mt-3">
+                        <a href="{% url 'bag:view_bag' %}" class="btn-package btn-lg no-hover">
+                            <span class="icon"><i class="fas fa-chevron-left"></i></span>
+                            <span class="text-uppercase">Back</span>
+                        </a>
+                        <button type="submit" class="btn-package btn-lg">
+                            <span class="text-uppercase">Complete Order</span>
+                            <span class="icon"><i class="fas fa-lock"></i></span>
+                        </button>
+                        <p class="small text-danger my-0">
+                            <span class="icon"><i class="fas fa-exclamation-circle"></i></span>
+                            <span>Your card will be charged <strong>£{{ grand_total|floatformat:2 }}</strong></span>
+                        </p>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

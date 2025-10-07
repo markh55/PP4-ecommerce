@@ -23,6 +23,7 @@ class StripeWH_Handler:
         """
         intent = event.data.object
         pid = intent.id
+        bag = intent.metadata.bag
         # save info / order history
         save_info = intent.metadata.get('save_info')
         order_number = intent.metadata.get('order_number')

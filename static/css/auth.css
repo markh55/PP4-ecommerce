@@ -1,0 +1,136 @@
+
+body {
+    background-color: offwhite;
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Center the Bootstrap container and apply tile look */
+.container {
+    background: #ffffff;
+    border-radius: 16px; /* rounded corners */
+    box-shadow: 3px 10px 20px rgba(0, 0, 0, 0.3);
+    padding: 2.5rem 2rem;
+    max-width: 600px;
+    width: 100%;
+    transition: all 0.25s ease-in-out;
+}
+
+/* Subtle hover lift */
+.container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+}
+
+/* Make sure headings and text match your branding */
+h1.text-center {
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: #212529;
+    margin-bottom: 1.5rem;
+}
+
+p.text-center {
+    color: #6c757d;
+    font-size: 0.95rem;
+}
+
+p.text-center a {
+    color: #00d9bb;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+p.text-center a:hover {
+    color: #00c4a9;
+    text-decoration: underline;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #00d9bb;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #00c4a9;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 217, 187, 0.25);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+}
+
+.btn-primary,
+.btn-secondary {
+    margin-right: 10px;
+}
+
+
+/* Inputs */
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus {
+    border-color: #00d9bb;
+    box-shadow: 0 0 0 0.2rem rgba(0, 217, 187, 0.25);
+    outline: none;
+}
+
+/* Checkbox and Forgot Password */
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #495057;
+    font-size: 0.9rem;
+}
+
+.btn-link {
+    color: #00d9bb;
+    text-decoration: none;
+}
+
+.btn-link:hover {
+    color: #00c4a9;
+    text-decoration: underline;
+}
+
+/* single column layout for forms */
+.signup button,
+.signup a.btn {
+    display: inline-block !important;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.signup {
+    text-align: center;
+}
+
+
+/* Make it look good on smaller screens */
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem 1.25rem;
+    margin: 1rem;
+  }
+}

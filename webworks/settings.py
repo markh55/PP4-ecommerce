@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'packages',
     'bag',
     'checkout',
+    'profiles',
 ]
 
 MIDDLEWARE = [

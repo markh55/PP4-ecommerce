@@ -9,6 +9,7 @@ urlpatterns = [
     path('packages/', include('packages.urls', namespace='packages')),
     path('bag/', include('bag.urls', namespace='bag')),
     path('checkout/', include('checkout.urls', namespace='checkout')),
+    path('profiles/', include('profiles.urls', namespace='profiles')),
     path('', include('home.urls')),
 ]
 

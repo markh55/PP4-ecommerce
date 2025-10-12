@@ -120,6 +120,16 @@ form button:hover {
   padding: 15px;
 }
 
+.btn-primary {
+    background-color: #00c4a9;
+    border-color: #00c4a9;
+}
+
+.btn-primary:hover {
+    background-color: #00a890;
+    border-color: #00a890;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .row > .col-md-6 {

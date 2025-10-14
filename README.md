@@ -7,6 +7,15 @@ This project is a web development agency that provides tiered service packages â
      * [User Stories](#user-stories)
      * [Wireframes](#wireframes)
      * [Colour Scheme](#colour-scheme)
+2. [Final Design](#final-design)
+3. [Features](#features)
+4. [Deployment](#deployment)
+5. [Testing](#testing)
+6. [Feedback](#feedback)
+7. [Tech Stack](#tech-stack)
+8. [Resources](#resources)
+9. [Credits / Tutotials](#credits--tutorials)
+    * [Source used](#source-used)
 
 
 ## Planning
@@ -35,3 +44,30 @@ This is the mock up of the page when user is logged into their account.
 
 
 ## Colour Scheme
+
+
+## Final Design
+
+
+## Features
+
+
+## Deployment
+
+
+## Testing
+
+
+## Feedback
+
+
+## Tech Stack
+
+
+## Resources
+
+
+## Credits / Tutorials
+
+
+### Source Used

@@ -6,6 +6,7 @@ This project is a web development agency that provides tiered service packages â
 1. [Planning](#planning)
      * [User Stories](#user-stories)
      * [Wireframes](#wireframes)
+     * [Entity Relationship Diagram](#entity-relationship-diagram)
      * [Colour Scheme](#colour-scheme)
 2. [Final Design](#final-design)
 3. [Features](#features)
@@ -40,8 +41,65 @@ This is the mock up of the page when user is logged into their account.
 <img width="301" height="1266" alt="Mobile Wireframe" src="https://github.com/user-attachments/assets/f02c428e-fe9a-4748-87b5-5d78c78ef6de" />
 
 
+### Entity Relationship Diagram
 
+Entity Relationship Diagram
+Following on from designing the wireframes, I needed to think about a database structure to be used for the project. I opted for a comprehensive setup based around six core models: User, UserProfile, Order, Package, Review, and Rating.
+The User model is composed of the following:
 
+* ID (Primary Key)
+* Username
+* Email
+* Password
+* Date_joined
+
+The UserProfile model is composed of the following:
+
+* ID (Primary Key)
+* User_id (Foreign Key)
+* Default_phone_number
+* Default_email
+* Default_business_name
+
+The Order model is composed of the following:
+
+* ID (Primary Key)
+* Order_number
+* User_id (Foreign Key)
+* Full_name
+* Email
+* Order_total
+* Stripe_pid
+
+The Package model is composed of the following:
+
+* ID (Primary Key)
+* Tier
+* Name
+* Slug
+* Description
+* Price
+* Created_at
+
+The Review model is composed of the following:
+
+* ID (Primary Key)
+* Package_id (Foreign Key)
+* User_id (Foreign Key)
+* Title
+* Body
+
+The Rating model is composed of the following:
+
+* ID (Primary Key)
+* Package_id (Foreign Key)
+* User_id (Foreign Key)
+* Rating
+* Created_at
+
+This structure allows for a one-to-one relationship between User and UserProfile, while enabling users to place multiple orders and create multiple reviews and ratings for different packages. Each package can have multiple reviews and ratings, keeping the relationships clear and easy to manage.
+
+<img width="1143" height="703" alt="ERD" src="https://github.com/user-attachments/assets/90922d63-6a1f-4d9d-b158-4898806f1101" />
 
 ## Colour Scheme
 

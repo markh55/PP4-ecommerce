@@ -152,21 +152,23 @@
                         <div id="card-errors" role="alert" class="text-danger mt-2"></div>
                     </fieldset>
 
-                    <!-- Buttons -->
-                    <div class="submit-button text-right mt-3">
-                        <a href="{% url 'bag:view_bag' %}" class="btn-package btn-lg no-hover">
-                            <span class="icon"><i class="fas fa-chevron-left"></i></span>
-                            <span class="text-uppercase">Back</span>
-                        </a>
-                        <button type="submit" class="btn-package btn-lg">
-                            <span class="text-uppercase">Complete Order</span>
-                            <span class="icon"><i class="fas fa-lock"></i></span>
-                        </button>
-                        <p class="small text-danger my-0">
-                            <span class="icon"><i class="fas fa-exclamation-circle"></i></span>
-                            <span>Your card will be charged <strong>£{{ grand_total|floatformat:2 }}</strong></span>
-                        </p>
-                    </div>
+                    <!-- Complete Order Button -->
+                    <button type="submit" class="btn-package btn-lg w-100 mb-2">
+                        <span class="text-uppercase">Complete Order</span>
+                        <span class="icon"><i class="fas fa-lock"></i></span>
+                    </button>
+
+                    <!-- Card Charge Notice -->
+                    <p class="small text-danger text-right mb-3">
+                        <span class="icon"><i class="fas fa-exclamation-circle"></i></span>
+                        <span>Your card will be charged <strong>£{{ grand_total|floatformat:2 }}</strong></span>
+                    </p>
+
+                    <!-- Back Button -->
+                    <a href="{% url 'bag:view_bag' %}" class="btn-package btn-lg no-hover">
+                        <span class="icon"><i class="fas fa-chevron-left"></i></span>
+                        <span class="text-uppercase">Back</span>
+                    </a>
                 </form>
             </div>
         </div>

@@ -51,12 +51,19 @@ body {
 .btn-package {
   border: 2px solid #00d9bb;
   transition: all 0.3s ease;
-  margin: 0 10px;
+  margin: 0;
 }
 
 .btn-package:hover {
   background: linear-gradient(135deg, #00bfa5, #00d9bb);
   color: white;
+}
+
+/* Align back button to the left */
+.btn-package.no-hover {
+  display: inline-block;
+  width: auto;
+  margin-left: 0;
 }
 
 /* Edit button */

@@ -5,6 +5,11 @@
 <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
 {% endblock %}
 
+{% block postloadjs %}
+{{ block.super }}
+<script src="{% static 'profiles/js/profile.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 <div class="container-fluid bg-light py-5">
     <div class="container">
@@ -18,15 +23,31 @@
             <div class="col-lg-4 mb-4">
                 <div class="card border-0 shadow">
                     <div class="card-body text-center py-5">
-                        <div class="mb-4">
+                        <form method="post" enctype="multipart/form-data" id="avatarForm">
+                            {% csrf_token %}
+
+                            <div class="mb-4">
+                                {% if profile.avatar %}
+                                    <img src="{{ profile.avatar.url }}" class="rounded-circle border border-primary" alt="Avatar" width="150" height="150" style="object-fit: cover;">
+                                {% else %}
+                                    <img src="{% static 'profiles/images/default-avatar.png' %}" class="rounded-circle border border-primary" alt="Avatar" width="150" height="150" style="object-fit: cover;">
+                                {% endif %}
+                            </div>
+
+                            <h4 class="mb-1">{{ user.get_full_name|default:user.username }}</h4>
+                            <p class="text-muted mb-4">{{ user.email }}</p>
+
+                            <input type="file" name="avatar" accept="image/*" id="id_avatar" style="display: none;">
+                            <label for="id_avatar" class="btn btn-outline-primary btn-block mb-2">
+                                <i class="fa fa-upload mr-1"></i> Choose Picture
+                            </label>
+
                             {% if profile.avatar %}
-                                <img src="{{ profile.avatar.url }}" class="rounded-circle border border-primary" alt="Avatar" width="150" height="150" style="object-fit: cover;">
-                            {% else %}
-                                <img src="{% static 'profiles/images/default-avatar.png' %}" class="rounded-circle border border-primary" alt="Avatar" width="150" height="150" style="object-fit: cover;">
+                            <button type="submit" name="remove_avatar" class="btn btn-outline-danger btn-block">
+                                <i class="fa fa-trash mr-1"></i> Remove Picture
+                            </button>
                             {% endif %}
-                        </div>
-                        <h4 class="mb-1">{{ user.get_full_name|default:user.username }}</h4>
-                        <p class="text-muted mb-3">{{ user.email }}</p>
+                        </form>
                     </div>
                 </div>
 
@@ -97,17 +118,6 @@
                                 </div>
                             </div>
 
-                            {% if form.avatar %}
-                            <div class="row">
-                                <div class="col-12 mb-4">
-                                    <label class="font-weight-bold text-dark mb-2">
-                                        <i class="fa fa-image mr-1"></i> Profile Picture
-                                    </label>
-                                    {{ form.avatar }}
-                                </div>
-                            </div>
-                            {% endif %}
-
                             <div class="row">
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary btn">
@@ -126,10 +136,39 @@
                         </h4>
                     </div>
                     <div class="card-body p-4">
-                        <div class="text-center py-5">
-                            <i class="fa fa-box-open fa-3x text-muted mb-3"></i>
-                            <p class="text-muted mb-0">No orders yet. When you make a purchase, your order history will appear here.</p>
-                        </div>
+                        {% if orders %}
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Order Number</th>
+                                            <th>Date</th>
+                                            <th>Total</th>
+                                            <th>Details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for order in orders %}
+                                        <tr>
+                                            <td class="font-weight-bold">{{ order.order_number }}</td>
+                                            <td>{{ order.date|date:"M d, Y" }}</td>
+                                            <td>£{{ order.order_total }}</td>
+                                            <td>
+                                                <a href="#" class="btn btn-sm btn-outline-primary">
+                                                    <i class="fa fa-eye mr-1"></i> View
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {% else %}
+                            <div class="text-center py-5">
+                                <i class="fa fa-box-open fa-3x text-muted mb-3"></i>
+                                <p class="text-muted mb-0">No orders yet. When you make a purchase, your order history will appear here.</p>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>

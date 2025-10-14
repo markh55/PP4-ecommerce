@@ -141,7 +141,7 @@
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th>Order Number</th>
+                                            <th>Order</th>
                                             <th>Date</th>
                                             <th>Total</th>
                                             <th>Details</th>
@@ -150,7 +150,7 @@
                                     <tbody>
                                         {% for order in orders %}
                                         <tr>
-                                            <td class="font-weight-bold">{{ order.order_number }}</td>
+                                            <td class="font-weight-bold">{{ order.title }}</td>
                                             <td>{{ order.date|date:"M d, Y" }}</td>
                                             <td>£{{ order.order_total }}</td>
                                             <td>

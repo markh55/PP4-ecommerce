@@ -52,6 +52,8 @@ def checkout(request):
 
     if request.method == 'POST':
         order_summary = []
+        package_names = []
+
         for item in services_summary:
             order_summary.append({
                 'id': item['id'],
@@ -60,16 +62,23 @@ def checkout(request):
                 'quantity': item['quantity'],
                 'image_url': item['image'].url if item['image'] else None
             })
+            package_names.append(item['name'])
+
+        if len(package_names) == 1:
+            order_title = package_names[0]
+        else:
+            order_title = f"{package_names[0]} + {len(package_names) - 1} more"
 
         order = Order.objects.create(
-            user=request.user,
+            user=request.user.userprofile,
+            title=order_title,
             full_name=request.POST.get('first_name') + ' ' + request.POST.get('surname'),
             email=request.POST.get('email'),
             phone_number=request.POST.get('phone_number'),
             order_total=total,
             original_bag=str(order_summary),
             stripe_pid=intent.id
-)
+        )
 
         request.session['bag'] = {}
         request.session['order_number'] = order.order_number

@@ -6,6 +6,7 @@ from profiles.models import UserProfile
 class Order(models.Model):
     """Model for customer orders"""
     order_number = models.CharField(max_length=32, null=False, editable=False)
+    title = models.CharField(max_length=200, null=False, blank=False, default='Untitled Order')
     user = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
@@ -14,6 +15,9 @@ class Order(models.Model):
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     original_bag = models.TextField(null=False, blank=False, default='')
     stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
+
+    class Meta:
+        ordering = ['-date']
 
     def _generate_order_number(self):
         """Generate a random, unique order number using UUID"""
@@ -26,4 +30,4 @@ class Order(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.order_number
+        return self.title

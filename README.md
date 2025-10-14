@@ -63,8 +63,21 @@ This is the mock up of the page when user is logged into their account.
 
 ## Tech Stack
 
+- HTML
+- CSS / Bootstrap 5
+- JavaScript
+- Python / Django 
 
 ## Resources
+
+- Code Institute
+  - Boutique Ado
+
+- Djnago 5 By Example by Antonio Mele
+
+- Documentation for Django - <https://docs.djangoproject.com/en/5.2/>
+  
+- Stack Overflow
 
 
 ## Credits / Tutorials

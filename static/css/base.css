@@ -82,3 +82,114 @@ footer {
 .form-control {
   border-radius: 10px !important;
 }
+
+/* Tablet styles (768px - 991px) */
+@media (max-width: 991px) {
+  /* Adjust toast messages */
+  .toast {
+    min-width: 300px;
+  }
+
+  .message-container {
+    right: 10px !important;
+    top: 70px !important;
+  }
+
+  /* Package cards */
+  #packages .card {
+    min-height: auto;
+  }
+
+  /* Footer spacing */
+  footer .col-md-3 {
+    margin-bottom: 2.5rem;
+  }
+
+  footer .col-md-3:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Mobile styles (up to 767px) */
+@media (max-width: 767px) {
+  /* Adjust message container for mobile */
+  .message-container {
+    right: 10px !important;
+    left: 10px !important;
+    top: 70px !important;
+  }
+
+  .toast {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .message-container .alert {
+    width: 100%;
+  }
+
+  /* Cart counter - make it slightly larger for touch */
+  #cart-count {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  /* Package cards - full width on mobile */
+  #packages .card {
+    margin-bottom: 1rem;
+    min-height: auto;
+  }
+
+  /* Footer adjustments */
+  footer {
+    padding: 2rem 0;
+  }
+
+  footer .col-md-3 {
+    margin-bottom: 3rem;
+    text-align: center !important;
+  }
+
+  footer .col-md-3:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Center social icons on mobile */
+  .footer-social a {
+    margin: 0 15px;
+  }
+
+  /* Make form inputs full width and easier to tap */
+  footer .form-control {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 0.75rem;
+  }
+
+  footer #join-btn {
+    padding: 0.75rem;
+    font-size: 16px;
+  }
+
+  /* Improve touch targets for links */
+  footer a {
+    padding: 0.5rem;
+    display: inline-block;
+  }
+}
+
+/* Small mobile styles (up to 480px) */
+@media (max-width: 480px) {
+  /* Even more compact spacing */
+  footer {
+    padding: 1.5rem 0;
+  }
+
+  footer .col-md-3 {
+    margin-bottom: 2.5rem;
+  }
+
+  /* Smaller social icon spacing */
+  .footer-social a {
+    margin: 0 10px;
+  }
+}

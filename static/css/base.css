@@ -64,3 +64,21 @@ footer {
   font-size: 0.7rem;
   font-weight: bold;
 }
+
+/* social media icons in footer */
+.footer-social a {
+  margin-right: 25px;
+}
+
+.footer-social a:last-child {
+  margin-right: 0;
+}
+
+/* join button in footer */
+#join-btn {
+  border-radius: 10px;
+}
+
+.form-control {
+  border-radius: 10px !important;
+}

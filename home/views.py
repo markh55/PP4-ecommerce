@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib import messages
 from packages.models import Package
-from .forms import ContactForm
+from .forms import ContactForm, SubscriberForm
 
 # Home page
 def index(request):
@@ -37,3 +37,17 @@ def index(request):
 def packages(request):
     packages = Package.objects.all()
     return render(request, 'home/packages.html', {'packages': packages})
+
+
+# Subscribe to newsletter
+def subscribe(request):
+    if request.method == "POST":
+        form = SubscriberForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Thank you for subscribing to our newsletter!")
+            return redirect('index')
+    else:
+        messages.error(request, "There was an error with your subscription. Please try again.")
+        return redirect('index')
+    return redirect('index')

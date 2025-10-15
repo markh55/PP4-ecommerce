@@ -140,5 +140,9 @@ This structure allows for a one-to-one relationship between User and UserProfile
 
 ## Credits / Tutorials
 
+### Newsletter
+I used django-newsletter (https://django-newsletter.readthedocs.io/en/latest/
+) as a reference for the newsletter signup within the footer, and adapted the code to fit my project. This was just used as a guide.
+
 
 ### Source Used

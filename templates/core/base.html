@@ -10,9 +10,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    {% endblock %}
-    {% block extra_meta %}{% endblock %}
-    {% block corecss %}
+    {% endblock %} {% block extra_meta %}{% endblock %} {% block corecss %}
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -40,9 +38,7 @@
     <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}" />
     <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}" />
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-    {% endblock %}
-    {% block extra_css %}{% endblock %}
-    {% block corejs %}
+    {% endblock %} {% block extra_css %}{% endblock %} {% block corejs %}
     <script
       src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
       crossorigin="anonymous"
@@ -57,8 +53,7 @@
     ></script>
 
     <script src="https://js.stripe.com/v3/"></script>
-    {% endblock %}
-    {% block extra_js %}{% endblock %}
+    {% endblock %} {% block extra_js %}{% endblock %}
 
     <title>WebWorks {% block extra_title %}{% endblock %}</title>
   </head>
@@ -161,20 +156,32 @@
     {% endif %}
 
     <main>
-      {% block page_header %}{% endblock %}
-      {% block content %}{% endblock %}
+      {% block page_header %}{% endblock %} {% block content %}{% endblock %}
     </main>
 
     <footer class="container-fluid bg-light border-top">
-      <div class="container-fluid px-lg-5 px-3 py-5" style="max-width: 1400px; margin: 0 auto;">
+      <div
+        class="container-fluid px-lg-5 px-3 py-5"
+        style="max-width: 1400px; margin: 0 auto"
+      >
         <div class="row text-center text-md-start">
           <div class="col-md-3 mb-4 mb-md-0">
             <!--Links-->
             <h5 class="mb-3">Useful Links</h5>
             <ul class="list-unstyled">
-              <li><a href="#" class="text-dark text-decoration-none">FAQ</a></li>
-              <li><a href="#" class="text-dark text-decoration-none">Privacy Policy</a></li>
-              <li><a href="#" class="text-dark text-decoration-none">Terms & Conditions</a></li>
+              <li>
+                <a href="#" class="text-dark text-decoration-none">FAQ</a>
+              </li>
+              <li>
+                <a href="#" class="text-dark text-decoration-none"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-dark text-decoration-none"
+                  >Terms & Conditions</a
+                >
+              </li>
             </ul>
           </div>
           <!--Address-->
@@ -187,19 +194,47 @@
           <!--Social Media-->
           <div class="col-md-3 mb-4 mb-md-0 footer-social">
             <h5 class="mb-3">Follow Us</h5>
-            <a href="https://www.facebook.com/?_rdr" class="text-dark d-inline-block" target="blank"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/" class="text-dark d-inline-block" target="blank"><i class="fab fa-instagram fa-lg"></i></a>
-            <a href="https://www.linkedin.com/home" class="text-dark d-inline-block" target="blank"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://x.com/?lang=en" class="text-dark d-inline-block" target="blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a
+              href="https://www.facebook.com/?_rdr"
+              class="text-dark d-inline-block"
+              target="blank"
+              ><i class="fa-brands fa-facebook-f"></i
+            ></a>
+            <a
+              href="https://www.instagram.com/"
+              class="text-dark d-inline-block"
+              target="blank"
+              ><i class="fab fa-instagram fa-lg"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/home"
+              class="text-dark d-inline-block"
+              target="blank"
+              ><i class="fa-brands fa-linkedin-in"></i
+            ></a>
+            <a
+              href="https://x.com/?lang=en"
+              class="text-dark d-inline-block"
+              target="blank"
+              ><i class="fa-brands fa-x-twitter"></i
+            ></a>
           </div>
           <!--Newsletter-->
           <div class="col-md-3">
             <h5 class="mb-3">Subscribe for Updates</h5>
-            <form method="post" action="#">
+            <form method="post" action="{% url 'subscribe' %}">
               {% csrf_token %}
               <div class="input-group">
-                <input type="email" class="form-control mb-1" placeholder="Your email" required>
-                <button class="btn btn-dark" id="join-btn" type="submit">Join</button>
+                <input
+                  type="email"
+                  name="email"
+                  class="form-control mb-1"
+                  placeholder="Your email"
+                  required
+                />
+                <button class="btn btn-dark" id="join-btn" type="submit">
+                  Join
+                </button>
               </div>
             </form>
           </div>
@@ -210,8 +245,7 @@
         <p class="mb-0">&copy; {% now "Y" %} WebWorks. All rights reserved.</p>
       </div>
 
-      {% block footer %}
-      {% endblock %}
+      {% block footer %} {% endblock %}
     </footer>
 
     {% block postloadjs %}

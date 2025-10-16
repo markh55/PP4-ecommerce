@@ -44,6 +44,21 @@ h1, h2, h3, h4, h5, h6 {
   box-sizing: border-box;
 }
 
+/* Review section styling */
+.reviews-contact-section .review-card {
+  background: transparent;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Contact section styling */
+.contact-header {
+  color: white;
+}
+
 /* Enhanced hero text styling */
 .hero-overlay h1 {
   font-weight: 700;
@@ -93,12 +108,12 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateX(-300px);
     -webkit-transform: translateX(-300px);
   }
-  
+
   .fade-in-right {
     transform: translateX(300px);
     -webkit-transform: translateX(300px);
   }
-  
+
   .hero-section {
     height: 700px;
   }

@@ -40,3 +40,14 @@ def add_review(request, slug):
 
         messages.success(request, 'Your review has been added!')
         return redirect('packages:package_detail', slug=slug)
+
+def home(request):
+    packages = Package.objects.all()
+    recent_reviews = Review.objects.select_related('package', 'user').order_by('-created_at')[:5]
+
+    context = {
+        'packages': packages,
+        'recent_reviews': recent_reviews,
+    }
+    return render(request, 'core/home.html', context)
+

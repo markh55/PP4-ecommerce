@@ -5,14 +5,26 @@
 
 <!-- Hero -->
 <section class="hero-section text-center">
-  <img src="{% static 'images/hero.png' %}" alt="Hero Image" class="hero-image">
+  <img
+    src="{% static 'images/hero.png' %}"
+    alt="Hero Image"
+    class="hero-image"
+  />
 
-  <div class="hero-overlay d-flex flex-column justify-content-center align-items-center">
+  <div
+    class="hero-overlay d-flex flex-column justify-content-center align-items-center"
+  >
     <h1 class="fade-in-left">Build Your Online Presence with WebWorks.</h1>
-    <h2 class="fade-left" style="animation-delay: 0.2s;">Professional Web Design and Development Services</h2>
-    <p class="fade-in-right" style="animation-delay: 0.4s;">From essential support to fully custom solutions, our tiered service packages.
-      Bronze, Silver, Gold, and Platinum,</p>
-    <p class="fade-in-right" style="animation-delay: 0.6s;">Give your business exactly what it needs to thrive.</p>
+    <h2 class="fade-left" style="animation-delay: 0.2s">
+      Professional Web Design and Development Services
+    </h2>
+    <p class="fade-in-right" style="animation-delay: 0.4s">
+      From essential support to fully custom solutions, our tiered service
+      packages. Bronze, Silver, Gold, and Platinum,
+    </p>
+    <p class="fade-in-right" style="animation-delay: 0.6s">
+      Give your business exactly what it needs to thrive.
+    </p>
   </div>
 </section>
 
@@ -21,63 +33,79 @@
   <h3 class="mb-5">What We Offer</h3>
   <div class="row">
     {% for package in packages %}
-      <div class="col-lg-3 col-md-6 col-sm-12 mb-4 d-flex">
-        <div class="card flex-fill h-100">
-          {% if package.image %}
-            <img src="{{ package.image.url }}" class="card-img-top" alt="{{ package.name }}">
-          {% endif %}
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">{{ package.name }}</h5>
-            <p class="card-text">£{{ package.price }}</p>
-            <p class="card-intro">{{ package.intro }}</p>
-            <a href="{{ package.get_absolute_url }}" class="btn btn-primary mt-auto">More Details</a>
-          </div>
+    <div class="col-lg-3 col-md-6 col-sm-12 mb-4 d-flex">
+      <div class="card flex-fill h-100">
+        {% if package.image %}
+        <img
+          src="{{ package.image.url }}"
+          class="card-img-top"
+          alt="{{ package.name }}"
+        />
+        {% endif %}
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ package.name }}</h5>
+          <p class="card-text">£{{ package.price }}</p>
+          <p class="card-intro">{{ package.intro }}</p>
+          <a
+            href="{{ package.get_absolute_url }}"
+            class="btn btn-primary mt-auto"
+            >More Details</a
+          >
         </div>
       </div>
+    </div>
     {% endfor %}
   </div>
 </section>
 
 <!-- Reviews & Contact Section -->
 <section class="reviews-contact-section">
-  <img src="{% static 'images/hero.png' %}" alt="Background" class="reviews-contact-image">
+  <img
+    src="{% static 'images/hero.png' %}"
+    alt="Background"
+    class="reviews-contact-image"
+  />
 
   <div class="reviews-contact-overlay">
     <div class="container">
       <h3 class="text-center mb-4 text-white">Reviews & Contact Us</h3>
       <div class="reviews-contact-container">
-
         <!-- Reviews -->
         <div class="reviews">
           <h3>Reviews</h3>
-          <p>Here is where the reviews will go.</p>
+          {% if recent_reviews %} {% for review in recent_reviews %}
+          <div class="review-card mb-3 p-3 bg-light rounded">
+            <h5>{{ review.title }}</h5>
+            <p>{{ review.body }}</p>
+            <small
+              >— {{ review.user.username }}, {{ review.created_at|date:"F j, Y"
+              }}</small
+            >
+          </div>
+          {% endfor %} {% else %}
+          <p>No reviews yet.</p>
+          {% endif %}
         </div>
 
         <!-- Contact Form -->
         <div class="contact-us">
           <form method="post">
             {% csrf_token %}
+            <div class="form-row">{{ form.name }} {{ form.email }}</div>
             <div class="form-row">
-              {{ form.name }}
-              {{ form.email }}
+              {{ form.number }} {{ form.inquiry_type }}
             </div>
-            <div class="form-row">
-              {{ form.number }}
-              {{ form.inquiry_type }}
-            </div>
-            <div class="form-row">
-              {{ form.message }}
-            </div>
+            <div class="form-row">{{ form.message }}</div>
 
             <button type="submit" class="btn-submit">Send Message</button>
-            <p class="form-note">We typically reply within 1–2 business days.</p>
+            <p class="form-note">
+              We typically reply within 1–2 business days.
+            </p>
           </form>
         </div>
-
       </div>
     </div>
   </div>
 </section>
-
 
 {% endblock %}

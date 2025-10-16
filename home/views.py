@@ -1,12 +1,15 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib import messages
-from packages.models import Package
+from packages.models import Package, Review
 from .forms import ContactForm, SubscriberForm
 
 # Home page
 def index(request):
     packages = Package.objects.all()[:4]
+
+    # Show recent reviews on the homepage
+    recent_reviews = Review.objects.select_related('package', 'user').order_by('-created_at')[:5]
 
     if request.method == "POST":
         form = ContactForm(request.POST)
@@ -31,6 +34,7 @@ def index(request):
     return render(request, 'home/index.html', {
         'packages': packages,
         'form': form,
+        'recent_reviews': recent_reviews,
     })
 
 # Packages page

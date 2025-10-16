@@ -46,7 +46,7 @@
           <h5 class="card-title">{{ package.name }}</h5>
           <p class="card-text">£{{ package.price }}</p>
           <p class="card-intro">{{ package.intro }}</p>
-          <a
+          
             href="{{ package.get_absolute_url }}"
             class="btn btn-primary mt-auto"
             >More Details</a
@@ -58,48 +58,53 @@
   </div>
 </section>
 
-<!-- Reviews & Contact Section -->
-<section class="reviews-contact-section">
+<!-- Reviews Section -->
+<section class="reviews-section">
+  <div class="container">
+    <h3 class="text-center mb-5">What Our Clients Say</h3>
+    <div class="reviews-carousel-wrapper">
+      <div class="reviews-carousel">
+        {% if recent_reviews %}
+          {% for review in recent_reviews %}
+          <div class="review-card-horizontal">
+            <h5>{{ review.title }}</h5>
+            <p>{{ review.body }}</p>
+            <small>{{ review.user.username }}, {{ review.created_at|date:"F j, Y" }}</small>
+          </div>
+          {% endfor %}
+        {% else %}
+          <p>No reviews yet.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section">
   <img
     src="{% static 'images/hero.png' %}"
     alt="Background"
-    class="reviews-contact-image"
+    class="contact-image"
   />
 
-  <div class="reviews-contact-overlay">
+  <div class="contact-overlay">
     <div class="container">
-      <div class="reviews-contact-container">
-        <!-- Reviews -->
-        <div class="reviews">
-          <h3 class="contact-header">Reviews</h3>
-          {% if recent_reviews %} {% for review in recent_reviews %}
-          <div class="review-card mb-3 p-3">
-            <h5>{{ review.title }}</h5>
-            <p>{{ review.body }}</p>
-            <small> {{ review.user.username }}, {{ review.created_at|date:"F j, Y" }}</small>
+      <div class="contact-wrapper">
+        <h3 class="contact-header">Contact Us</h3>
+        <form method="post">
+          {% csrf_token %}
+          <div class="form-row">{{ form.name }} {{ form.email }}</div>
+          <div class="form-row">
+            {{ form.number }} {{ form.inquiry_type }}
           </div>
-          {% endfor %} {% else %}
-          <p>No reviews yet.</p>
-          {% endif %}
-        </div>
+          <div class="form-row">{{ form.message }}</div>
 
-        <!-- Contact Form -->
-        <div class="contact-us">
-          <h3 class="contact-header">Contact Us</h3>
-          <form method="post">
-            {% csrf_token %}
-            <div class="form-row">{{ form.name }} {{ form.email }}</div>
-            <div class="form-row">
-              {{ form.number }} {{ form.inquiry_type }}
-            </div>
-            <div class="form-row">{{ form.message }}</div>
-
-            <button type="submit" class="btn-submit">Send Message</button>
-            <p class="form-note">
-              We typically reply within 1–2 business days.
-            </p>
-          </form>
-        </div>
+          <button type="submit" class="btn-submit">Send Message</button>
+          <p class="form-note">
+            We typically reply within 1–2 business days.
+          </p>
+        </form>
       </div>
     </div>
   </div>

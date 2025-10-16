@@ -44,21 +44,6 @@ h1, h2, h3, h4, h5, h6 {
   box-sizing: border-box;
 }
 
-/* Review section styling */
-.reviews-contact-section .review-card {
-  background: transparent;
-  color: white;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  margin-bottom: 1rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* Contact section styling */
-.contact-header {
-  color: white;
-}
-
 /* Enhanced hero text styling */
 .hero-overlay h1 {
   font-weight: 700;
@@ -77,6 +62,94 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.1rem;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   margin-bottom: 1rem;
+}
+
+/* Reviews section styling */
+.reviews-section {
+  padding: 4rem 0;
+  background: #f8f9fa;
+  overflow: hidden;
+}
+
+.reviews-carousel-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.reviews-carousel {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.review-card-horizontal {
+  min-width: 350px;
+  max-width: 350px;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.review-card-horizontal h5 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.review-card-horizontal p {
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+.review-card-horizontal small {
+  color: #999;
+}
+
+/* Contact section styling */
+.contact-section {
+  position: relative;
+  min-height: 600px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.contact-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.contact-overlay {
+  position: relative;
+  z-index: 1;
+  padding: 4rem 0;
+}
+
+.contact-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-header {
+  color: white;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.btn-submit {
+  margin-bottom: 1.5rem;
+}
+
+.form-note {
+  color: white;
+  text-align: center;
+  margin: 0;
 }
 
 /* Fade animations */
@@ -116,6 +189,11 @@ h1, h2, h3, h4, h5, h6 {
 
   .hero-section {
     height: 700px;
+  }
+
+  .review-card-horizontal {
+    min-width: 280px;
+    max-width: 280px;
   }
 }
 

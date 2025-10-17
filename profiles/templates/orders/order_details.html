@@ -1,0 +1,54 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'profiles/css/order_details.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid bg-light py-5">
+    <div class="container">
+        <!-- header -->
+    <div class="mb-4">
+        <h1>Order Details #{{ order.id }}</h1>
+        <p><strong>Customer:</strong> {{ request.user.get_full_name }}</p>
+        <p><strong>Email:</strong> {{ request.user.email }}</p>
+        <p><strong>Order Date:</strong> {{ order.date|date:"F d, Y" }}</p>
+    </div>
+
+    <!-- order items -->
+    <div class="mb-4">
+            <h3>Items</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in order.items.all %}
+                    <tr>
+                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>£{{ item.price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    <!-- order summary -->
+    <div>
+        <h3>Order Summary</h3>
+        <p><strong>Subtotal:</strong> £{{ order.subtotal }}</p>
+        <p><strong>Tax:</strong> £{{ order.tax }}</p>
+        <p><strong>Total:</strong> £{{ order.total }}</p>
+    </div>
+    </div>
+</div>
+{% endblock %}
+
+
+

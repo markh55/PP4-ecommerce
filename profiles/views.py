@@ -22,3 +22,15 @@ def profile(request):
         'profile': profile,
     }
     return render(request, template, context)
+
+def order_history(request, order_number):
+    profile = get_object_or_404(UserProfile, user=request.user)
+    order = get_object_or_404(profile.orders, order_number=order_number)
+
+    template = 'orders/order_details.html'
+    context = {
+        'order': order,
+        'from_profile': True,
+    }
+
+    return render(request, template, context)

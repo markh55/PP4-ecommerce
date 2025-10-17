@@ -5,11 +5,6 @@
 <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
 {% endblock %}
 
-{% block postloadjs %}
-{{ block.super }}
-<script src="{% static 'profiles/js/profile.js' %}"></script>
-{% endblock %}
-
 {% block content %}
 <div class="container-fluid bg-light py-5">
     <div class="container">
@@ -154,8 +149,8 @@
                                             <td>{{ order.date|date:"M d, Y" }}</td>
                                             <td>£{{ order.order_total }}</td>
                                             <td>
-                                                <a href="#" class="btn btn-sm btn-outline-primary">
-                                                    <i class="fa fa-eye mr-1"></i> View
+                                                <a href="{% url 'profiles:order_details' order.order_number %}" class="btn btn-sm btn-outline-primary">
+                                                <i class="fa fa-eye mr-1"></i> View
                                                 </a>
                                             </td>
                                         </tr>

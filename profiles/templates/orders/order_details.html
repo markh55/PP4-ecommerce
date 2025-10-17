@@ -7,8 +7,14 @@
 
 {% block content %}
 <div class="container-fluid bg-light py-5">
+    <!-- back button -->
+    <div class="back-button-wrapper">
+        <a href="{% url 'profiles:profile' %}" class="back-button"><i class="fa-solid fa-arrow-left"></i> Back</a>
+    </div>
+
     <div class="container">
-        <!-- header -->
+
+    <!-- header -->
     <div class="mb-4">
         <h1>Order Details #{{ order.id }}</h1>
         <p><strong>Customer:</strong> {{ request.user.get_full_name }}</p>
@@ -40,15 +46,12 @@
         </div>
 
     <!-- order summary -->
-    <div>
-        <h3>Order Summary</h3>
-        <p><strong>Subtotal:</strong> £{{ order.subtotal }}</p>
-        <p><strong>Tax:</strong> £{{ order.tax }}</p>
-        <p><strong>Total:</strong> £{{ order.total }}</p>
-    </div>
+    <div class="order-summary">
+    <h3>Order Summary</h3>
+    <p><strong>Subtotal:</strong> £{{ order.subtotal }}</p>
+    <p><strong>Tax:</strong> £{{ order.tax }}</p>
+    <p class="total"><strong>Total:</strong> £{{ order.total }}</p>
+</div>
     </div>
 </div>
 {% endblock %}
-
-
-

@@ -143,5 +143,15 @@ This structure allows for a one-to-one relationship between User and UserProfile
 ### Newsletter
 I used django-newsletter ([click here](https://dev.to/shubhamkshatriya25/how-to-build-a-email-newsletter-subscriber-in-django-j2p)) as a reference for the newsletter signup within the footer, and adapted the code to fit my project. This was just used as a guide.
 
+## Invoice / Order History
+
+This section was created with help from *Django 5 By Example* and the official Django documentation listed below:
+
+- [Django 5.2 Documentation](https://docs.djangoproject.com/en/5.2/)
+- Django Models and Queries  
+- Django Views  
+- Django Templates
+
+
 
 ### Source Used

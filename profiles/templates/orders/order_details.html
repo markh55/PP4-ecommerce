@@ -13,15 +13,13 @@
     </div>
 
     <div class="container">
-
     <!-- header -->
     <div class="mb-4">
-        <h1>Order Details #{{ order.id }}</h1>
-        <p><strong>Customer:</strong> {{ request.user.get_full_name }}</p>
-        <p><strong>Email:</strong> {{ request.user.email }}</p>
+        <h1>Order #{{ order.order_number }}</h1>
+        <p><strong>Customer:</strong> {{ order.full_name }}</p>
+        <p><strong>Email:</strong> {{ order.email }}</p>
         <p><strong>Order Date:</strong> {{ order.date|date:"F d, Y" }}</p>
     </div>
-
     <!-- order items -->
     <div class="mb-4">
             <h3>Items</h3>
@@ -34,9 +32,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for item in order.items.all %}
+                    {% for item in order_items %}
                     <tr>
-                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.name }}</td>
                         <td>{{ item.quantity }}</td>
                         <td>£{{ item.price }}</td>
                     </tr>
@@ -44,13 +42,10 @@
                 </tbody>
             </table>
         </div>
-
     <!-- order summary -->
     <div class="order-summary">
     <h3>Order Summary</h3>
-    <p><strong>Subtotal:</strong> £{{ order.subtotal }}</p>
-    <p><strong>Tax:</strong> £{{ order.tax }}</p>
-    <p class="total"><strong>Total:</strong> £{{ order.total }}</p>
+    <p><strong>Total:</strong> £{{ order.order_total }}</p>
 </div>
     </div>
 </div>

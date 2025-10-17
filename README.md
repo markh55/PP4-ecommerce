@@ -140,6 +140,8 @@ This structure allows for a one-to-one relationship between User and UserProfile
 
 ## Credits / Tutorials
 
+### Sources Used
+
 ### Newsletter
 I used django-newsletter ([click here](https://dev.to/shubhamkshatriya25/how-to-build-a-email-newsletter-subscriber-in-django-j2p)) as a reference for the newsletter signup within the footer, and adapted the code to fit my project. This was just used as a guide.
 
@@ -152,6 +154,3 @@ This section was created with help from *Django 5 By Example* and the official D
 - Django Views  
 - Django Templates
 
-
-
-### Source Used

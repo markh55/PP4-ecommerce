@@ -49,9 +49,15 @@ def subscribe(request):
         form = SubscriberForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Thank you for subscribing to our newsletter!")
-            return redirect('index')
-    else:
-        messages.error(request, "There was an error with your subscription. Please try again.")
-        return redirect('index')
+            messages.success(
+                request,
+                "Thank you for subscribing to our newsletter!",
+                extra_tags="subscribe"
+            )
+        else:
+            messages.error(
+                request,
+                "There was an error with your subscription. Please try again.",
+                extra_tags="subscribe"
+            )
     return redirect('index')

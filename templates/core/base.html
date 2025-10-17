@@ -140,17 +140,19 @@
     {% if messages %}
     <div class="message-container">
       {% for message in messages %}
-        {% with message.level as level %}
-          {% if level == 40 %}
-            {% include 'toasts/toast_error.html' %}
-          {% elif level == 30 %}
-            {% include 'toasts/toast_warning.html' %}
-          {% elif level == 25 %}
-            {% include 'toasts/toast_success.html' %}
-          {% elif level == 20 %}
-            {% include 'toasts/toast_info.html' %}
-          {% endif %}
-        {% endwith %}
+        {% if "subscribe" not in message.tags %}
+          {% with message.level as level %}
+            {% if level == 40 %}
+              {% include 'toasts/toast_error.html' %}
+            {% elif level == 30 %}
+              {% include 'toasts/toast_warning.html' %}
+            {% elif level == 25 %}
+              {% include 'toasts/toast_success.html' %}
+            {% elif level == 20 %}
+              {% include 'toasts/toast_info.html' %}
+            {% endif %}
+          {% endwith %}
+        {% endif %}
       {% endfor %}
     </div>
     {% endif %}
@@ -166,7 +168,6 @@
       >
         <div class="row text-center text-md-start">
           <div class="col-md-3 mb-4 mb-md-0">
-            <!--Links-->
             <h5 class="mb-3">Useful Links</h5>
             <ul class="list-unstyled">
               <li>
@@ -184,14 +185,12 @@
               </li>
             </ul>
           </div>
-          <!--Address-->
           <div class="col-md-3 mb-4 mb-md-0">
             <h5 class="mb-3">Where to Find Us</h5>
             <p class="mb-1">123 Street Name</p>
             <p class="mb-1">Cwmbran, South Wales</p>
             <p class="mb-1">NP44 1AA</p>
           </div>
-          <!--Social Media-->
           <div class="col-md-3 mb-4 mb-md-0 footer-social">
             <h5 class="mb-3">Follow Us</h5>
             <a
@@ -219,10 +218,9 @@
               ><i class="fa-brands fa-x-twitter"></i
             ></a>
           </div>
-          <!--Newsletter-->
-          <div class="col-md-3">
+          <div class="col-md-3" id="newsletter">
             <h5 class="mb-3">Subscribe for Updates</h5>
-            <form method="post" action="{% url 'subscribe' %}">
+            <form method="post" action="{% url 'subscribe' %}#newsletter">
               {% csrf_token %}
               <div class="input-group">
                 <input
@@ -237,6 +235,15 @@
                 </button>
               </div>
             </form>
+            {% if messages %}
+              {% for message in messages %}
+                {% if "subscribe" in message.tags %}
+                  <div class="mt-2 small {% if message.level_tag == 'error' %}text-danger{% else %}text-success{% endif %}">
+                    {{ message }}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
           </div>
         </div>
       </div>

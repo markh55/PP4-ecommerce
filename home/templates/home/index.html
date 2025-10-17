@@ -46,11 +46,10 @@
           <h5 class="card-title">{{ package.name }}</h5>
           <p class="card-text">£{{ package.price }}</p>
           <p class="card-intro">{{ package.intro }}</p>
-          
-            href="{{ package.get_absolute_url }}"
+
+            <a href="{{ package.get_absolute_url }}"
             class="btn btn-primary mt-auto"
-            >More Details</a
-          >
+            >More Details</a>
         </div>
       </div>
     </div>

@@ -176,27 +176,6 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-transform: translateX(0);
 }
 
-@media (max-width: 768px) {
-  .fade-left, .fade-in-left {
-    transform: translateX(-300px);
-    -webkit-transform: translateX(-300px);
-  }
-
-  .fade-in-right {
-    transform: translateX(300px);
-    -webkit-transform: translateX(300px);
-  }
-
-  .hero-section {
-    height: 700px;
-  }
-
-  .review-card-horizontal {
-    min-width: 280px;
-    max-width: 280px;
-  }
-}
-
 /* Center align h3 elements */
 h3 {
   text-align: center;
@@ -220,6 +199,12 @@ h3 {
 #packages .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+#packages .card-img-top {
+  height: 300px;
+  object-fit: cover;
+  padding: 5px;
 }
 
 #packages .btn {
@@ -247,4 +232,35 @@ h3 {
   border-radius: 5px;
   color: white;
   text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .fade-left, .fade-in-left {
+    transform: translateX(-300px);
+    -webkit-transform: translateX(-300px);
+  }
+
+  .fade-in-right {
+    transform: translateX(300px);
+    -webkit-transform: translateX(300px);
+  }
+
+  .hero-section {
+    height: 700px;
+  }
+
+  .review-card-horizontal {
+    min-width: 280px;
+    max-width: 280px;
+  }
+
+  #packages .card {
+    overflow: visible;
+  }
+
+  #packages .card-img-top {
+    height: 430px;
+    object-fit: cover;
+    padding: 5px;
+  }
 }

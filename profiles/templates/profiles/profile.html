@@ -33,7 +33,7 @@
                             <p class="text-muted mb-4">{{ user.email }}</p>
 
                             <input type="file" name="avatar" accept="image/*" id="id_avatar" style="display: none;">
-                            <label for="id_avatar" class="btn btn-outline-primary btn-block mb-2">
+                            <label for="id_avatar" class="btn btn-teal btn-block mb-2">
                                 <i class="fa fa-upload mr-1"></i> Choose Picture
                             </label>
 
@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="mt-4">
-                    <a href="{% url 'index' %}" class="btn btn-outline-secondary btn-block">
+                    <a href="{% url 'index' %}" class="btn btn-teal btn-block">
                         <i class="fa fa-home mr-1"></i> Back to Home
                     </a>
                 </div>
@@ -115,7 +115,7 @@
 
                             <div class="row">
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-primary btn">
+                                    <button type="submit" class="btn btn-teal btn-block">
                                         <i class="fa fa-save mr-2"></i> Save Changes
                                     </button>
                                 </div>
@@ -149,7 +149,7 @@
                                             <td>{{ order.date|date:"M d, Y" }}</td>
                                             <td>£{{ order.order_total }}</td>
                                             <td>
-                                                <a href="{% url 'profiles:order_details' order.order_number %}" class="btn btn-sm btn-outline-primary">
+                                                <a href="{% url 'profiles:order_details' order.order_number %}" class="btn btn-teal btn-sm">
                                                 <i class="fa fa-eye mr-1"></i> View
                                                 </a>
                                             </td>

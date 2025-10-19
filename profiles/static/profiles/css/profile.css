@@ -1,6 +1,6 @@
 /* Fill vertical space between navbar and footer */
 .profile-container {
-  min-height: calc(100vh - 80px - 100px); /* adjust for navbar/footer height */
+  min-height: calc(100vh - 80px - 100px);
   padding: 40px 20px;
   box-sizing: border-box;
   display: flex;
@@ -86,22 +86,15 @@ form select:focus {
   outline: none;
 }
 
-/* Submit button */
+/* Buttons */
 form button {
   padding: 12px 20px;
   font-size: 1rem;
   border: none;
   border-radius: 6px;
-  background-color: #007bff;
-  color: #fff;
-  font-weight: 600;
   cursor: pointer;
   width: 100%;
   transition: background-color 0.2s;
-}
-
-form button:hover {
-  background-color: #0056b3;
 }
 
 /* Order history paragraph */
@@ -120,14 +113,17 @@ form button:hover {
   padding: 15px;
 }
 
-.btn-primary {
-    background-color: #00c4a9;
-    border-color: #00c4a9;
+/* Teal outline buttons with black text for Home, View, Upload, Save */
+.btn-teal {
+  background-color: transparent !important;
+  color: #000 !important;
+  border: 2px solid #00d9bb !important;
 }
 
-.btn-primary:hover {
-    background-color: #00a890;
-    border-color: #00a890;
+.btn-teal:hover {
+  background-color: #00d9bb !important;
+  color: #fff !important;
+  border-color: #00bfa5 !important;
 }
 
 /* Responsive adjustments */

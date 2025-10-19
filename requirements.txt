@@ -21,7 +21,6 @@ psycopg2-binary==2.9.11
 pycairo==1.28.0
 pycparser==2.22
 pydyf==0.11.0
-PyGObject==3.54.3
 PyJWT==2.10.1
 pyphen==0.17.2
 python-dotenv==1.1.1

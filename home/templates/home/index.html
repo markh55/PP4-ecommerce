@@ -92,26 +92,23 @@
     class="contact-image"
   />
 
-  <div class="contact-overlay">
-    <div class="container">
-      <div class="contact-wrapper">
-        <h3 class="contact-header">Contact Us</h3>
-        <form method="post">
-          {% csrf_token %}
-          <div class="form-row">{{ form.name }} {{ form.email }}</div>
-          <div class="form-row">
-            {{ form.number }} {{ form.inquiry_type }}
-          </div>
-          <div class="form-row">{{ form.message }}</div>
+  <div class="contact-overlay" id="contact">
+  <div class="container">
+    <div class="contact-wrapper">
+      <h3 class="contact-header">Contact Us</h3>
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-row">{{ form.name }} {{ form.email }}</div>
+        <div class="form-row">{{ form.number }} {{ form.inquiry_type }}</div>
+        <div class="form-row">{{ form.message }}</div>
 
-          <button type="submit" class="btn-submit">Send Message</button>
-          <p class="form-note">
-            We typically reply within 1–2 business days.
-          </p>
-        </form>
-      </div>
+        <button type="submit" class="btn-submit">Send Message</button>
+        <p class="form-note">We typically reply within 1–2 business days.</p>
+      </form>
     </div>
   </div>
+</div>
+
 </section>
 
 {% endblock %}

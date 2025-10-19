@@ -1,0 +1,57 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'home/css/useful-links.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="static-page container my-5">
+  <h1 class="page-title mt-5 text-center">Privacy Policy</h1>
+
+  <div class="static-section">
+    <h3>1. Information Collection</h3>
+    <p>
+      WebWorks collects personal information that you provide when using our services, including name, email, and any details necessary to fulfill your service request.
+    </p>
+  </div>
+
+  <div class="static-section">
+    <h3>2. Use of Information</h3>
+    <p>
+      Information collected is used to provide, maintain, and improve our services, communicate with clients, and comply with legal obligations.
+    </p>
+  </div>
+
+  <div class="static-section">
+    <h3>3. Sharing of Information</h3>
+    <p>
+      WebWorks does not sell personal information. Data may be shared with third-party service providers solely to deliver services you requested.
+    </p>
+  </div>
+
+  <div class="static-section">
+    <h3>4. Data Security</h3>
+    <p>
+      We implement appropriate technical and organizational measures to safeguard personal data against unauthorized access, loss, or disclosure.
+    </p>
+  </div>
+
+  <div class="static-section">
+    <h3>5. Your Rights</h3>
+    <p>
+      You have the right to access, correct, or request deletion of your personal data. Contact us for any such requests via our contact page.
+    </p>
+  </div>
+
+  <div class="static-section">
+    <h3>6. Contact</h3>
+    <p>
+      For questions regarding this Privacy Policy or your personal data, please contact us via our contact page.
+    </p>
+  </div>
+
+  <a href="{% url 'index' %}" class="btn btn-home mb-4">Home</a>
+
+</section>
+{% endblock %}

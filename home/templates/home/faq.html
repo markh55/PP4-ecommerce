@@ -1,4 +1,79 @@
 {% extends "core/base.html" %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'home/css/useful-links.css' %}">
+{% endblock %}
+
 {% block content %}
+<section class="static-page container my-5">
+  <h1 class="page-title mt-5 text-center">Frequently Asked Questions</h1>
+  <p class="text-center mb-5">
+    Got questions? We've got answers. Here are some of the most common questions we receive from our clients. Ask us directly if you still have questions!
+  </p>
+
+  <div class="static-section">
+    <h3>1. What's the difference between web design and web development?</h3>
+    <p>
+      Web design focuses on the visual aspects and user experience of your website, while web development involves building the functionality and coding behind it. Both work together to create a complete website.
+    </p>
+  </div>
+
+  <div class="static-section">
+    <h3>2. How much does a typical website cost?</h3>
+    <p>
+      The cost depends on the package you choose. You can view our packages and pricing <a href="{% url 'packages:package_list' %}">here</a>.
+    </p>
+  </div>
+
+  <div class="static-section">
+    <h3>3. How long does it take to build a website?</h3>
+    <p>
+      Project timelines vary depending on the package and scope of work. We will provide an estimated timeline when you select a package and submit your project details.
+    </p>
+  </div>
+
+  <div class="static-section">
+    <h3>4. Do you specialize in websites for small businesses?</h3>
+    <p>
+      Yes, we work with clients of all sizes, including small businesses, to create professional and effective websites.
+    </p>
+  </div>
+
+  <div class="static-section">
+    <h3>5. Will my website work on mobile devices?</h3>
+    <p>
+      Absolutely. All our websites are built to be fully responsive and look great on desktops, tablets, and smartphones.
+    </p>
+  </div>
+
+  <div class="static-section">
+    <h3>6. Do you provide ongoing support after launch?</h3>
+    <p>
+      Yes, we offer ongoing maintenance and support packages to ensure your website stays up-to-date and secure.
+    </p>
+  </div>
+
+  <div class="static-section">
+    <h3>7. Will my website be optimized for search engines?</h3>
+    <p>
+      All websites are built with basic SEO best practices in mind. For more advanced SEO, we can discuss additional services.
+    </p>
+  </div>
+
+  <div class="static-section">
+    <h3>8. Can you redesign my existing website?</h3>
+    <p>
+      Yes, we can redesign your website to improve its look, functionality, and performance. Contact us to discuss your current website and goals.
+    </p>
+  </div>
+
+ <p class="text-center mt-4">
+  Still have questions? We'd love to help!</p>
+    <p class="text-center">
+  <a href="{% url 'index' %}#contact" class="btn btn-home">Get in Touch</a>
+</p>
+
+  <a href="{% url 'index' %}" class="btn btn-home mb-4">Home</a>
+</section>
+{% endblock %}

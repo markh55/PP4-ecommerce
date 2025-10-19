@@ -77,6 +77,12 @@ footer {
 /* join button in footer */
 #join-btn {
   border-radius: 10px;
+  background-color: #00d9bb;
+  border: none;
+}
+#join-btn:hover {
+  background-color: #00b39f;
+  color: white;
 }
 
 .form-control {

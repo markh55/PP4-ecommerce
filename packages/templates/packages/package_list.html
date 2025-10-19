@@ -11,7 +11,7 @@
 
 {% block content %}
 <section id="packages" class="container my-5">
-  <h3>Our Packages</h3>
+  <h3 class="section-title mt-5">Our Packages</h3>
   <div class="row mt-5">
     {% for package in packages %}
       <div class="col-lg-3 col-md-6 col-sm-12 mb-4 d-flex">
@@ -25,7 +25,7 @@
             <h5 class="card-title">{{ package.name }}</h5>
             <p class="card-text">£{{ package.price }}</p>
             <p class="card-intro">{{ package.intro }}</p>
-            <a href="{{ package.get_absolute_url }}" class="btn btn-primary mt-auto">More Details</a>
+            <a href="{{ package.get_absolute_url }}" class="btn btn-package mt-auto">More Details</a>
           </div>
         </div>
       </div>
@@ -35,6 +35,6 @@
   </div>
 
   <!-- Back button -->
-<a href="{% url 'index' %}" class="btn btn-secondary mt-4">Back</a>
+<a href="{% url 'index' %}" class="btn btn-package mt-4">Back</a>
 </section>
 {% endblock %}

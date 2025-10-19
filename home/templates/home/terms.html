@@ -1,62 +1,85 @@
 {% extends "core/base.html" %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'home/css/useful-links.css' %}">
+{% endblock %}
+
 {% block content %}
+<section class="static-page container my-5">
+  <h1 class="page-title mt-5 text-center">Terms & Conditions</h1>
 
-<section class="container my-5 terms-section">
-  <h1 class="mb-4">Terms & Conditions</h1>
+  <div class="static-section">
+    <h3>1. Acceptance of Terms</h3>
+    <p>
+      By using WebWorks' services, you agree to comply with these Terms & Conditions.
+      If you do not agree, please refrain from using our services.
+    </p>
+  </div>
 
-  <h3 class="mb-3">1. Acceptance of Terms</h3>
-  <p>
-    By using WebWorks' services, you agree to comply with these Terms & Conditions.
-    If you do not agree, please refrain from using our services.
-  </p>
+  <div class="static-section">
+    <h3>2. Services Provided</h3>
+    <p>
+      WebWorks offers professional web design and development services, including custom website creation, maintenance, and support.
+      The exact scope of work will be outlined in your service agreement or quotation.
+    </p>
+  </div>
 
-  <h3 class="mb-3">2. Services Provided</h3>
-  <p>
-    WebWorks offers professional web design and development services, including custom website creation, maintenance, and support.
-    The exact scope of work will be outlined in your service agreement or quotation.
-  </p>
+  <div class="static-section">
+    <h3>3. Payment Terms</h3>
+    <p>
+      Payment for services is due according to the terms agreed upon in your contract or invoice.
+      We reserve the right to suspend services until payment is received.
+    </p>
+  </div>
 
-  <h3 class="mb-3">3. Payment Terms</h3>
-  <p>
-    Payment for services is due according to the terms agreed upon in your contract or invoice.
-    We reserve the right to suspend services until payment is received.
-  </p>
+  <div class="static-section">
+    <h3>4. Changes and Cancellations</h3>
+    <p>
+      Any changes to the scope of work must be agreed upon in writing.
+      Cancellation requests should be submitted in writing. Refunds are subject to the work already completed and outlined in your service agreement.
+    </p>
+  </div>
 
-  <h3 class="mb-3">4. Changes and Cancellations</h3>
-  <p>
-    Any changes to the scope of work must be agreed upon in writing.
-    Cancellation requests should be submitted in writing. Refunds are subject to the work already completed and outlined in your service agreement.
-  </p>
+  <div class="static-section">
+    <h3>5. Client Responsibilities</h3>
+    <p>
+      Clients must provide necessary information, materials, and access in a timely manner.
+      Delays caused by the client may affect project timelines.
+    </p>
+  </div>
 
-  <h3 class="mb-3">5. Client Responsibilities</h3>
-  <p>
-    Clients must provide necessary information, materials, and access in a timely manner.
-    Delays caused by the client may affect project timelines.
-  </p>
+  <div class="static-section">
+    <h3>6. Limitation of Liability</h3>
+    <p>
+      WebWorks is not liable for indirect, incidental, or consequential damages arising from the use of our services.
+      While we strive for high-quality results, we do not guarantee specific business outcomes.
+    </p>
+  </div>
 
-  <h3 class="mb-3">6. Limitation of Liability</h3>
-  <p>
-    WebWorks is not liable for indirect, incidental, or consequential damages arising from the use of our services.
-    While we strive for high-quality results, we do not guarantee specific business outcomes.
-  </p>
+  <div class="static-section">
+    <h3>7. Intellectual Property</h3>
+    <p>
+      All intellectual property created by WebWorks remains our property until full payment is received.
+      After payment, ownership of deliverables is transferred to the client as agreed in the service contract.
+    </p>
+  </div>
 
-  <h3 class="mb-3">7. Intellectual Property</h3>
-  <p>
-    All intellectual property created by WebWorks remains our property until full payment is received.
-    After payment, ownership of deliverables is transferred to the client as agreed in the service contract.
-  </p>
+  <div class="static-section">
+    <h3>8. Governing Law</h3>
+    <p>
+      These terms are governed by the laws of [Your Country/Region]. Any disputes will be resolved in the courts of [Your City/Region].
+    </p>
+  </div>
 
-  <h3 class="mb-3">8. Governing Law</h3>
-  <p>
-    These terms are governed by the laws of [Your Country/Region]. Any disputes will be resolved in the courts of [Your City/Region].
-  </p>
+  <div class="static-section">
+    <h3>9. Contact</h3>
+    <p>
+      For questions regarding these Terms & Conditions or your service, please contact us via our contact page.
+    </p>
+  </div>
 
-  <h3 class="mb-3">9. Contact</h3>
-  <p>
-    For questions regarding these Terms & Conditions or your service, please contact us via our contact page.
-  </p>
+<a href="{% url 'index' %}" class="btn btn-home mb-4">Home</a>
+
 </section>
-
 {% endblock %}

@@ -61,3 +61,14 @@ def subscribe(request):
                 extra_tags="subscribe"
             )
     return redirect('index')
+
+# Static pages
+def faq(request):
+    return render(request, 'home/faq.html')
+
+def privacy(request):
+    return render(request, 'home/privacy.html')
+
+def terms(request):
+    return render(request, 'home/terms.html')
+

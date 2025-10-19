@@ -3,6 +3,11 @@
 
 {% block content %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'home/css/index.css' %}" />
+<link rel="stylesheet" href="{% static 'home/css/form.css' %}"/>
+{% endblock %}
+
 <!-- Hero -->
 <section class="hero-section text-center">
   <img

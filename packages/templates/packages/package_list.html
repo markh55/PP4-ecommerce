@@ -1,6 +1,10 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'packages/css/package_detail.css' %}"/>
+{% endblock %}
+
 {% block title %}
     {% if category %}{{ category.name }} - {% endif %}WebWorks - Packages
 {% endblock %}

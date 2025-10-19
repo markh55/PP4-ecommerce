@@ -3,6 +3,10 @@
 
 {% block content %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'packages/css/package_detail.css' %}"/>
+{% endblock %}
+
 <section id="package-detail" class="container my-6">
   <h2 class="section-title"><strong>Package Details</strong></h2>
   <div class="row">

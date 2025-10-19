@@ -1,0 +1,201 @@
+/* Base styles for the entire application */
+
+/* success message styling */
+.message-container {
+  position: fixed !important;
+  top: 80px !important;
+  right: 20px !important;
+  z-index: 9999 !important;
+}
+
+.toast {
+  min-width: 350px;
+}
+
+.message-container .alert {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* navbar styling */
+.navbar {
+  margin-bottom: 0 !important;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1; /* this pushes the footer down */
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  padding: 1rem 0;
+  margin-top: 0; /* Remove any top margin */
+}
+
+/* Responsive adjustments for different screen sizes */
+#packages .card {
+  margin-bottom: 1.5rem;
+  min-height: 191px;
+}
+
+/* Cart counter styling */
+#cart-count {
+  position: absolute;
+  top: 0;
+  right: -8px;
+  background: #00d9bb;
+  color: white;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+/* social media icons in footer */
+.footer-social a {
+  margin-right: 25px;
+}
+
+.footer-social a:last-child {
+  margin-right: 0;
+}
+
+/* join button in footer */
+#join-btn {
+  border-radius: 10px;
+  background-color: #00d9bb;
+  border: none;
+}
+#join-btn:hover {
+  background-color: #00b39f;
+  color: white;
+}
+
+.form-control {
+  border-radius: 10px !important;
+}
+
+/* Tablet styles (768px - 991px) */
+@media (max-width: 991px) {
+  /* Adjust toast messages */
+  .toast {
+    min-width: 300px;
+  }
+
+  .message-container {
+    right: 10px !important;
+    top: 70px !important;
+  }
+
+  /* Package cards */
+  #packages .card {
+    min-height: auto;
+  }
+
+  /* Footer spacing */
+  footer .col-md-3 {
+    margin-bottom: 2.5rem;
+  }
+
+  footer .col-md-3:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Mobile styles (up to 767px) */
+@media (max-width: 767px) {
+  /* Adjust message container for mobile */
+  .message-container {
+    right: 10px !important;
+    left: 10px !important;
+    top: 70px !important;
+  }
+
+  .toast {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .message-container .alert {
+    width: 100%;
+  }
+
+  /* Cart counter - make it slightly larger for touch */
+  #cart-count {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  /* Package cards - full width on mobile */
+  #packages .card {
+    margin-bottom: 1rem;
+    min-height: auto;
+  }
+
+  /* Footer adjustments */
+  footer {
+    padding: 2rem 0;
+  }
+
+  footer .col-md-3 {
+    margin-bottom: 3rem;
+    text-align: center !important;
+  }
+
+  footer .col-md-3:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Center social icons on mobile */
+  .footer-social a {
+    margin: 0 15px;
+  }
+
+  /* Make form inputs full width and easier to tap */
+  footer .form-control {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 0.75rem;
+  }
+
+  footer #join-btn {
+    padding: 0.75rem;
+    font-size: 16px;
+  }
+
+  /* Improve touch targets for links */
+  footer a {
+    padding: 0.5rem;
+    display: inline-block;
+  }
+}
+
+/* Small mobile styles (up to 480px) */
+@media (max-width: 480px) {
+  /* Even more compact spacing */
+  footer {
+    padding: 1.5rem 0;
+  }
+
+  footer .col-md-3 {
+    margin-bottom: 2.5rem;
+  }
+
+  /* Smaller social icon spacing */
+  .footer-social a {
+    margin: 0 10px;
+  }
+}

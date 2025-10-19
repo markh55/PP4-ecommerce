@@ -1,0 +1,41 @@
+.section-title {
+    color: #333;
+    text-align: center;
+    margin-bottom: 90px;
+}
+
+#package-detail {
+    margin-top: 100px;
+    padding: 20px;
+}
+
+#package-detail .row {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#package-detail img {
+    width: 100%;
+    height: auto;
+}
+
+#package-detail h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.btn-package {
+    background: white;
+    border-radius: 0.6rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: black;
+    border: 1px solid #00d9bb;
+    min-width: 120px;
+}
+
+.btn-package:hover, .btn-package:focus {
+    background: linear-gradient(135deg, #00bfa5, #00d9bb);
+    color: white;
+    text-decoration: none;
+}

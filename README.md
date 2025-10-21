@@ -132,6 +132,48 @@ If I were to change something, this would be the one area I’d revisit — I th
 
 ## Deployment
 
+### Git Hub 
+with this project all i needed to do on github was create the PP4-ecommerce repository as the main deployment was handled via Heroku + AWS (steps below)
+
+### Heroku
+1. First step i did was create the pp4-webworks app within Heroku by creating the app name and ajusting the location to europe, once they was done i clicked create app.
+
+<img width="1782" height="1032" alt="Screenshot 2025-10-21 at 21 37 47" src="https://github.com/user-attachments/assets/9d3f5130-109e-472e-abdc-4d722d9c8621" />
+
+2. Second step was to navigate to the 'Deploy" tab and link my Github account once that was linked i could then search for my repository i would like to link.
+
+<img width="1788" height="975" alt="Screenshot 2025-10-21 at 21 40 14" src="https://github.com/user-attachments/assets/c9708643-0018-4282-b4d2-00c3eb90a24c" />
+
+3. Following on from step two once that was all linking up i go to the bottom of the page and click "deploy now".
+
+<img width="1782" height="1031" alt="Screenshot 2025-10-21 at 21 40 48" src="https://github.com/user-attachments/assets/85c49abd-b3ab-4de5-afd2-36f1fba3d638" />
+
+4. Then when they deployment is compeleted it would go back to the top of the page to click "open app" to ensure my project was all linked and working as it should.
+
+<img width="1259" height="186" alt="Screenshot 2025-10-21 at 21 43 24" src="https://github.com/user-attachments/assets/11a8aee2-36aa-4fe9-bf75-65b01d3483e1" />
+
+
+### AWS
+
+1. Create an S3 bucket
+First, I logged into my AWS account and navigated to S3. I clicked Create bucket, gave it a unique name (pp4-webworks), and selected the region closest to me (Europe). I also ensured the bucket was publicly accessible so my static files could be served.
+
+2. Upload project files to S3
+Next, I uploaded all static and media files to the bucket. This included CSS, images, and JavaScript files. I made sure the folder structure matched STATICFILES_DIRS from my Django project to prevent broken links.
+
+3. Configure bucket permissions & policy
+After uploading, I added a bucket policy to allow public read access, ensuring users could access static files directly. I also enabled CORS to allow cross-origin requests if needed.
+
+4. Link S3 bucket to Django settings
+I updated settings.py in my Django project to point STATIC_URL and MEDIA_URL to the S3 bucket using boto3 and django-storages. This ensures all static files and media are served from AWS.
+
+5. Deploy backend
+To deploy the full site, I configured environment variables in AWS, including AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY to connect to AWS services, DATABASE_URL for the PostgreSQL database, and other project-specific settings such as DEBUG and SECRET_KEY. This setup allowed the Django project to run online and be publicly accessible.
+
+6. Test live deployment
+Finally, I accessed the site’s public URL to ensure it was live and that all static files were loading correctly from the S3 bucket.
+
+As this was my first time setting up and using AWS, I did not take any screenshots of the step-by-step setup process, but I have explained in detail above what I did and how.
 
 ## Testing
 

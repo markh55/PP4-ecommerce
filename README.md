@@ -1,6 +1,8 @@
 # PP4 - WebWorks
 This project is a web development agency that provides tiered service packages — Bronze, Silver, Gold, and Platinum. Each package represents a different level of service, with Bronze offering essential entry-level support, Silver providing an enhanced and more comprehensive solution, Gold delivering advanced features and premium support, and Platinum serving as the ultimate top-tier option with the highest level of service and customisation.
 
+[Project link (right click to open in new window)](https://pp4-webworks-8ba6fd0af6ed.herokuapp.com/)
+
 ## Table of Content
 
 1. [Planning](#planning)
@@ -23,7 +25,6 @@ This project is a web development agency that provides tiered service packages �
 
 ### User Stories
 <img width="1193" height="489" alt="Screenshot 2025-09-09 at 21 31 32" src="https://github.com/user-attachments/assets/007e9734-5c6c-4aab-ba8d-7a0f7f8ee5e4" />
-
 
 
 ## Wireframes
@@ -103,6 +104,25 @@ This structure allows for a one-to-one relationship between User and UserProfile
 
 ## Colour Scheme
 
+
+<img width="1600" height="1200" alt="Webworks (2)" src="https://github.com/user-attachments/assets/9590b6f1-62b3-4d00-9a37-8af20383e892" />
+
+
+I wanted to keep WebWorks’ colour scheme simple and clean, avoiding too many colours that might distract users from the site’s content and offerings. With that in mind, here’s the palette I’ve chosen and the reasoning behind each colour:
+
+#FFFFFF – White: This serves as the main background colour, providing a clean, minimal canvas for the rest of the site.
+
+#00D9BB – Turquoise: Used as an accent colour to highlight key elements such as buttons or call-to-action areas, helping them stand out without being overwhelming.
+
+#F8F9FA – Seasalt: This soft neutral tone is used to separate different sections of the page, such as “What We Offer” and “What Our Clients Say.” The subtle contrast creates a clear visual distinction while maintaining a cohesive look.
+
+### Hero / Contact Image
+
+<img width="1000" height="562" alt="hero copy" src="https://github.com/user-attachments/assets/4844babe-b056-4251-942c-91a5c59f330a" />
+
+The hero and contact sections feature a purple gradient image. I chose this because it ties in nicely with the overall colour scheme while adding a subtle ‘pop’ of colour. The image helps the site stand out visually, yet still maintains a clean and minimal look that fits the WebWorks style.
+
+If I were to change something, this would be the one area I’d revisit — I think I could recreate a very similar effect using CSS alone for a more lightweight and flexible solution.
 
 ## Final Design
 

@@ -100,9 +100,16 @@ def checkout_success(request):
     order_number = request.session.pop('order_number', None)
     order = Order.objects.filter(order_number=order_number).first()
 
+    services_summary = []
+    if order and order.original_bag:
+        try:
+            services_summary = json.loads(order.original_bag.replace("'", '"'))
+        except:
+            services_summary = []
+
     context = {
         'order': order,
-        'services_summary': [],
+        'services_summary': services_summary,
         'grand_total': order.order_total if order else 0,
     }
     return render(request, 'checkout/checkout_success.html', context)

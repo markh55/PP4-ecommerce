@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import UserProfile
 from .forms import UserProfileForm
 import ast
@@ -8,6 +8,20 @@ def profile(request):
     profile = get_object_or_404(UserProfile, user=request.user)
 
     if request.method == 'POST':
+        # Handle avatar removal
+        if 'remove_avatar' in request.POST:
+            if profile.avatar:
+                profile.avatar.delete()
+                profile.save()
+            return redirect('profiles:profile')
+        
+        # Handle avatar upload
+        if 'avatar' in request.FILES:
+            profile.avatar = request.FILES['avatar']
+            profile.save()
+            return redirect('profiles:profile')
+        
+        # Handle profile information form
         form = UserProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()

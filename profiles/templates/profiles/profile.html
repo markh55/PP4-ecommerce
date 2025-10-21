@@ -5,6 +5,10 @@
 <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
 {% endblock %}
 
+{% block extra_js %}
+<script src="{% static 'profiles/js/profile.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 <div class="container-fluid bg-light py-5">
     <div class="container">
@@ -170,4 +174,5 @@
         </div>
     </div>
 </div>
+
 {% endblock %}

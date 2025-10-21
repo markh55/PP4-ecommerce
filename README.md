@@ -17,8 +17,11 @@ This project is a web development agency that provides tiered service packages â
 6. [Feedback](#feedback)
 7. [Tech Stack](#tech-stack)
 8. [Resources](#resources)
-9. [Credits / Tutotials](#credits--tutorials)
-    * [Source used](#source-used)
+     * [Walkthrough Project](#walkthrough-project)
+     * [Books](#books)
+     * [Documention / forums](#documention--forums)
+10. [Credits / Tutotials](#credits--tutorials)
+     * [Sources used](#sources-used)
 
 
 ## Planning
@@ -190,13 +193,16 @@ As this was my first time setting up and using AWS, I did not take any screensho
 
 ## Resources
 
+### Walkthrough Project
 - Code Institute
   - Boutique Ado
 
+### Books
 - Djnago 5 By Example by Antonio Mele
+- JavaScript from Beginner to Professional by Lautrnce Lars Svekis & Maaike Van Putten
 
-- Documentation for Django - <https://docs.djangoproject.com/en/5.2/>
-  
+### Documention / forums
+- Documentation for Django - <https://docs.djangoproject.com/en/5.2/>  
 - Stack Overflow
 
 

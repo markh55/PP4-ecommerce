@@ -21,42 +21,20 @@
         <div class="row">
             <div class="col-lg-4 mb-4">
                 <div class="card border-0 shadow">
-                    <div class="card-body text-center py-5">
-                        <form method="post" enctype="multipart/form-data" id="avatarForm">
-                            {% csrf_token %}
-
-                            <div class="mb-4">
-                                {% if profile.avatar %}
-                                    <img src="{{ profile.avatar.url }}" class="rounded-circle border border-primary" alt="Avatar" width="150" height="150" style="object-fit: cover;">
-                                {% else %}
-                                    <img src="{% static 'profiles/images/default-avatar.png' %}" class="rounded-circle border border-primary" alt="Avatar" width="150" height="150" style="object-fit: cover;">
-                                {% endif %}
-                            </div>
-
-                            <h4 class="mb-1">{{ user.get_full_name|default:user.username }}</h4>
-                            <p class="text-muted mb-4">{{ user.email }}</p>
-
-                            <input type="file" name="avatar" accept="image/*" id="id_avatar" style="display: none;">
-                            <label for="id_avatar" class="btn btn-teal btn-block mb-2">
-                                <i class="fa fa-upload mr-1"></i> Choose Picture
-                            </label>
-
-                            {% if profile.avatar %}
-                            <button type="submit" name="remove_avatar" class="btn btn-outline-danger btn-block">
-                                <i class="fa fa-trash mr-1"></i> Remove Picture
-                            </button>
-                            {% endif %}
-                        </form>
-                    </div>
-                </div>
-
-                <div class="card border-0 shadow mt-4">
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold mb-3">
                             <i class="fa fa-user mr-2"></i> Account Details
                         </h5>
-                        <ul class="list-unstyled mb-0">
-                            <li class="mb-2">
+                        <ul class="list-unstyled mb-3">
+                            <li class="mb-3">
+                                <small class="text-muted d-block">Name</small>
+                                <strong>{{ user.get_full_name|default:user.username }}</strong>
+                            </li>
+                            <li class="mb-3">
+                                <small class="text-muted d-block">Email</small>
+                                <strong>{{ user.email }}</strong>
+                            </li>
+                            <li class="mb-3">
                                 <small class="text-muted d-block">Member Since</small>
                                 <strong>{{ user.date_joined|date:"F Y" }}</strong>
                             </li>
@@ -65,6 +43,9 @@
                                 <span class="badge badge-success">Active</span>
                             </li>
                         </ul>
+                        <a href="{% url 'account_change_password' %}" class="text-dark d-block text-center py-2">
+                            <i class="fa fa-key mr-1"></i> Change Password
+                        </a>
                     </div>
                 </div>
 

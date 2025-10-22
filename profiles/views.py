@@ -8,21 +8,8 @@ def profile(request):
     profile = get_object_or_404(UserProfile, user=request.user)
 
     if request.method == 'POST':
-        # Handle avatar removal
-        if 'remove_avatar' in request.POST:
-            if profile.avatar:
-                profile.avatar.delete()
-                profile.save()
-            return redirect('profiles:profile')
-        
-        # Handle avatar upload
-        if 'avatar' in request.FILES:
-            profile.avatar = request.FILES['avatar']
-            profile.save()
-            return redirect('profiles:profile')
-        
         # Handle profile information form
-        form = UserProfileForm(request.POST, request.FILES, instance=profile)
+        form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
     else:

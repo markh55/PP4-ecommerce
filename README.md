@@ -132,6 +132,13 @@ If I were to change something, this would be the one area I’d revisit — I th
 
 ## Features
 
+### Authentication
+
+I configured Django’s email backend to use Gmail SMTP for sending authentication-related emails. This setup supports features like:
+
+* Account verification and confirmation during user registration
+
+* Password reset functionality using secure, time-limited links
 
 ## Deployment
 

@@ -126,8 +126,22 @@ input:focus {
     text-align: center;
 }
 
+/* Secondary button style (back to profile) */
+.btn-secondary {
+    background-color: #ffffff;
+    border: 2px solid #00d9bb;
+    color: #00d9bb;
+    border-radius: 8px;
+}
 
-/* Make it look good on smaller screens */
+.btn-secondary:hover {
+    background-color: #00d9bb;
+    border: #00d9bb;
+    color: #ffffff;
+}
+
+
+/* Smaller screens */
 @media (max-width: 768px) {
   .container {
     padding: 2rem 1.25rem;

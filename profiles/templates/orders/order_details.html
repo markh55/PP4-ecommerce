@@ -8,9 +8,18 @@
 {% block content %}
 <div class="container-fluid bg-light py-5">
     <!-- back button -->
-    <div class="back-button-wrapper">
-        <a href="{% url 'profiles:profile' %}" class="back-button"><i class="fa-solid fa-arrow-left"></i> Back</a>
-    </div>
+   <div class="back-button-wrapper">
+    <a href="{% url 'profiles:profile' %}" class="back-button">
+        <i class="fa-solid fa-arrow-left"></i> Back
+    </a>
+
+    <form action="#" method="post">
+        {% csrf_token %}
+        <button type="submit" class="back-button">
+            <i class="fa-solid fa-download"></i> Save
+        </button>
+    </form>
+</div>
 
     <div class="container">
     <!-- header -->

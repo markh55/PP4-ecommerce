@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}" />
+<link rel="stylesheet" href="{% static 'checkout/css/checkout_success.css' %}" />
 {% endblock %}
 
 
@@ -10,6 +10,8 @@
 <div class="container my-6 text-center">
     <h2 class="section-title"><strong>Thank You!</strong></h2>
     <p>Your payment was successful. We’ve received your order and will be in touch soon.</p>
+    <p>Your order number is <strong>{{ order_number }}</strong>.</p>
+    <p>To view your order history, please visit your <a href="{% url 'profiles:profile' %}">profile page</a>.</p>
 
     {% if services_summary %}
         <h4 class="mt-4">Your Order:</h4>

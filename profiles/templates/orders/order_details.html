@@ -2,61 +2,88 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'profiles/css/order_details.css' %}">
+<link rel="stylesheet" href="{% static 'profiles/css/order_details.css' %}" />
 {% endblock %}
 
 {% block content %}
 <div class="container-fluid bg-light py-5">
-    <div class="button-container">
-        <a href="{% url 'profiles:profile' %}" class="back-button">
-            <i class="fa-solid fa-arrow-left"></i> Back
-        </a>
+  <div class="button-container">
+    <a href="{% url 'profiles:profile' %}" class="back-button">
+      <i class="fa-solid fa-arrow-left"></i> Back
+    </a>
 
-        <form action="#" method="post" style="display: none;">
-            {% csrf_token %}
-        </form>
+    <form action="#" method="post" style="display: none">{% csrf_token %}</form>
 
-        <a href="#" class="save-button" onclick="this.closest('form').submit(); return false;" style="padding-left: 30px; padding-right: 20px;">
-            <i class="fa-solid fa-download"></i> Save
-        </a>
+    <a
+      href="#"
+      class="save-button"
+      onclick="downloadInvoice(); return false;"
+      style="padding-left: 30px; padding-right: 20px"
+    >
+      <i class="fa-solid fa-download"></i> Save as PDF
+    </a>
+  </div>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="mb-4">
+      <!-- Company Info top right -->
+      <div class="text-right mb-4">
+        <h2>WebWorks</h2>
+        <p>123 Street Name</p>
+        <p>Cwmbran, South Wales</p>
+        <p>NP44 1AA</p>
+      </div>
+
+      <!-- Order Info below, left-aligned -->
+      <div class="text-left">
+        <h1>Order #{{ order.order_number }}</h1>
+        <p><strong>Customer:</strong> {{ order.full_name }}</p>
+        <p><strong>Email:</strong> {{ order.email }}</p>
+        <p><strong>Order Date:</strong> {{ order.date|date:"F d, Y" }}</p>
+      </div>
     </div>
 
-    <div class="container">
-        <div class="mb-4">
-            <h1>Order #{{ order.order_number }}</h1>
-            <p><strong>Customer:</strong> {{ order.full_name }}</p>
-            <p><strong>Email:</strong> {{ order.email }}</p>
-            <p><strong>Order Date:</strong> {{ order.date|date:"F d, Y" }}</p>
-        </div>
-
-        <div class="mb-4">
-            <h3>Items</h3>
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for item in order_items %}
-                        <tr>
-                            <td data-label="Item">{{ item.name }}</td>
-                            <td data-label="Quantity">{{ item.quantity }}</td>
-                            <td data-label="Price">£{{ item.price }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="order-summary">
-            <h3>Order Summary</h3>
-            <p><strong>Total:</strong> £{{ order.order_total }}</p>
-        </div>
+    <!-- Items -->
+    <div class="mb-4">
+      <h3>Items</h3>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in order_items %}
+            <tr>
+              <td data-label="Item">{{ item.name }}</td>
+              <td data-label="Quantity">{{ item.quantity }}</td>
+              <td data-label="Price">£{{ item.price }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </div>
+
+    <!-- Order Summary -->
+    <div class="order-summary">
+      <div class="text-right">
+        <h3>Order Summary</h3>
+        <p><strong>Total:</strong> £{{ order.order_total }}</p>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+  function downloadInvoice() {
+    const element = document.querySelector(".container"); // selects the main invoice
+    html2pdf().from(element).save(`invoice_{{ order.order_number }}.pdf`);
+  }
+</script>
 {% endblock %}

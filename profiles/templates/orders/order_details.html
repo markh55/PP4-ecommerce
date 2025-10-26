@@ -7,55 +7,56 @@
 
 {% block content %}
 <div class="container-fluid bg-light py-5">
-    <!-- back button -->
-   <div class="back-button-wrapper">
-    <a href="{% url 'profiles:profile' %}" class="back-button">
-        <i class="fa-solid fa-arrow-left"></i> Back
-    </a>
+    <div class="button-container">
+        <a href="{% url 'profiles:profile' %}" class="back-button">
+            <i class="fa-solid fa-arrow-left"></i> Back
+        </a>
 
-    <form action="#" method="post">
-        {% csrf_token %}
-        <button type="submit" class="back-button">
+        <form action="#" method="post" style="display: none;">
+            {% csrf_token %}
+        </form>
+
+        <a href="#" class="save-button" onclick="this.closest('form').submit(); return false;" style="padding-left: 30px; padding-right: 20px;">
             <i class="fa-solid fa-download"></i> Save
-        </button>
-    </form>
-</div>
+        </a>
+    </div>
 
     <div class="container">
-    <!-- header -->
-    <div class="mb-4">
-        <h1>Order #{{ order.order_number }}</h1>
-        <p><strong>Customer:</strong> {{ order.full_name }}</p>
-        <p><strong>Email:</strong> {{ order.email }}</p>
-        <p><strong>Order Date:</strong> {{ order.date|date:"F d, Y" }}</p>
-    </div>
-    <!-- order items -->
-    <div class="mb-4">
-            <h3>Items</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in order_items %}
-                    <tr>
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.quantity }}</td>
-                        <td>£{{ item.price }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        <div class="mb-4">
+            <h1>Order #{{ order.order_number }}</h1>
+            <p><strong>Customer:</strong> {{ order.full_name }}</p>
+            <p><strong>Email:</strong> {{ order.email }}</p>
+            <p><strong>Order Date:</strong> {{ order.date|date:"F d, Y" }}</p>
         </div>
-    <!-- order summary -->
-    <div class="order-summary">
-    <h3>Order Summary</h3>
-    <p><strong>Total:</strong> £{{ order.order_total }}</p>
-</div>
+
+        <div class="mb-4">
+            <h3>Items</h3>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in order_items %}
+                        <tr>
+                            <td data-label="Item">{{ item.name }}</td>
+                            <td data-label="Quantity">{{ item.quantity }}</td>
+                            <td data-label="Price">£{{ item.price }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="order-summary">
+            <h3>Order Summary</h3>
+            <p><strong>Total:</strong> £{{ order.order_total }}</p>
+        </div>
     </div>
 </div>
 {% endblock %}

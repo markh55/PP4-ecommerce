@@ -3,6 +3,17 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'packages/css/package_detail.css' %}"/>
+<style>
+/* Make the entire package card feel clickable */
+.package-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.package-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+</style>
 {% endblock %}
 
 {% block title %}
@@ -15,7 +26,7 @@
   <div class="row mt-5">
     {% for package in packages %}
       <div class="col-lg-3 col-md-6 col-sm-12 mb-4 d-flex">
-        <div class="card flex-fill h-100">
+        <a href="{{ package.get_absolute_url }}" class="card flex-fill h-100 text-decoration-none text-dark package-card">
           {% if package.image %}
             <img src="{{ package.image.url }}" class="card-img-top" alt="{{ package.name }}">
           {% else %}
@@ -25,9 +36,8 @@
             <h5 class="card-title">{{ package.name }}</h5>
             <p class="card-text">£{{ package.price }}</p>
             <p class="card-intro">{{ package.intro }}</p>
-            <a href="{{ package.get_absolute_url }}" class="btn btn-package mt-auto">More Details</a>
           </div>
-        </div>
+        </a>
       </div>
     {% empty %}
       <p class="text-muted">No packages available at the moment.</p>
@@ -35,6 +45,6 @@
   </div>
 
   <!-- Back button -->
-<a href="{% url 'index' %}" class="btn btn-package mt-4">Back</a>
+  <a href="{% url 'index' %}" class="btn btn-package mt-4">Back</a>
 </section>
 {% endblock %}

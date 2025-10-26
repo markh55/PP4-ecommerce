@@ -6,6 +6,7 @@
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'home/css/index.css' %}" />
 <link rel="stylesheet" href="{% static 'home/css/form.css' %}"/>
+<link rel="stylesheet" href="{% static 'packages/css/package_detail.css' %}"/>
 {% endblock %}
 
 <!-- Hero -->
@@ -39,7 +40,7 @@
   <div class="row">
     {% for package in packages %}
     <div class="col-lg-3 col-md-6 col-sm-12 mb-4 d-flex">
-      <div class="card flex-fill h-100">
+      <a href="{{ package.get_absolute_url }}" class="card flex-fill h-100 text-decoration-none text-dark package-card">
         {% if package.image %}
         <img
           src="{{ package.image.url }}"
@@ -51,12 +52,8 @@
           <h5 class="card-title">{{ package.name }}</h5>
           <p class="card-text">£{{ package.price }}</p>
           <p class="card-intro">{{ package.intro }}</p>
-
-            <a href="{{ package.get_absolute_url }}"
-            class="btn btn-primary mt-auto"
-            >More Details</a>
         </div>
-      </div>
+      </a>
     </div>
     {% endfor %}
   </div>

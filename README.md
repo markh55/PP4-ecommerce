@@ -190,6 +190,24 @@ As this was my first time setting up and using AWS, I did not take any screensho
 
 ## Feedback
 
+When my PP4 project was tested by family and friends, I received the following feedback:
+
+### Packages:
+
+Fewer clicks: Make it easier for users to complete actions without having to search for buttons.
+Clickable icons: Allow icons to perform the same actions as buttons, so users can click the icon instead of scrolling for a “More Details” button.
+Intuitive interactions: Ensure the design feels natural and users instinctively know what can be clicked.
+
+### Before:
+
+Users had to click the “More Details” button to view package information and add it to their bag.
+
+<img width="1248" height="637" alt="Screenshot 2025-10-26 at 22 37 51" src="https://github.com/user-attachments/assets/a7522871-7f0f-4646-866b-70b266c09f26" />
+
+### After
+After taking the feedback, I updated my project to remove the “More Details” button and make the whole card a clickable object. This has several benefits, especially as the majority of web browsing now happens on mobile and tablet devices: it provides larger, easier-to-tap areas, reduces the chance of users missing small buttons, and makes navigation feel more intuitive and seamless across different screen sizes.
+
+<img width="1225" height="587" alt="Screenshot 2025-10-26 at 23 03 06" src="https://github.com/user-attachments/assets/07a4020c-6541-45f9-877a-af29b1685d67" />
 
 ## Tech Stack
 

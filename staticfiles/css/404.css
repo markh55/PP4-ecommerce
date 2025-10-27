@@ -1,0 +1,106 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 2rem;
+}
+
+.error-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 3px 10px 20px rgba(0, 0, 0, 0.3);
+    padding: 3rem 2.5rem;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    transition: all 0.25s ease-in-out;
+}
+
+.error-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+}
+
+.error-code {
+    font-size: 6rem;
+    font-weight: 700;
+    color: #212529;
+    margin: 0;
+}
+
+.error-message {
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin: 1rem 0 2rem 0;
+}
+
+.error-hint {
+    font-size: 0.9rem;
+    color: #adb5bd;
+    margin-top: 1rem;
+}
+
+/* Button styling matches auth.css */
+.btn-home {
+    display: inline-block;
+    background-color: #00d9bb;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-home:hover {
+    background-color: #00c4a9;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 217, 187, 0.25);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .error-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .error-code {
+        font-size: 4.5rem;
+    }
+    
+    .error-message {
+        font-size: 1rem;
+    }
+    
+    .btn-home {
+        width: 100%;
+        padding: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .error-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .error-code {
+        font-size: 3.5rem;
+    }
+    
+    .error-message {
+        font-size: 0.95rem;
+    }
+}

@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found | WebWorks</title>
+  <link rel="stylesheet" href="{% static 'css/404.css' %}">
+</head>
+<body>
+  <div class="error-container">
+    <div class="error-card">
+      <h1 class="error-code">404</h1>
+      <p class="error-message">Oops! Looks like this page has wandered off the map.</p>
+      <a href="/" class="btn-home btn-primary">Return Home</a>
+      <p class="error-hint">Or check the URL and try again.</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -72,3 +72,5 @@ def privacy(request):
 def terms(request):
     return render(request, 'home/terms.html')
 
+def error_404_view(request, exception):
+    return render(request, 'core/404.html', status=404)

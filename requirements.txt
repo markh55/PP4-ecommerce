@@ -11,7 +11,9 @@ defusedxml==0.7.1
 dj-database-url==0.5.0
 Django==5.2.6
 django-allauth==0.50.0
+django-ckeditor==6.7.3
 django-countries==7.2.1
+django-js-asset==3.1.2
 django-storages==1.14.6
 fonttools==4.60.1
 gunicorn==23.0.0
@@ -22,8 +24,10 @@ oauthlib==3.3.1
 packaging==25.0
 pillow==10.3.0
 psycopg2==2.9.11
+pycairo==1.28.0
 pycparser==2.22
 pydyf==0.11.0
+PyGObject==3.54.3
 PyJWT==2.10.1
 pyphen==0.17.2
 python-dateutil==2.9.0.post0

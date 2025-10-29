@@ -1,0 +1,57 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'packages/css/review_forms.css' %}"/>
+{% endblock %}
+
+{% block content %}
+
+<section class="container my-6">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+      <h2 class="section-title text-center mb-5"><strong>Edit Your Review</strong></h2>
+
+      <div class="card">
+        <div class="card-body">
+          <form method="POST">
+            {% csrf_token %}
+
+            <!-- Rating -->
+            <div class="mb-3">
+              <label for="rating" class="form-label">Rating</label>
+              <select class="form-control" id="rating" name="rating" required>
+                <option value="">Select Rating</option>
+                <option value="1" {% if review.rating.rating == 1 %}selected{% endif %}>1 Star</option>
+                <option value="2" {% if review.rating.rating == 2 %}selected{% endif %}>2 Stars</option>
+                <option value="3" {% if review.rating.rating == 3 %}selected{% endif %}>3 Stars</option>
+                <option value="4" {% if review.rating.rating == 4 %}selected{% endif %}>4 Stars</option>
+                <option value="5" {% if review.rating.rating == 5 %}selected{% endif %}>5 Stars</option>
+              </select>
+            </div>
+
+            <!-- Review Title -->
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input type="text" class="form-control" id="title" name="title" value="{{ review.title }}" required>
+            </div>
+
+            <!-- Review Body -->
+            <div class="mb-3">
+              <label for="body" class="form-label">Review</label>
+              <textarea class="form-control" id="body" name="body" rows="4" required>{{ review.body }}</textarea>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-between mt-4">
+              <a href="{% url 'packages:package_detail' review.package.slug %}" class="btn btn-secondary">Cancel</a>
+              <button type="submit" class="btn btn-primary">Update Review</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

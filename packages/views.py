@@ -41,6 +41,30 @@ def add_review(request, slug):
         messages.success(request, 'Your review has been added!')
         return redirect('packages:package_detail', slug=slug)
 
+@login_required
+def edit_review(request, review_id):
+    review = get_object_or_404(Review, id=review_id, user=request.user)
+
+    if request.method == 'POST':
+        rating_value = request.POST.get('rating')
+        title = request.POST.get('title')
+        body = request.POST.get('body')
+
+        # Update the review
+        review.title = title
+        review.body = body
+        review.save()
+
+        # Update the rating
+        rating = Rating.objects.get(package=review.package, user=request.user)
+        rating.rating = rating_value
+        rating.save()
+
+        messages.success(request, 'Your review has been updated!')
+        return redirect('packages:package_detail', slug=review.package.slug)
+
+    return render(request, 'packages/edit_review.html', {'review': review})
+
 def home(request):
     packages = Package.objects.all()
     recent_reviews = Review.objects.select_related('package', 'user').order_by('-created_at')[:5]

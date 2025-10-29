@@ -154,7 +154,7 @@
                 <small class="text-muted">by {{ review.user.username }}</small>
 
                 <div class="mt-3">
-                  <button class="btn btn-sm btn-outline-primary">Edit</button>
+                  <a href="{% url 'packages:edit_review' review.id %}" class="btn btn-sm btn-outline-primary">Edit</a>
                   <button class="btn btn-sm btn-outline-danger">Delete</button>
                 </div>
               </div>

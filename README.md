@@ -12,6 +12,7 @@ This project is a web development agency that provides tiered service packages â
      * [Colour Scheme](#colour-scheme)
 2. [Final Design](#final-design)
 3. [Features](#features)
+     * [CRUD](#crud)
 4. [Deployment](#deployment)
 5. [Testing](#testing)
 6. [Feedback](#feedback)
@@ -20,7 +21,7 @@ This project is a web development agency that provides tiered service packages â
      * [Walkthrough Project](#walkthrough-project)
      * [Books](#books)
      * [Documention / forums](#documention--forums)
-10. [Credits / Tutotials](#credits--tutorials)
+9. [Credits / Tutotials](#credits--tutorials)
      * [Sources used](#sources-used)
 
 
@@ -131,6 +132,26 @@ If I were to change something, this would be the one area Iâ€™d revisit â€” I th
 
 
 ## Features
+
+### CRUD 
+For the CRUD element of the project, I have added the ability for users to leave, edit, and delete a review. As well as rate each service, but only for reviews and ratings they have submitted themselves. This ensures that users cannot alter another userâ€™s review in any way.
+
+Since the review forms and ratings are small elements, all styling is handled directly within the HTML using Bootstrap, rather than through an external CSS file. This keeps the implementation simple and lightweight while maintaining a clean and responsive design.
+
+Below are screen shots of the process
+
+### Add review & rating
+
+<img width="1417" height="790" alt="Screenshot 2025-10-29 at 22 53 49" src="https://github.com/user-attachments/assets/7604337b-5ef8-420a-be25-4fd631fe0be1" />
+
+### Edit Review
+  
+<img width="1009" height="667" alt="Screenshot 2025-10-29 at 22 53 09" src="https://github.com/user-attachments/assets/3f05a009-ab2c-43dc-96cf-ce1a48f080ce" />
+
+### Delete Review
+
+<img width="913" height="536" alt="Screenshot 2025-10-29 at 22 53 24" src="https://github.com/user-attachments/assets/1d0aae72-f6e8-4fd8-9e5b-14bd188dc024" />
+
 
 ### Authentication
 

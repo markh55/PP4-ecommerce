@@ -65,6 +65,17 @@ def edit_review(request, review_id):
 
     return render(request, 'packages/edit_review.html', {'review': review})
 
+@login_required
+def delete_review(request, review_id):
+    review = get_object_or_404(Review, id=review_id, user=request.user)
+
+    if request.method == 'POST':
+        review.delete()
+        messages.success(request, 'Your review has been deleted!')
+        return redirect('packages:package_detail', slug=review.package.slug)
+
+    return render(request, 'packages/delete_review.html', {'review': review})
+
 def home(request):
     packages = Package.objects.all()
     recent_reviews = Review.objects.select_related('package', 'user').order_by('-created_at')[:5]

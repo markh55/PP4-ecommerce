@@ -21,8 +21,8 @@
             <form method="POST">
               {% csrf_token %}
               <div class="d-flex justify-content-between mt-4">
-                <a href="{% url 'packages:package_detail' review.package.slug %}" id="cancel-btn" class="btn btn-outline-secondary">Cancel</a>
-                <button type="submit" class="btn btn-outline-danger">Delete Review</button>
+                <a href="{% url 'packages:package_detail' review.package.slug %}" class="btn btn-outline-info">Cancel</a>
+                <button type="submit" class="btn btn-outline-danger"><strong>Delete Review</strong></button>
               </div>
             </form>
 

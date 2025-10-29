@@ -1,13 +1,9 @@
 {% extends "core/base.html" %}
 {% load static %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'packages/css/review_forms.css' %}"/>
-{% endblock %}
-
 {% block content %}
 
-<section class="container my-6">
+<section class="container delete-review-section" style="padding-top: 100px;">
   <div class="row justify-content-center">
     <div class="col-lg-8 col-md-10">
       <h2 class="section-title text-center mb-5"><strong>Edit Your Review</strong></h2>
@@ -44,8 +40,8 @@
 
             <!-- Buttons -->
             <div class="d-flex justify-content-between mt-4">
-              <a href="{% url 'packages:package_detail' review.package.slug %}" class="btn btn-secondary">Cancel</a>
-              <button type="submit" class="btn btn-primary">Update Review</button>
+              <a href="{% url 'packages:package_detail' review.package.slug %}" class="btn btn-outline-secondary">Cancel</a>
+              <button type="submit" class="btn btn-outline-primary">Update Review</button>
             </div>
           </form>
         </div>

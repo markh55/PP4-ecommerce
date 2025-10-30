@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row mb-5">
             <div class="col-12">
-                <h1 class="display-4 text-center font-weight-bold mt-3">My Profile</h1>
+                <h1 class="display-4 text-center fw-bold mt-3">My Profile</h1>
             </div>
         </div>
 
@@ -22,8 +22,8 @@
             <div class="col-lg-4 mb-4">
                 <div class="card border-0 shadow">
                     <div class="card-body">
-                        <h5 class="card-title font-weight-bold mb-3">
-                            <i class="fa fa-user mr-2"></i> Account Details
+                        <h5 class="card-title fw-bold mb-3">
+                            <i class="fa fa-user me-2"></i> Account Details
                         </h5>
                         <ul class="list-unstyled mb-3">
                             <li class="mb-3">
@@ -40,18 +40,18 @@
                             </li>
                             <li class="mb-2">
                                 <small class="text-muted d-block">Account Status</small>
-                                <span class="badge badge-success">Active</span>
+                                <span class="badge bg-success">Active</span>
                             </li>
                         </ul>
                         <a href="{% url 'account_change_password' %}" class="text-dark d-block text-center py-2">
-                            <i class="fa fa-key mr-1"></i> Change Password
+                            <i class="fa fa-key me-1"></i> Change Password
                         </a>
                     </div>
                 </div>
 
                 <div class="mt-4">
-                    <a href="{% url 'index' %}" class="btn btn-teal btn-block">
-                        <i class="fa fa-home mr-1"></i> Back to Home
+                    <a href="{% url 'index' %}" class="btn btn-teal w-100">
+                        <i class="fa fa-home me-1"></i> Back to Home
                     </a>
                 </div>
             </div>
@@ -59,8 +59,8 @@
             <div class="col-lg-8">
                 <div class="card border-0 shadow mb-4">
                     <div class="card-header bg-white border-0 pt-4 pb-3">
-                        <h4 class="mb-0 font-weight-bold">
-                            <i class="fa fa-edit mr-2"></i> Profile Information
+                        <h4 class="mb-0 fw-bold">
+                            <i class="fa fa-edit me-2"></i> Profile Information
                         </h4>
                     </div>
                     <div class="card-body p-4">
@@ -69,8 +69,8 @@
 
                             <div class="row">
                                 <div class="col-md-6 mb-4">
-                                    <label class="font-weight-bold text-dark mb-2">
-                                        <i class="fa fa-phone mr-1"></i> Phone Number
+                                    <label class="fw-bold text-dark mb-2">
+                                        <i class="fa fa-phone me-1"></i> Phone Number
                                     </label>
                                     {% if form.default_phone_number %}
                                         {{ form.default_phone_number }}
@@ -78,8 +78,8 @@
                                 </div>
 
                                 <div class="col-md-6 mb-4">
-                                    <label class="font-weight-bold text-dark mb-2">
-                                        <i class="fa fa-envelope mr-1"></i> Email Address
+                                    <label class="fw-bold text-dark mb-2">
+                                        <i class="fa fa-envelope me-1"></i> Email Address
                                     </label>
                                     {% if form.default_email %}
                                         {{ form.default_email }}
@@ -89,8 +89,8 @@
 
                             <div class="row">
                                 <div class="col-12 mb-4">
-                                    <label class="font-weight-bold text-dark mb-2">
-                                        <i class="fa fa-building mr-1"></i> Business Name
+                                    <label class="fw-bold text-dark mb-2">
+                                        <i class="fa fa-building me-1"></i> Business Name
                                     </label>
                                     {% if form.default_business_name %}
                                         {{ form.default_business_name }}
@@ -100,8 +100,8 @@
 
                             <div class="row">
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-teal btn-block">
-                                        <i class="fa fa-save mr-2"></i> Save Changes
+                                    <button type="submit" class="btn btn-teal w-100">
+                                        <i class="fa fa-save me-2"></i> Save Changes
                                     </button>
                                 </div>
                             </div>
@@ -111,8 +111,8 @@
 
                 <div class="card border-0 shadow">
                     <div class="card-header bg-white border-0 pt-4 pb-3">
-                        <h4 class="mb-0 font-weight-bold">
-                            <i class="fa fa-shopping-cart mr-2"></i> Order History
+                        <h4 class="mb-0 fw-bold">
+                            <i class="fa fa-shopping-cart me-2"></i> Order History
                         </h4>
                     </div>
                     <div class="card-body p-4">
@@ -130,12 +130,12 @@
                                     <tbody>
                                         {% for order in orders %}
                                         <tr>
-                                            <td class="font-weight-bold">{{ order.title }}</td>
+                                            <td class="fw-bold">{{ order.title }}</td>
                                             <td>{{ order.date|date:"M d, Y" }}</td>
                                             <td>£{{ order.order_total }}</td>
                                             <td>
                                                 <a href="{% url 'profiles:order_details' order.order_number %}" class="btn btn-teal btn-sm">
-                                                <i class="fa fa-eye mr-1"></i> View
+                                                <i class="fa fa-eye me-1"></i> View
                                                 </a>
                                             </td>
                                         </tr>

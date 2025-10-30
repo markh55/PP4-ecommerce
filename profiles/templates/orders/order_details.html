@@ -28,7 +28,7 @@
     <!-- Header -->
     <div class="mb-4">
       <!-- Company Info top right -->
-      <div class="text-right mb-4">
+      <div class="text-end mb-4">
         <h2>WebWorks</h2>
         <p>123 Street Name</p>
         <p>Cwmbran, South Wales</p>
@@ -36,7 +36,7 @@
       </div>
 
       <!-- Order Info below, left-aligned -->
-      <div class="text-left">
+      <div class="text-start">
         <h1>Order #{{ order.order_number }}</h1>
         <p><strong>Customer:</strong> {{ order.full_name }}</p>
         <p><strong>Email:</strong> {{ order.email }}</p>
@@ -71,7 +71,7 @@
 
     <!-- Order Summary -->
     <div class="order-summary">
-      <div class="text-right">
+      <div class="text-end">
         <h3>Order Summary</h3>
         <p><strong>Total:</strong> £{{ order.order_total }}</p>
       </div>

@@ -23,7 +23,7 @@ def add_to_bag(request, items_id):
         messages.success(request, f'Added {package.name} to your bag')
 
     request.session['bag'] = bag
-    return redirect(redirect_url)
+    return redirect(f'{redirect_url}?added=true')
 
 
 def remove_from_bag(request, items_id):

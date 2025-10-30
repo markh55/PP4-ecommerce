@@ -116,6 +116,52 @@
       </nav>
     </header>
 
+    <!-- Shopping Bag Popup Modal -->
+    <div class="modal fade" id="bagModal" tabindex="-1" aria-labelledby="bagModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header text-white" style="background-color: #00d9bb;">
+            <h5 class="modal-title" id="bagModalLabel">Success!</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p class="mb-4">Added to your bag</p>
+            
+            <h6 class="fw-bold mb-3">YOUR BAG ({{ product_count }})</h6>
+            
+            <!-- Bag Items List -->
+            <div id="bag-items-list">
+              {% for item in bag_items %}
+              <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
+                {% if item.product.image %}
+                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="me-3" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+                {% else %}
+                <div class="bg-light me-3 d-flex align-items-center justify-content-center" style="width: 80px; height: 80px; border-radius: 8px;">
+                  <i class="fas fa-image fa-2x text-muted"></i>
+                </div>
+                {% endif %}
+                <div class="flex-grow-1">
+                  <h6 class="mb-1">{{ item.product.name }}</h6>
+                  <p class="mb-0"><strong>£{{ item.product.price }}</strong></p>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-between mt-4">
+              <a href="{% url 'packages:package_list' %}" class="btn btn-outline-secondary" style="border-radius: 10px;">
+                Continue Shopping
+              </a>
+              <a href="{% url 'checkout:checkout' %}" class="btn text-white" style="background-color: #00d9bb; border: none; border-radius: 10px;">
+                Checkout
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Toast / Message Container -->
     <div id="toast-container" class="position-fixed top-0 end-0 p-3" style="z-index: 1055;">
       {% if messages %}
@@ -216,6 +262,17 @@
       <script src="{% static 'js/main.js' %}"></script>
       <script>
         document.addEventListener('DOMContentLoaded', function() {
+          // Show modal when item is added to bag
+          const urlParams = new URLSearchParams(window.location.search);
+          if (urlParams.get('added') === 'true') {
+            const bagModal = new bootstrap.Modal(document.getElementById('bagModal'));
+            bagModal.show();
+            
+            // Remove the parameter from URL without reload
+            window.history.replaceState({}, '', window.location.pathname);
+          }
+          
+          // Initialize regular toasts
           const toastElList = [].slice.call(document.querySelectorAll('.toast'));
           toastElList.forEach(function(toastEl) {
             const toast = new bootstrap.Toast(toastEl, { delay: 4000 });

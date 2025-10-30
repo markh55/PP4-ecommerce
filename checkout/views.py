@@ -10,6 +10,13 @@ from checkout.models import Order
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
+# DEBUG: Print Stripe keys to verify they're loading
+print("=" * 50)
+print(f"STRIPE_PUBLIC_KEY: '{settings.STRIPE_PUBLIC_KEY}'")
+print(f"STRIPE_SECRET_KEY: '{settings.STRIPE_SECRET_KEY}'")
+print(f"Public key length: {len(settings.STRIPE_PUBLIC_KEY) if settings.STRIPE_PUBLIC_KEY else 0}")
+print("=" * 50)
+
 @require_POST
 def cache_checkout_data(request):
     try:

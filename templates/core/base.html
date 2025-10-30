@@ -12,9 +12,11 @@
     {% block extra_meta %}{% endblock %}
 
     {% block corecss %}
+      <!-- Bootstrap 5 -->
       <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous"
       />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,16 +38,10 @@
     {% block extra_css %}{% endblock %}
 
     {% block corejs %}
+      <!-- Bootstrap 5 Bundle (includes Popper) -->
       <script
-        src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
-        crossorigin="anonymous"
-      ></script>
-      <script
-        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        crossorigin="anonymous"
-      ></script>
-      <script
-        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"
       ></script>
       <script src="https://js.stripe.com/v3/"></script>
@@ -69,8 +65,8 @@
         <button
           class="navbar-toggler"
           type="button"
-          data-toggle="collapse"
-          data-target="#navbarContent"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
           aria-controls="navbarContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
@@ -91,17 +87,16 @@
                   href="#"
                   id="accountDropdown"
                   role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
+                  data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   My Account
                 </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdown">
-                  <a class="dropdown-item" href="{% url 'profiles:profile' %}">Profile</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
-                </div>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                  <li><a class="dropdown-item" href="{% url 'profiles:profile' %}">Profile</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                </ul>
               </li>
             {% else %}
               <li class="nav-item">

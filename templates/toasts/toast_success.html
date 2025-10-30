@@ -1,48 +1,57 @@
-<div class="toast custom-toast rounded-0 border-top-0" data-autohide="false">
-    <div class="arrow-up arrow-success"></div>
-    <div class="w-100 toast-capper bg-success"></div>
-    <div class="toast-header bg-white text-dark">
-        <strong class="mr-auto">Success!</strong>
-        <button type="button" class="ml-2 mb-1 close text-dark" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+<div class="toast custom-toast rounded-0 border-top-0" data-bs-autohide="false">
+  <div class="arrow-up arrow-success"></div>
+  <div class="w-100 toast-capper bg-success"></div>
+
+  <div class="toast-header bg-white text-dark">
+    <strong class="me-auto">Success!</strong>
+    <button
+      type="button"
+      class="btn-close ms-2 mb-1"
+      data-bs-dismiss="toast"
+      aria-label="Close"
+    ></button>
+  </div>
+
+  <div class="toast-body bg-white">
+    <div class="row">
+      <div class="col">
+        {{ message }}
+        <hr class="mt-1 mb-3" />
+      </div>
     </div>
-    <div class="toast-body bg-white">
-        <div class="row">
-            <div class="col">
-                {{ message }}
-                <hr class="mt-1 mb-3">
+
+    {% if grand_total and not on_profile_page %}
+      <p class="fw-bold">Your Bag ({{ product_count }})</p>
+      <div class="bag-notification-wrapper">
+        {% for item in bag_items %}
+          <div class="row mb-2">
+            <div class="col-3">
+              {% if item.product.image %}
+                <img class="w-100" src="{{ item.product.image.url }}" alt="{{ item.product.name }}" />
+              {% endif %}
             </div>
+            <div class="col-9">
+              <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+              <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
+              <p class="my-0 small">£{{ item.product.price }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col">
+          <strong>
+            <p class="mb-1">
+              Total:
+              <span class="float-end">£{{ grand_total|floatformat:2 }}</span>
+            </p>
+          </strong>
+          <a href="{% url 'bag:view_bag' %}" class="btn btn-outline-dark w-100 mt-2">
+            <span>Go To Bag</span>
+          </a>
         </div>
-        {% if grand_total and not on_profile_page %}
-            <p class="font-weight-bold">Your Bag ({{ product_count }})</p>
-            <div class="bag-notification-wrapper">
-                {% for item in bag_items %}
-                    <div class="row mb-2">
-                        <div class="col-3">
-                            {% if item.product.image %}
-                                <img class="w-100" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
-                            {% endif %}
-                        </div>
-                        <div class="col-9">
-                            <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                            <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
-                            <p class="my-0 small">£{{ item.product.price }}</p>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col">
-                    <strong><p class="mb-1">
-                        Total: <span class="float-right">£{{ grand_total|floatformat:2 }}</span>
-                    </p></strong>
-                    <a href="{% url 'bag:view_bag' %}" class="btn btn-block btn-outline-dark mt-2">
-                        <span>Go To Bag</span>
-                    </a>
-                </div>
-            </div>
-        {% endif %}
-    </div>
+      </div>
+    {% endif %}
+  </div>
 </div>

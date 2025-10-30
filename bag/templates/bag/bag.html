@@ -34,17 +34,15 @@
                             <th>Product</th>
                             <th>Quantity</th>
                             <th>Price</th>
-                            <th>Subtotal</th>
                             <th>Remove</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for item in bag_items %}
                         <tr>
-                            <td>{{ item.product.name }}</td>
-                            <td>{{ item.quantity }}</td>
-                            <td>{{ item.product.price }}</td>
-                            <td>{{ item.subtotal }}</td>
+                            <td data-label="Product">{{ item.product.name }}</td>
+                            <td data-label="Quantity">{{ item.quantity }}</td>
+                            <td data-label="Price">{{ item.product.price }}</td>
                             <td>
                                 <form action="{% url 'bag:remove_from_bag' item.product.id %}" method="POST">
                                     {% csrf_token %}

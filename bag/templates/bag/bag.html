@@ -29,12 +29,12 @@
         <div class="col">
             <div class="table-responsive rounded">
                 <table class="table">
-                    <thead>
+                    <thead style="background-color: #00d9bb;">
                         <tr>
-                            <th>Product</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                            <th>Remove</th>
+                            <th style="background-color: #00d9bb; color: white;">Product</th>
+                            <th style="background-color: #00d9bb; color: white;">Quantity</th>
+                            <th style="background-color: #00d9bb; color: white;">Price</th>
+                            <th style="background-color: #00d9bb; color: white;"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,26 +58,22 @@
     </div>
 
     <div class="row mt-4 justify-content-end">
-        <div class="col-auto">
-            <a href="{% url 'packages:package_list' %}" class="btn btn-outline-dark btn-lg">
-                <span class="icon">
-                    <i class="fas fa-chevron-left"></i>
-                </span>
+        <div class="col-auto text-center">
+            <a href="{% url 'packages:package_list' %}" class="btn">
+                <i class="fas fa-chevron-left"></i>
                 <span class="text-uppercase">Browse Packages</span>
             </a>
         </div>
-        <div class="col-auto">
-            <a href="{% url 'checkout:checkout' %}" class="btn btn-outline-dark rounded-0 btn-lg">Checkout</a>
+        <div class="col-auto text-center">
+            <a href="{% url 'checkout:checkout' %}" class="btn">Checkout</a>
         </div>
     </div>
 
     {% else %}
     <p class="lead mb-5 text-center">Your bag is empty.</p>
     <div class="text-center">
-        <a href="{% url 'packages:package_list' %}" class="btn btn-outline-dark rounded-0 btn-lg">
-            <span class="icon">
-                <i class="fas fa-chevron-left"></i>
-            </span>
+        <a href="{% url 'packages:package_list' %}" class="btn">
+            <i class="fas fa-chevron-left"></i>
             <span class="text-uppercase">Browse Other Packages</span>
         </a>
     </div>

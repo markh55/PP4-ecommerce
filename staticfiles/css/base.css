@@ -75,14 +75,15 @@ footer {
 }
 
 /* join button in footer */
-#join-btn {
-  border-radius: 10px;
-  background-color: #00d9bb;
-  border: none;
+footer #newsletter button#join-btn.btn.w-100.mt-2 {
+  background-color: #00d9bb !important;
+  border: none !important;
+  border-radius: 10px !important;
+  transition: background-color 0.3s ease !important;
 }
-#join-btn:hover {
-  background-color: #00b39f;
-  color: white;
+
+footer #newsletter button#join-btn.btn.w-100.mt-2:hover {
+  background-color: #00b39f !important;
 }
 
 .form-control {

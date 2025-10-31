@@ -176,28 +176,51 @@ For the CRUD element of the project, users can leave, edit, and delete a review,
 
 ### GitHub
 
-Created the PP4-ecommerce repository as the main deployment was handled via Heroku + AWS.
+with this project all i needed to do on github was create the PP4 repository as the main deployment was handled via Heroku & AWS (steps below)
 
 ### Heroku
 
-1. Created the pp4-webworks app within Heroku and adjusted the location to Europe.  
-2. Linked GitHub repository under the “Deploy” tab.  
-3. Clicked “Deploy Now” and confirmed deployment by opening the app.
+1. First step i did was create the app within Heroku by creating the app name and ajusting the location to europe, once they was done i clicked create app.
+
+<img width="1262" height="937" alt="Screenshot 2025-10-31 at 21 47 40" src="https://github.com/user-attachments/assets/b7033e9c-644d-4d44-bfd3-ce2f39b56246" />
+
+2. Second step was to navigate to the 'Deploy" tab and link my Github account once that was linked i could then search for my repository i would like to link.
+
+<img width="1255" height="751" alt="Screenshot 2025-10-31 at 21 48 25" src="https://github.com/user-attachments/assets/14f3d50e-664c-4cf4-8af5-5cf804899de3" />
+
+  
+3. Following on from step two once that was all linking up i go to the bottom of the page and click "deploy now".
+
+<img width="1256" height="956" alt="Screenshot 2025-10-31 at 21 48 58" src="https://github.com/user-attachments/assets/f1ecb42d-67bf-41f3-b03e-c60a00babbf1" />
+
+4. Then when they deployment is compeleted it would go back to the top of the page to click "open app" to ensure my project was all linked and working as it should.
+   
+<img width="1266" height="184" alt="Screenshot 2025-10-31 at 21 49 13" src="https://github.com/user-attachments/assets/a16287f4-9cec-466e-95b4-24e1a2f3ad09" />
+
 
 ### AWS
 
-1. **Create S3 bucket:** Made bucket public and set region to Europe.  
-2. **Upload files:** Uploaded static and media files, matching STATICFILES_DIRS structure.  
-3. **Configure bucket permissions & policy:** Enabled public read access and CORS.  
-4. **Link S3 to Django settings:** Updated `STATIC_URL` and `MEDIA_URL` using boto3 and django-storages.  
-5. **Deploy backend:** Configured environment variables including `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `DATABASE_URL`, `DEBUG`, and `SECRET_KEY`.  
-6. **Test live deployment:** Verified site and static files load correctly.
+For AWS i didnt get any screenshots of the process but all i did was set up S3, IAM, and linked everything to Django. Steps below:
+
+1. Create S3 bucket: I logged into AWS, created a new S3 bucket, set it to public, and chose the Europe region.
+
+2. Set up IAM user: I created an IAM user specifically for the project, gave it programmatic access, and attached a policy that allowed full S3 access to my bucket only. I saved the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY for Django.
+
+3. Upload files: I uploaded static and media files, keeping the folder structure consistent with STATICFILES_DIRS.
+
+4. Configure bucket permissions & policy: I enabled public read access and set up CORS so the site could fetch the files.
+
+5. Link S3 to Django settings: I updated STATIC_URL and MEDIA_URL using boto3 and django-storages so Django would serve files from the bucket.
+
+5. Deploy backend: I configured environment variables in AWS (like AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, DATABASE_URL, DEBUG, SECRET_KEY) so the app could run securely.
+
+7. Test live deployment: I opened the site to make sure everything loaded correctly and static/media files were working.
 
 ## Testing
 
 ### Manual Testing
 
-Manual testing covered:
+To ensure the quality and performance of my project, I performed comprehensive manual testing. My testing covers the following main components:  
 
 * Authentication
 * Review/Rating
@@ -207,6 +230,9 @@ Manual testing covered:
 * Access Control/Security
 * Contact/Newsletter
 * Responsive Design/UI
+
+Each component was tested to ensure it functions correctly and provides a smooth, user-friendly experience.
+
 
 #### Authentication
 
@@ -273,21 +299,35 @@ Manual testing covered:
 
 ### CI Python Linter
 
-Python Code Linting ran on:
+Python Code Linting: I ran a CI linter on key Python files to catch style and syntax issues. The files tested include:
 
-* `profiles/views.py`  
-* `packages/models.py`  
-* `bag/views.py`  
-* `checkout/views.py`  
-* `home/forms.py`  
+* profiles/views.py → represents Authentication/Profile
+* packages/models.py → represents Review/Rating
+* bag/views.py → represents Adding Items to the Bag
+* checkout/views.py → represents Payment/Stripe
+* home/forms.py → represents Contact/Newsletter
 
-Images showing lint results:
+The screenshots show the code follows PEP8 standards, is clean, and is easier to read, reducing the likelihood of bugs.
 
-* [Bag/Views.py](https://github.com/user-attachments/assets/5734ae93-ffe7-4a28-8d76-f10fb17e42e6)  
-* [Checkout/Views.py](https://github.com/user-attachments/assets/5a147093-79b3-41cb-b96a-b7583cf95d49)  
-* [Home/Form.py](https://github.com/user-attachments/assets/92f13438-94b7-4efb-a3d2-aa864c6ca471)  
-* [Packages/Models.py](https://github.com/user-attachments/assets/c9897f98-168b-4ad7-811a-23da47b12f25)  
-* [Profiles/View.py](https://github.com/user-attachments/assets/1a8e0760-fa8c-466f-9954-e3b2d025b02b)  
+### Bag/Views.py
+
+<img width="1261" height="981" alt="Screenshot 2025-10-31 at 20 12 43" src="https://github.com/user-attachments/assets/5734ae93-ffe7-4a28-8d76-f10fb17e42e6" />
+
+### Checkout/Views.py
+
+<img width="1216" height="775" alt="Screenshot 2025-10-31 at 20 20 52" src="https://github.com/user-attachments/assets/5a147093-79b3-41cb-b96a-b7583cf95d49" />
+
+### Home/Form.py
+
+<img width="1265" height="904" alt="Screenshot 2025-10-31 at 20 22 08" src="https://github.com/user-attachments/assets/92f13438-94b7-4efb-a3d2-aa864c6ca471" />
+
+### Packages/Models.py
+
+<img width="1273" height="833" alt="Screenshot 2025-10-31 at 20 25 27" src="https://github.com/user-attachments/assets/c9897f98-168b-4ad7-811a-23da47b12f25" />
+
+### Profiles/View.py
+
+<img width="1277" height="816" alt="Screenshot 2025-10-31 at 20 27 31" src="https://github.com/user-attachments/assets/1a8e0760-fa8c-466f-9954-e3b2d025b02b" /> 
 
 ## Feedback
 

@@ -1,12 +1,14 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
-from django.views.decorators.http import require_POST
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 import stripe
 import json
 from packages.models import Package
 from checkout.models import Order
+from django.contrib import messages
+from django.views.decorators.http import require_POST
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404, HttpResponse
+)
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -14,23 +16,35 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 print("=" * 50)
 print(f"STRIPE_PUBLIC_KEY: '{settings.STRIPE_PUBLIC_KEY}'")
 print(f"STRIPE_SECRET_KEY: '{settings.STRIPE_SECRET_KEY}'")
-print(f"Public key length: {len(settings.STRIPE_PUBLIC_KEY) if settings.STRIPE_PUBLIC_KEY else 0}")
+if settings.STRIPE_PUBLIC_KEY:
+    print(f"Public key length: {len(settings.STRIPE_PUBLIC_KEY)}")
+else:
+    print("Public key length: 0")
 print("=" * 50)
+
 
 @require_POST
 def cache_checkout_data(request):
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
-        stripe.PaymentIntent.modify(pid, metadata={
-            'bag': json.dumps(request.session.get('bag', {})),
-            'save_info': request.POST.get('save_info'),
-            'username': request.user.username,
-        })
+        stripe.PaymentIntent.modify(
+            pid,
+            metadata={
+                'bag': json.dumps(request.session.get('bag', {})),
+                'save_info': request.POST.get('save_info'),
+                'username': request.user.username,
+            },
+        )
         return HttpResponse(status=200)
     except Exception as e:
-        messages.error(request, 'Sorry, your payment cannot be processed right now. Please try again later.')
+        messages.error(
+            request,
+            'Sorry, your payment cannot be processed right now. '
+            'Please try again later.'
+        )
         return HttpResponse(content=e, status=400)
+
 
 @login_required
 def checkout(request):
@@ -67,24 +81,29 @@ def checkout(request):
                 'name': item['name'],
                 'price': item['price'],
                 'quantity': item['quantity'],
-                'image_url': item['image'].url if item['image'] else None
+                'image_url': item['image'].url if item['image'] else None,
             })
             package_names.append(item['name'])
 
-        if len(package_names) == 1:
-            order_title = package_names[0]
-        else:
-            order_title = f"{package_names[0]} + {len(package_names) - 1} more"
+        order_title = (
+            package_names[0]
+            if len(package_names) == 1
+            else f"{package_names[0]} + {len(package_names) - 1} more"
+        )
+
+        full_name = (
+            f"{request.POST.get('first_name')} {request.POST.get('surname')}"
+        )
 
         order = Order.objects.create(
             user=request.user.userprofile,
             title=order_title,
-            full_name=request.POST.get('first_name') + ' ' + request.POST.get('surname'),
+            full_name=full_name,
             email=request.POST.get('email'),
             phone_number=request.POST.get('phone_number'),
             order_total=total,
             original_bag=str(order_summary),
-            stripe_pid=intent.id
+            stripe_pid=intent.id,
         )
 
         request.session['bag'] = {}
@@ -111,7 +130,7 @@ def checkout_success(request):
     if order and order.original_bag:
         try:
             services_summary = json.loads(order.original_bag.replace("'", '"'))
-        except:
+        except json.JSONDecodeError:
             services_summary = []
 
     context = {

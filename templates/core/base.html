@@ -81,14 +81,7 @@
 
             {% if user.is_authenticated %}
               <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="accountDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
+                <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   My Account
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
@@ -127,9 +120,9 @@
           </div>
           <div class="modal-body">
             <p class="mb-4">Added to your bag</p>
-            
+
             <h6 class="fw-bold mb-3">YOUR BAG ({{ product_count }})</h6>
-            
+
             <!-- Bag Items List -->
             <div id="bag-items-list">
               {% for item in bag_items %}
@@ -151,11 +144,11 @@
 
             <!-- Buttons -->
             <div class="d-flex justify-content-between mt-4">
-              <a href="{% url 'packages:package_list' %}" class="btn btn-outline-secondary" style="border-radius: 10px;">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" style="border-radius: 10px;">
                 Continue Shopping
-              </a>
-              <a href="{% url 'checkout:checkout' %}" class="btn text-white" style="background-color: #00d9bb; border: none; border-radius: 10px;">
-                Checkout
+              </button>
+              <a href="{% url 'bag:view_bag' %}" class="btn text-white" style="background-color: #00d9bb; border: none; border-radius: 10px;">
+                Go to Bag
               </a>
             </div>
           </div>
@@ -268,15 +261,15 @@
           if (urlParams.get('added') === 'true') {
             const bagModal = new bootstrap.Modal(document.getElementById('bagModal'));
             bagModal.show();
-            
+
             // Remove the parameter from URL without reload
             window.history.replaceState({}, '', window.location.pathname);
           }
-          
+
           // Initialize regular toasts
           const toastElList = [].slice.call(document.querySelectorAll('.toast'));
           toastElList.forEach(function(toastEl) {
-            const toast = new bootstrap.Toast(toastEl, { delay: 4000 });
+            const toast = new bootstrap.Toast(toastel, { delay: 4000 });
             toast.show();
           });
         });

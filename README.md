@@ -15,6 +15,7 @@ This project is a web development agency that provides tiered service packages �
      * [CRUD](#crud)
 4. [Deployment](#deployment)
 5. [Testing](#testing)
+     * [Manual Testing](#manual-testing)
 6. [Feedback](#feedback)
 7. [Tech Stack](#tech-stack)
 8. [Resources](#resources)
@@ -208,6 +209,64 @@ As this was my first time setting up and using AWS, I did not take any screensho
 
 ## Testing
 
+### Manual Testing
+
+### Authenication
+| Feature      | Test Performed                                                                 | Outcome     |
+| ------------ | ------------------------------------------------------------------------------ | ----------- |
+| Login page   | Tested all components of page was working as they should by logging in as user | Completed ✅ |
+| Sign-up Page | Completed the sign up process to ensure it all works as intended               | Completed ✅ |
+| Logout Page  | Logged out of my account to ensure it works as should                          | Completed ✅ |
+
+### Review/Rating
+| Feature                                      | Test Performed                                                                           | Outcome     |
+| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| Add a review                                 | Added a review to a product and verified it appears correctly                                                              | Completed ✅ |
+| Edit a review                                | Edited an existing review and verified changes are saved                                                                   | Completed ✅ |
+| Delete a review                              | Deleted a review and confirmed it no longer appears                                                                        | Completed ✅ |
+| Add a rating                                 | Added a star rating to a product and checked it displays correctly                                                         | Completed ✅ |
+| Edit a rating                                | Updated an existing rating and verified the change                                                                         | Completed ✅ |
+| Delete a rating                              | Removed a rating and confirmed it no longer affects product average                                                        | Completed ✅ |
+| Users can only edit their own review/ rating | Attempted to edit another user’s review/rating and confirmed the system prevents it. Verified user can edit only their own | Completed ✅ |
+
+### Adding to the bag
+| Feature         | Test Performed                                                                                                             | Outcome     |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| Add item to bag | Selected a package and verified it appears in the user’s current selection/checkout list                                   | Completed ✅ |
+| Remove item     | Removed a package from the selection and confirmed it is no longer listed                                                  | Completed ✅ |
+| View bag        | Opened the selection/checkout page and verified all chosen packages are displayed with correct details (tier, name, price) | Completed ✅ |
+
+### Payment with Strip / Checkout
+| Feature               | Test Performed                                                                                                                    | Outcome     |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| Enter payment details | Entered valid card information on Stripe payment form and verified it accepts the input                                           | Completed ✅ |
+| Process payment       | Completed a purchase and confirmed that an Order instance is created with correct details (user, total, bag contents, stripe PID) | Completed ✅ |
+| Payment failure       | Entered invalid card or cancelled payment and confirmed appropriate error message is shown; no order is created                   | Completed ✅ |
+| Order confirmation    | Verified order number is generated, order details are saved, and user receives confirmation                                       | Completed ✅ |
+
+### Access Control / Security
+| Feature             | Test Performed                                                    | Outcome     |
+| ------------------- | ----------------------------------------------------------------- | ----------- |
+| Order access        | Verified users can only view their own orders                     | Completed ✅ |
+| Checkout protection | Verified checkout cannot be completed without login (if required) | Completed ✅ |
+
+### Contact / Newsletter
+| Feature             | Test Performed                                                                                                               | Outcome     |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| Submit contact form | Filled in all fields (name, email, number, inquiry type, message) and submitted form; verified message is received/processed | Completed ✅ |
+| Field validation    | Left fields empty or entered invalid email and confirmed validation prevents submission                                      | Completed ✅ |
+| Success feedback    | Verified user sees a success message after submitting                                                                        | Completed ✅ |
+
+### Responsive Design / UI
+| Feature        | Test Performed                                                                                           | Outcome     |
+| -------------- | -------------------------------------------------------------------------------------------------------- | ----------- |
+| Mobile layout  | Opened site on mobile devices or used browser dev tools to simulate and verified layout adapts correctly | Completed ✅ |
+| Tablet layout  | Verified site displays correctly on tablet screen sizes                                                  | Completed ✅ |
+| Desktop layout | Verified site displays correctly on desktop screens                                                      | Completed ✅ |
+| Navigation     | Checked that menus, buttons, links are accessible and functional on all screen sizes                     | Completed ✅ |
+| Forms          | Confirmed contact form, newsletter, and checkout forms are usable on mobile and tablet                   | Completed ✅ |
+| Images / media | Verified images scale or adjust correctly on different screen sizes                                      | Completed ✅ |
+
 
 ## Feedback
 
@@ -235,7 +294,8 @@ After taking the feedback, I updated my project to remove the “More Details”
 - HTML
 - CSS / Bootstrap 5
 - JavaScript
-- Python / Django 
+- Python / Django
+- PostgreSQL
 
 ## Resources
 

@@ -6,8 +6,7 @@ This project is a web development agency that provides tiered service packages â
 
 ## Table of Contents
 
-- [PP4 - WebWorks](#pp4---webworks)
-  - [Table of Contents](#table-of-contents)
+
   - [Planning](#planning)
     - [User Stories](#user-stories)
   - [Wireframes](#wireframes)

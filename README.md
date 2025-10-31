@@ -16,6 +16,7 @@ This project is a web development agency that provides tiered service packages �
 4. [Deployment](#deployment)
 5. [Testing](#testing)
      * [Manual Testing](#manual-testing)
+     * [CI Python Linter](#ci-python-linter)
 6. [Feedback](#feedback)
 7. [Tech Stack](#tech-stack)
 8. [Resources](#resources)
@@ -279,6 +280,37 @@ Each component was tested to ensure it functions correctly and provides a smooth
 | Forms          | Confirmed contact form, newsletter, and checkout forms are usable on mobile and tablet                   | Completed ✅ |
 | Images / media | Verified images scale or adjust correctly on different screen sizes                                      | Completed ✅ |
 
+### CI Python Linter
+
+Python Code Linting: I ran a CI linter on key Python files to catch style and syntax issues. The files tested include:
+
+* profiles/views.py → represents Authentication/Profile
+* packages/models.py → represents Review/Rating
+* bag/views.py → represents Adding Items to the Bag
+* checkout/views.py → represents Payment/Stripe
+* home/forms.py → represents Contact/Newsletter
+
+The screenshots show the code follows PEP8 standards, is clean, and is easier to read, reducing the likelihood of bugs.
+
+### Bag/Views.py
+
+<img width="1261" height="981" alt="Screenshot 2025-10-31 at 20 12 43" src="https://github.com/user-attachments/assets/5734ae93-ffe7-4a28-8d76-f10fb17e42e6" />
+
+### Checkout/Views.py
+
+<img width="1216" height="775" alt="Screenshot 2025-10-31 at 20 20 52" src="https://github.com/user-attachments/assets/5a147093-79b3-41cb-b96a-b7583cf95d49" />
+
+### Home/Form.py
+
+<img width="1265" height="904" alt="Screenshot 2025-10-31 at 20 22 08" src="https://github.com/user-attachments/assets/92f13438-94b7-4efb-a3d2-aa864c6ca471" />
+
+### Packages/Models.py
+
+<img width="1273" height="833" alt="Screenshot 2025-10-31 at 20 25 27" src="https://github.com/user-attachments/assets/c9897f98-168b-4ad7-811a-23da47b12f25" />
+
+### Profiles/View.py
+
+<img width="1277" height="816" alt="Screenshot 2025-10-31 at 20 27 31" src="https://github.com/user-attachments/assets/1a8e0760-fa8c-466f-9954-e3b2d025b02b" />
 
 ## Feedback
 

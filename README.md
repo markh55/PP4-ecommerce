@@ -154,14 +154,12 @@ Below are screen shots of the process
 
 <img width="913" height="536" alt="Screenshot 2025-10-29 at 22 53 24" src="https://github.com/user-attachments/assets/1d0aae72-f6e8-4fd8-9e5b-14bd188dc024" />
 
+### Custom 404 Error Page
 
-### Authentication
+A styled "Page Not Found" screen with a friendly message and a link back to the homepage, providing a better user experience when an incorrect URL is entered.
 
-I configured Django’s email backend to use Gmail SMTP for sending authentication-related emails. This setup supports features like:
+<img width="833" height="662" alt="Screenshot 2025-10-31 at 21 11 42" src="https://github.com/user-attachments/assets/8a65ade4-98f7-4809-a345-109488724ea6" />
 
-* Account verification and confirmation during user registration
-
-* Password reset functionality using secure, time-limited links
 
 ## Deployment
 

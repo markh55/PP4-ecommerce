@@ -1,58 +1,83 @@
 # PP4 - WebWorks
+
 This project is a web development agency that provides tiered service packages — Bronze, Silver, Gold, and Platinum. Each package represents a different level of service, with Bronze offering essential entry-level support, Silver providing an enhanced and more comprehensive solution, Gold delivering advanced features and premium support, and Platinum serving as the ultimate top-tier option with the highest level of service and customisation.
 
 [Project link (right click to open in new window)](https://pp4-webworks-8ba6fd0af6ed.herokuapp.com/)
 
-## Table of Content
+## Table of Contents
 
-1. [Planning](#planning)
-     * [User Stories](#user-stories)
-     * [Wireframes](#wireframes)
-     * [Entity Relationship Diagram](#entity-relationship-diagram)
-     * [Colour Scheme](#colour-scheme)
-2. [Final Design](#final-design)
-3. [Features](#features)
-     * [CRUD](#crud)
-4. [Deployment](#deployment)
-5. [Testing](#testing)
-     * [Manual Testing](#manual-testing)
-     * [CI Python Linter](#ci-python-linter)
-6. [Feedback](#feedback)
-7. [Tech Stack](#tech-stack)
-8. [Resources](#resources)
-     * [Walkthrough Project](#walkthrough-project)
-     * [Books](#books)
-     * [Documention / forums](#documention--forums)
-9. [Credits / Tutotials](#credits--tutorials)
-     * [Sources used](#sources-used)
-
+- [PP4 - WebWorks](#pp4---webworks)
+  - [Table of Contents](#table-of-contents)
+  - [Planning](#planning)
+    - [User Stories](#user-stories)
+  - [Wireframes](#wireframes)
+    - [Home Wireframe - Desktop](#home-wireframe---desktop)
+    - [Wireframe - Mobile](#wireframe---mobile)
+    - [Entity Relationship Diagram](#entity-relationship-diagram)
+  - [Colour Scheme](#colour-scheme)
+    - [Hero / Contact Image](#hero--contact-image)
+  - [Final Design](#final-design)
+  - [Features](#features)
+    - [CRUD](#crud)
+      - [Add review \& rating](#add-review--rating)
+      - [Edit Review](#edit-review)
+      - [Delete Review](#delete-review)
+    - [Custom 404 Error Page](#custom-404-error-page)
+  - [Deployment](#deployment)
+    - [GitHub](#github)
+    - [Heroku](#heroku)
+    - [AWS](#aws)
+  - [Testing](#testing)
+    - [Manual Testing](#manual-testing)
+      - [Authentication](#authentication)
+      - [Review/Rating](#reviewrating)
+      - [Adding to the Bag](#adding-to-the-bag)
+      - [Payment / Checkout](#payment--checkout)
+      - [Access Control / Security](#access-control--security)
+      - [Contact / Newsletter](#contact--newsletter)
+      - [Responsive Design / UI](#responsive-design--ui)
+    - [CI Python Linter](#ci-python-linter)
+  - [Feedback](#feedback)
+    - [Packages](#packages)
+      - [Before](#before)
+      - [After](#after)
+  - [Tech Stack](#tech-stack)
+  - [Resources](#resources)
+    - [Walkthrough Project](#walkthrough-project)
+    - [Books](#books)
+    - [Documentation / Forums](#documentation--forums)
+  - [Credits / Tutorials](#credits--tutorials)
+    - [Newsletter](#newsletter)
+    - [Invoice / Order History](#invoice--order-history)
+    - [Sources Used](#sources-used)
 
 ## Planning
 
 ### User Stories
-<img width="1193" height="489" alt="Screenshot 2025-09-09 at 21 31 32" src="https://github.com/user-attachments/assets/007e9734-5c6c-4aab-ba8d-7a0f7f8ee5e4" />
 
+![User Stories](https://github.com/user-attachments/assets/007e9734-5c6c-4aab-ba8d-7a0f7f8ee5e4)
 
 ## Wireframes
 
-### Home Wirefram - Desktop
+### Home Wireframe - Desktop
 
 This is the mock up of the home page when not signed in on desktop.
-<img width="603" height="596" alt="home-wireframe" src="https://github.com/user-attachments/assets/8b7f59ea-5db0-476d-b924-2629445604a4" />
+
+![Home Wireframe](https://github.com/user-attachments/assets/8b7f59ea-5db0-476d-b924-2629445604a4)
 
 This is the mock up of the page when user is logged into their account.
-<img width="603" height="596" alt="LoggedIn-Wireframe" src="https://github.com/user-attachments/assets/22953f83-d952-4fba-b5db-4a1400d284a4" />
 
-### Wirefram - Mobile
+![Logged In Wireframe](https://github.com/user-attachments/assets/22953f83-d952-4fba-b5db-4a1400d284a4)
 
-<img width="301" height="1266" alt="Mobile Wireframe" src="https://github.com/user-attachments/assets/f02c428e-fe9a-4748-87b5-5d78c78ef6de" />
+### Wireframe - Mobile
 
+![Mobile Wireframe](https://github.com/user-attachments/assets/f02c428e-fe9a-4748-87b5-5d78c78ef6de)
 
 ### Entity Relationship Diagram
 
-Entity Relationship Diagram
 Following on from designing the wireframes, I needed to think about a database structure to be used for the project. I opted for a comprehensive setup based around six core models: User, UserProfile, Order, Package, Review, and Rating.
-The User model is composed of the following:
+
+**User model fields:**
 
 * ID (Primary Key)
 * Username
@@ -60,7 +85,7 @@ The User model is composed of the following:
 * Password
 * Date_joined
 
-The UserProfile model is composed of the following:
+**UserProfile model fields:**
 
 * ID (Primary Key)
 * User_id (Foreign Key)
@@ -68,7 +93,7 @@ The UserProfile model is composed of the following:
 * Default_email
 * Default_business_name
 
-The Order model is composed of the following:
+**Order model fields:**
 
 * ID (Primary Key)
 * Order_number
@@ -78,7 +103,7 @@ The Order model is composed of the following:
 * Order_total
 * Stripe_pid
 
-The Package model is composed of the following:
+**Package model fields:**
 
 * ID (Primary Key)
 * Tier
@@ -88,7 +113,7 @@ The Package model is composed of the following:
 * Price
 * Created_at
 
-The Review model is composed of the following:
+**Review model fields:**
 
 * ID (Primary Key)
 * Package_id (Foreign Key)
@@ -96,7 +121,7 @@ The Review model is composed of the following:
 * Title
 * Body
 
-The Rating model is composed of the following:
+**Rating model fields:**
 
 * ID (Primary Key)
 * Package_id (Foreign Key)
@@ -106,111 +131,75 @@ The Rating model is composed of the following:
 
 This structure allows for a one-to-one relationship between User and UserProfile, while enabling users to place multiple orders and create multiple reviews and ratings for different packages. Each package can have multiple reviews and ratings, keeping the relationships clear and easy to manage.
 
-<img width="1143" height="703" alt="ERD" src="https://github.com/user-attachments/assets/90922d63-6a1f-4d9d-b158-4898806f1101" />
+![ERD](https://github.com/user-attachments/assets/90922d63-6a1f-4d9d-b158-4898806f1101)
 
 ## Colour Scheme
 
+![Colour Scheme](https://github.com/user-attachments/assets/9590b6f1-62b3-4d00-9a37-8af20383e892)
 
-<img width="1600" height="1200" alt="Webworks (2)" src="https://github.com/user-attachments/assets/9590b6f1-62b3-4d00-9a37-8af20383e892" />
+I wanted to keep WebWorks’ colour scheme simple and clean, avoiding too many colours that might distract users from the site’s content and offerings. Here’s the palette I’ve chosen:
 
-
-I wanted to keep WebWorks’ colour scheme simple and clean, avoiding too many colours that might distract users from the site’s content and offerings. With that in mind, here’s the palette I’ve chosen and the reasoning behind each colour:
-
-#FFFFFF – White: This serves as the main background colour, providing a clean, minimal canvas for the rest of the site.
-
-#00D9BB – Turquoise: Used as an accent colour to highlight key elements such as buttons or call-to-action areas, helping them stand out without being overwhelming.
-
-#F8F9FA – Seasalt: This soft neutral tone is used to separate different sections of the page, such as “What We Offer” and “What Our Clients Say.” The subtle contrast creates a clear visual distinction while maintaining a cohesive look.
+* **#FFFFFF – White:** Main background colour, providing a clean, minimal canvas.
+* **#00D9BB – Turquoise:** Accent colour to highlight key elements such as buttons or call-to-action areas.
+* **#F8F9FA – Seasalt:** Soft neutral tone to separate different sections of the page.
 
 ### Hero / Contact Image
 
-<img width="1000" height="562" alt="hero copy" src="https://github.com/user-attachments/assets/4844babe-b056-4251-942c-91a5c59f330a" />
+![Hero / Contact](https://github.com/user-attachments/assets/4844babe-b056-4251-942c-91a5c59f330a)
 
-The hero and contact sections feature a purple gradient image. I chose this because it ties in nicely with the overall colour scheme while adding a subtle ‘pop’ of colour. The image helps the site stand out visually, yet still maintains a clean and minimal look that fits the WebWorks style.
-
-If I were to change something, this would be the one area I’d revisit — I think I could recreate a very similar effect using CSS alone for a more lightweight and flexible solution.
+The hero and contact sections feature a purple gradient image. I chose this because it ties in nicely with the overall colour scheme while adding a subtle ‘pop’ of colour.
 
 ## Final Design
 
-
 ## Features
 
-### CRUD 
-For the CRUD element of the project, I have added the ability for users to leave, edit, and delete a review. As well as rate each service, but only for reviews and ratings they have submitted themselves. This ensures that users cannot alter another user’s review in any way.
+### CRUD
 
-Since the review forms and ratings are small elements, all styling is handled directly within the HTML using Bootstrap, rather than through an external CSS file. This keeps the implementation simple and lightweight while maintaining a clean and responsive design.
+For the CRUD element of the project, users can leave, edit, and delete a review, as well as rate each service. Users can only edit their own reviews and ratings.
 
-Below are screen shots of the process
+#### Add review & rating
 
-### Add review & rating
+![Add Review](https://github.com/user-attachments/assets/7604337b-5ef8-420a-be25-4fd631fe0be1)
 
-<img width="1417" height="790" alt="Screenshot 2025-10-29 at 22 53 49" src="https://github.com/user-attachments/assets/7604337b-5ef8-420a-be25-4fd631fe0be1" />
+#### Edit Review
 
-### Edit Review
-  
-<img width="1009" height="667" alt="Screenshot 2025-10-29 at 22 53 09" src="https://github.com/user-attachments/assets/3f05a009-ab2c-43dc-96cf-ce1a48f080ce" />
+![Edit Review](https://github.com/user-attachments/assets/3f05a009-ab2c-43dc-96cf-ce1a48f080ce)
 
-### Delete Review
+#### Delete Review
 
-<img width="913" height="536" alt="Screenshot 2025-10-29 at 22 53 24" src="https://github.com/user-attachments/assets/1d0aae72-f6e8-4fd8-9e5b-14bd188dc024" />
+![Delete Review](https://github.com/user-attachments/assets/1d0aae72-f6e8-4fd8-9e5b-14bd188dc024)
 
 ### Custom 404 Error Page
 
-A styled "Page Not Found" screen with a friendly message and a link back to the homepage, providing a better user experience when an incorrect URL is entered.
-
-<img width="833" height="662" alt="Screenshot 2025-10-31 at 21 11 42" src="https://github.com/user-attachments/assets/8a65ade4-98f7-4809-a345-109488724ea6" />
-
+![404 Page](https://github.com/user-attachments/assets/8a65ade4-98f7-4809-a345-109488724ea6)
 
 ## Deployment
 
-### Git Hub 
-with this project all i needed to do on github was create the PP4-ecommerce repository as the main deployment was handled via Heroku + AWS (steps below)
+### GitHub
+
+Created the PP4-ecommerce repository as the main deployment was handled via Heroku + AWS.
 
 ### Heroku
-1. First step i did was create the pp4-webworks app within Heroku by creating the app name and ajusting the location to europe, once they was done i clicked create app.
 
-<img width="1782" height="1032" alt="Screenshot 2025-10-21 at 21 37 47" src="https://github.com/user-attachments/assets/9d3f5130-109e-472e-abdc-4d722d9c8621" />
-
-2. Second step was to navigate to the 'Deploy" tab and link my Github account once that was linked i could then search for my repository i would like to link.
-
-<img width="1788" height="975" alt="Screenshot 2025-10-21 at 21 40 14" src="https://github.com/user-attachments/assets/c9708643-0018-4282-b4d2-00c3eb90a24c" />
-
-3. Following on from step two once that was all linking up i go to the bottom of the page and click "deploy now".
-
-<img width="1782" height="1031" alt="Screenshot 2025-10-21 at 21 40 48" src="https://github.com/user-attachments/assets/85c49abd-b3ab-4de5-afd2-36f1fba3d638" />
-
-4. Then when they deployment is compeleted it would go back to the top of the page to click "open app" to ensure my project was all linked and working as it should.
-
-<img width="1259" height="186" alt="Screenshot 2025-10-21 at 21 43 24" src="https://github.com/user-attachments/assets/11a8aee2-36aa-4fe9-bf75-65b01d3483e1" />
-
+1. Created the pp4-webworks app within Heroku and adjusted the location to Europe.  
+2. Linked GitHub repository under the “Deploy” tab.  
+3. Clicked “Deploy Now” and confirmed deployment by opening the app.
 
 ### AWS
 
-1. Create an S3 bucket
-First, I logged into my AWS account and navigated to S3. I clicked Create bucket, gave it a unique name (pp4-webworks), and selected the region closest to me (Europe). I also ensured the bucket was publicly accessible so my static files could be served.
-
-2. Upload project files to S3
-Next, I uploaded all static and media files to the bucket. This included CSS, images, and JavaScript files. I made sure the folder structure matched STATICFILES_DIRS from my Django project to prevent broken links.
-
-3. Configure bucket permissions & policy
-After uploading, I added a bucket policy to allow public read access, ensuring users could access static files directly. I also enabled CORS to allow cross-origin requests if needed.
-
-4. Link S3 bucket to Django settings
-I updated settings.py in my Django project to point STATIC_URL and MEDIA_URL to the S3 bucket using boto3 and django-storages. This ensures all static files and media are served from AWS.
-
-5. Deploy backend
-To deploy the full site, I configured environment variables in AWS, including AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY to connect to AWS services, DATABASE_URL for the PostgreSQL database, and other project-specific settings such as DEBUG and SECRET_KEY. This setup allowed the Django project to run online and be publicly accessible.
-
-6. Test live deployment
-Finally, I accessed the site’s public URL to ensure it was live and that all static files were loading correctly from the S3 bucket.
-
-As this was my first time setting up and using AWS, I did not take any screenshots of the step-by-step setup process, but I have explained in detail above what I did and how.
+1. **Create S3 bucket:** Made bucket public and set region to Europe.  
+2. **Upload files:** Uploaded static and media files, matching STATICFILES_DIRS structure.  
+3. **Configure bucket permissions & policy:** Enabled public read access and CORS.  
+4. **Link S3 to Django settings:** Updated `STATIC_URL` and `MEDIA_URL` using boto3 and django-storages.  
+5. **Deploy backend:** Configured environment variables including `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `DATABASE_URL`, `DEBUG`, and `SECRET_KEY`.  
+6. **Test live deployment:** Verified site and static files load correctly.
 
 ## Testing
 
 ### Manual Testing
 
-To ensure the quality and performance of my project, I performed comprehensive manual testing. My testing covers the following main components:  
+Manual testing covered:
+
 * Authentication
 * Review/Rating
 * Adding Items to the Bag
@@ -220,153 +209,145 @@ To ensure the quality and performance of my project, I performed comprehensive m
 * Contact/Newsletter
 * Responsive Design/UI
 
-Each component was tested to ensure it functions correctly and provides a smooth, user-friendly experience.
+#### Authentication
 
-### Authenication
-| Feature      | Test Performed                                                                 | Outcome     |
-| ------------ | ------------------------------------------------------------------------------ | ----------- |
-| Login page   | Tested all components of page was working as they should by logging in as user | Completed ✅ |
-| Sign-up Page | Completed the sign up process to ensure it all works as intended               | Completed ✅ |
-| Logout Page  | Logged out of my account to ensure it works as should                          | Completed ✅ |
+| Feature      | Test Performed                                                        | Outcome     |
+| ------------ | ------------------------------------------------------------------- | ----------- |
+| Login page   | Logged in as a user                                                   | Completed ✅ |
+| Sign-up page | Completed sign up process                                             | Completed ✅ |
+| Logout page  | Logged out of account                                                 | Completed ✅ |
 
-### Review/Rating
-| Feature                                      | Test Performed                                                                           | Outcome     |
-| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| Add a review                                 | Added a review to a product and verified it appears correctly                                                              | Completed ✅ |
-| Edit a review                                | Edited an existing review and verified changes are saved                                                                   | Completed ✅ |
-| Delete a review                              | Deleted a review and confirmed it no longer appears                                                                        | Completed ✅ |
-| Add a rating                                 | Added a star rating to a product and checked it displays correctly                                                         | Completed ✅ |
-| Edit a rating                                | Updated an existing rating and verified the change                                                                         | Completed ✅ |
-| Delete a rating                              | Removed a rating and confirmed it no longer affects product average                                                        | Completed ✅ |
-| Users can only edit their own review/ rating | Attempted to edit another user’s review/rating and confirmed the system prevents it. Verified user can edit only their own | Completed ✅ |
+#### Review/Rating
 
-### Adding to the bag
-| Feature         | Test Performed                                                                                                             | Outcome     |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| Add item to bag | Selected a package and verified it appears in the user’s current selection/checkout list                                   | Completed ✅ |
-| Remove item     | Removed a package from the selection and confirmed it is no longer listed                                                  | Completed ✅ |
-| View bag        | Opened the selection/checkout page and verified all chosen packages are displayed with correct details (tier, name, price) | Completed ✅ |
+| Feature | Test Performed | Outcome |
+| ------- | -------------- | ------- |
+| Add review | Verified review added | ✅ |
+| Edit review | Verified edit saved | ✅ |
+| Delete review | Verified removal | ✅ |
+| Add rating | Verified rating added | ✅ |
+| Edit rating | Verified update | ✅ |
+| Delete rating | Verified deletion | ✅ |
+| Users only edit own | Confirmed system prevents edits on others | ✅ |
 
-### Payment with Strip / Checkout
-| Feature               | Test Performed                                                                                                                    | Outcome     |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| Enter payment details | Entered valid card information on Stripe payment form and verified it accepts the input                                           | Completed ✅ |
-| Process payment       | Completed a purchase and confirmed that an Order instance is created with correct details (user, total, bag contents, stripe PID) | Completed ✅ |
-| Payment failure       | Entered invalid card or cancelled payment and confirmed appropriate error message is shown; no order is created                   | Completed ✅ |
-| Order confirmation    | Verified order number is generated, order details are saved, and user receives confirmation                                       | Completed ✅ |
+#### Adding to the Bag
 
-### Access Control / Security
-| Feature             | Test Performed                                                    | Outcome     |
-| ------------------- | ----------------------------------------------------------------- | ----------- |
-| Order access        | Verified users can only view their own orders                     | Completed ✅ |
-| Checkout protection | Verified checkout cannot be completed without login (if required) | Completed ✅ |
+| Feature | Test Performed | Outcome |
+| ------- | -------------- | ------- |
+| Add item | Added package to bag | ✅ |
+| Remove item | Removed package | ✅ |
+| View bag | Checked all package details | ✅ |
 
-### Contact / Newsletter
-| Feature             | Test Performed                                                                                                               | Outcome     |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| Submit contact form | Filled in all fields (name, email, number, inquiry type, message) and submitted form; verified message is received/processed | Completed ✅ |
-| Field validation    | Left fields empty or entered invalid email and confirmed validation prevents submission                                      | Completed ✅ |
-| Success feedback    | Verified user sees a success message after submitting                                                                        | Completed ✅ |
+#### Payment / Checkout
 
-### Responsive Design / UI
-| Feature        | Test Performed                                                                                           | Outcome     |
-| -------------- | -------------------------------------------------------------------------------------------------------- | ----------- |
-| Mobile layout  | Opened site on mobile devices or used browser dev tools to simulate and verified layout adapts correctly | Completed ✅ |
-| Tablet layout  | Verified site displays correctly on tablet screen sizes                                                  | Completed ✅ |
-| Desktop layout | Verified site displays correctly on desktop screens                                                      | Completed ✅ |
-| Navigation     | Checked that menus, buttons, links are accessible and functional on all screen sizes                     | Completed ✅ |
-| Forms          | Confirmed contact form, newsletter, and checkout forms are usable on mobile and tablet                   | Completed ✅ |
-| Images / media | Verified images scale or adjust correctly on different screen sizes                                      | Completed ✅ |
+| Feature | Test Performed | Outcome |
+| ------- | -------------- | ------- |
+| Enter payment | Entered valid card | ✅ |
+| Process payment | Order instance created correctly | ✅ |
+| Payment failure | Checked invalid card error | ✅ |
+| Order confirmation | Verified order number and details | ✅ |
+
+#### Access Control / Security
+
+| Feature | Test Performed | Outcome |
+| ------- | -------------- | ------- |
+| Order access | Verified only own orders viewable | ✅ |
+| Checkout protection | Verified login required | ✅ |
+
+#### Contact / Newsletter
+
+| Feature | Test Performed | Outcome |
+| ------- | -------------- | ------- |
+| Submit contact form | Submitted with all fields filled | ✅ |
+| Field validation | Tested empty/invalid input | ✅ |
+| Success feedback | Verified confirmation message | ✅ |
+
+#### Responsive Design / UI
+
+| Feature | Test Performed | Outcome |
+| ------- | -------------- | ------- |
+| Mobile layout | Verified on mobile devices | ✅ |
+| Tablet layout | Verified tablet screen sizes | ✅ |
+| Desktop layout | Verified desktop display | ✅ |
+| Navigation | Checked menus/buttons | ✅ |
+| Forms | Confirmed forms usable | ✅ |
+| Images / media | Verified scaling | ✅ |
 
 ### CI Python Linter
 
-Python Code Linting: I ran a CI linter on key Python files to catch style and syntax issues. The files tested include:
+Python Code Linting ran on:
 
-* profiles/views.py → represents Authentication/Profile
-* packages/models.py → represents Review/Rating
-* bag/views.py → represents Adding Items to the Bag
-* checkout/views.py → represents Payment/Stripe
-* home/forms.py → represents Contact/Newsletter
+* `profiles/views.py`  
+* `packages/models.py`  
+* `bag/views.py`  
+* `checkout/views.py`  
+* `home/forms.py`  
 
-The screenshots show the code follows PEP8 standards, is clean, and is easier to read, reducing the likelihood of bugs.
+Images showing lint results:
 
-### Bag/Views.py
-
-<img width="1261" height="981" alt="Screenshot 2025-10-31 at 20 12 43" src="https://github.com/user-attachments/assets/5734ae93-ffe7-4a28-8d76-f10fb17e42e6" />
-
-### Checkout/Views.py
-
-<img width="1216" height="775" alt="Screenshot 2025-10-31 at 20 20 52" src="https://github.com/user-attachments/assets/5a147093-79b3-41cb-b96a-b7583cf95d49" />
-
-### Home/Form.py
-
-<img width="1265" height="904" alt="Screenshot 2025-10-31 at 20 22 08" src="https://github.com/user-attachments/assets/92f13438-94b7-4efb-a3d2-aa864c6ca471" />
-
-### Packages/Models.py
-
-<img width="1273" height="833" alt="Screenshot 2025-10-31 at 20 25 27" src="https://github.com/user-attachments/assets/c9897f98-168b-4ad7-811a-23da47b12f25" />
-
-### Profiles/View.py
-
-<img width="1277" height="816" alt="Screenshot 2025-10-31 at 20 27 31" src="https://github.com/user-attachments/assets/1a8e0760-fa8c-466f-9954-e3b2d025b02b" />
+* [Bag/Views.py](https://github.com/user-attachments/assets/5734ae93-ffe7-4a28-8d76-f10fb17e42e6)  
+* [Checkout/Views.py](https://github.com/user-attachments/assets/5a147093-79b3-41cb-b96a-b7583cf95d49)  
+* [Home/Form.py](https://github.com/user-attachments/assets/92f13438-94b7-4efb-a3d2-aa864c6ca471)  
+* [Packages/Models.py](https://github.com/user-attachments/assets/c9897f98-168b-4ad7-811a-23da47b12f25)  
+* [Profiles/View.py](https://github.com/user-attachments/assets/1a8e0760-fa8c-466f-9954-e3b2d025b02b)  
 
 ## Feedback
 
-When my PP4 project was tested by family and friends, I received the following feedback:
+### Packages
 
-### Packages:
+* Fewer clicks for users  
+* Clickable icons instead of buttons  
+* Intuitive interactions
 
-Fewer clicks: Make it easier for users to complete actions without having to search for buttons.
-Clickable icons: Allow icons to perform the same actions as buttons, so users can click the icon instead of scrolling for a “More Details” button.
-Intuitive interactions: Ensure the design feels natural and users instinctively know what can be clicked.
+#### Before
 
-### Before:
+Users had to click “More Details” to view package info.
 
-Users had to click the “More Details” button to view package information and add it to their bag.
+![Before](https://github.com/user-attachments/assets/a7522871-7f0f-4646-866b-70b266c09f26)
 
-<img width="1248" height="637" alt="Screenshot 2025-10-26 at 22 37 51" src="https://github.com/user-attachments/assets/a7522871-7f0f-4646-866b-70b266c09f26" />
+#### After
 
-### After
-After taking the feedback, I updated my project to remove the “More Details” button and make the whole card a clickable object. This has several benefits, especially as the majority of web browsing now happens on mobile and tablet devices: it provides larger, easier-to-tap areas, reduces the chance of users missing small buttons, and makes navigation feel more intuitive and seamless across different screen sizes.
+Whole card is clickable; easier to tap on mobile/tablet.
 
-<img width="1225" height="587" alt="Screenshot 2025-10-26 at 23 03 06" src="https://github.com/user-attachments/assets/07a4020c-6541-45f9-877a-af29b1685d67" />
+![After](https://github.com/user-attachments/assets/07a4020c-6541-45f9-877a-af29b1685d67)
 
 ## Tech Stack
 
-- HTML
-- CSS / Bootstrap 5
-- JavaScript
-- Python / Django
-- PostgreSQL
+* HTML  
+* CSS / Bootstrap 5  
+* JavaScript  
+* Python / Django  
+* PostgreSQL
 
 ## Resources
 
 ### Walkthrough Project
-- Code Institute
-  - Boutique Ado
+
+* Code Institute  
+* Boutique Ado walkthrough project
 
 ### Books
-- Djnago 5 By Example by Antonio Mele
-- JavaScript from Beginner to Professional by Lautrnce Lars Svekis & Maaike Van Putten
 
-### Documention / forums
-- Documentation for Django - <https://docs.djangoproject.com/en/5.2/>  
-- Stack Overflow
+* Django 5 By Example by Antonio Melé  
+* JavaScript from Beginner to Professional by Lautrnce Lars Svekis & Maaike Van Putten
 
+### Documentation / Forums
+
+* [Django Documentation](https://docs.djangoproject.com/en/5.2/)  
+* [Stack Overflow](https://stackoverflow.com/)
 
 ## Credits / Tutorials
 
-### Sources Used
-
 ### Newsletter
-I used django-newsletter ([click here](https://dev.to/shubhamkshatriya25/how-to-build-a-email-newsletter-subscriber-in-django-j2p)) as a reference for the newsletter signup within the footer, and adapted the code to fit my project. This was just used as a guide.
+
+Reference: django-newsletter ([newsletter guide](https://dev.to/shubhamkshatriya25/how-to-build-a-email-newsletter-subscriber-in-django-j2p))
 
 ### Invoice / Order History
 
-This section was created with help from *Django 5 By Example* and the official Django documentation listed below:
+Created with help from *Django 5 By Example* and official Django documentation:
 
-- [Django 5.2 Documentation](https://docs.djangoproject.com/en/5.2/)
-- Django Models and Queries  
-- Django Views  
-- Django Templates
+### Sources Used
 
+* [Django 5.2 Documentation](https://docs.djangoproject.com/en/5.2/)  
+* Django Models and Queries  
+* Django Views  
+* Django Templates

@@ -211,6 +211,18 @@ As this was my first time setting up and using AWS, I did not take any screensho
 
 ### Manual Testing
 
+To ensure the quality and performance of my project, I performed comprehensive manual testing. My testing covers the following main components:  
+* Authentication
+* Review/Rating
+* Adding Items to the Bag
+* Payment/Checkout
+* Profile management
+* Access Control/Security
+* Contact/Newsletter
+* Responsive Design/UI
+
+Each component was tested to ensure it functions correctly and provides a smooth, user-friendly experience.
+
 ### Authenication
 | Feature      | Test Performed                                                                 | Outcome     |
 | ------------ | ------------------------------------------------------------------------------ | ----------- |

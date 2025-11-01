@@ -17,6 +17,9 @@
         src="{{ package.image.url }}"
         alt="{{ package.name }}"
         class="img-fluid rounded"
+        width="840"
+        height="840"
+        loading="lazy"
         onerror="this.style.display='none'"
       />
       {% else %}
@@ -24,6 +27,9 @@
         src="{% static 'images/default-package.png' %}"
         alt="No Image"
         class="img-fluid rounded"
+        width="840"
+        height="840"
+        loading="lazy"
       />
       {% endif %}
     </div>

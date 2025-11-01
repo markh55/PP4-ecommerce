@@ -17,6 +17,10 @@
 #package-detail img {
     width: 100%;
     height: auto;
+    max-width: 840px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
 
 #package-detail h1 {

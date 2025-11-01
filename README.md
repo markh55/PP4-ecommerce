@@ -17,6 +17,7 @@ This project is a web development agency that provides tiered service packages â
     - [Hero / Contact Image](#hero--contact-image)
   - [Final Design](#final-design)
   - [Features](#features)
+    - [Authentication](#authentication) 
     - [CRUD](#crud)
       - [Add review \& rating](#add-review--rating)
       - [Edit Review](#edit-review)
@@ -151,6 +152,20 @@ The hero and contact sections feature a purple gradient image. I chose this beca
 ## Final Design
 
 ## Features
+
+### Authentication
+
+For the authentication sign-up, Iâ€™ve decided to disable verification emails. Without paying for a service my options are very limited, so this simplifies the process. Users are only required to provide their details and a verification email is not sent. This keeps the authentication process lightweight and functional for the scope of this project.
+
+<img width="676" height="736" alt="Screenshot 2025-11-01 at 18 37 26" src="https://github.com/user-attachments/assets/addccd18-7e08-4162-a458-6ce64b3bcac2" />
+
+
+### Contact Form
+
+For the contact form, once it is submitted, users immediately see a thank you message and no additional email confirmations are sent; for the purpose of this project, setting up emails to be sent out is very limited and would cost me if the free allowance were exceeded. For a real store or live site, a confirmation email would be sent to the user.
+
+<img width="1493" height="956" alt="Screenshot 2025-11-01 at 18 55 58" src="https://github.com/user-attachments/assets/16909208-5a43-4330-a05c-ce5dc088dcb3" />
+
 
 ### CRUD
 

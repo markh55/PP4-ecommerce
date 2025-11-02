@@ -100,10 +100,6 @@ $(document).ready(function() {
                                 phone: $.trim(form.phone_number.value),
                             }
                         },
-                        shipping: {
-                            name: $.trim(form.first_name.value) + ' ' + $.trim(form.surname.value),
-                            phone: $.trim(form.phone_number.value),
-                        }
                     }).then(function (result) {
                         if (result.error) {
                             // Display error to user

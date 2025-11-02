@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.mail import send_mail
+from django.contrib import messages
 from packages.models import Package, Review
 from .forms import ContactForm, SubscriberForm
 
@@ -10,9 +11,9 @@ def index(request):
     # Show recent reviews on the homepage
     recent_reviews = Review.objects.select_related('package', 'user').order_by('-created_at')[:5]
 
-    form_success = None  # Track form submission success
+    form_success = None  # Track contact form submission success
 
-    if request.method == "POST":
+    if request.method == "POST" and 'name' in request.POST:  # Contact form submission
         form = ContactForm(request.POST)
         if form.is_valid():
             send_mail(
@@ -25,9 +26,8 @@ def index(request):
                 from_email=form.cleaned_data["email"],
                 recipient_list=["youremail@example.com"],
             )
-            # Indicate success to display message in form
             form_success = "Thank you for your message. A member of the team will get back to you."
-            form = ContactForm()  # Reset form after submission
+            form = ContactForm()  # Reset form
     else:
         form = ContactForm()
 
@@ -38,10 +38,12 @@ def index(request):
         'form_success': form_success,
     })
 
+
 # Packages page
 def packages(request):
     packages = Package.objects.all()
     return render(request, 'home/packages.html', {'packages': packages})
+
 
 # Subscribe to newsletter
 def subscribe(request):
@@ -49,18 +51,26 @@ def subscribe(request):
         form = SubscriberForm(request.POST)
         if form.is_valid():
             form.save()
-        # You can leave subscription messages as is or remove them
-    return render(request, 'home/index.html', {'form': SubscriberForm()})
+            messages.success(request, "Thank you for subscribing!", extra_tags="subscribe")
+        else:
+            messages.error(request, "Please enter a valid email.", extra_tags="subscribe")
+    # Redirect back to the page where the form was submitted
+    return redirect(request.META.get('HTTP_REFERER', '/'))
+
 
 # Static pages
 def faq(request):
     return render(request, 'home/faq.html')
 
+
 def privacy(request):
     return render(request, 'home/privacy.html')
+
 
 def terms(request):
     return render(request, 'home/terms.html')
 
+
+# 404 error page
 def error_404_view(request, exception):
     return render(request, 'core/404.html', status=404)

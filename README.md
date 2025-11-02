@@ -185,6 +185,8 @@ For the CRUD element of the project, users can leave, edit, and delete a review,
 
 ### Custom 404 Error Page
 
+A styled "Page Not Found" screen with a friendly message and a link back to the homepage, providing a better user experience when an incorrect URL is entered.
+
 ![404 Page](https://github.com/user-attachments/assets/8a65ade4-98f7-4809-a345-109488724ea6)
 
 ## Deployment

@@ -358,6 +358,40 @@ The screenshots show the code follows PEP8 standards, is clean, and is easier to
 
 <img width="1277" height="816" alt="Screenshot 2025-10-31 at 20 27 31" src="https://github.com/user-attachments/assets/1a8e0760-fa8c-466f-9954-e3b2d025b02b" /> 
 
+### Lighthouse
+
+**Desktop**
+
+<img width="444" height="158" alt="Desktop" src="https://github.com/user-attachments/assets/4870d4ff-e632-446a-b0c6-02ba74d5f391" />
+
+**Mobile**
+
+<img width="435" height="158" alt="Mobile" src="https://github.com/user-attachments/assets/5b960c70-fdfe-483b-9f44-f48b07835094" />
+
+I performed lighthouse testing on my project to ensure that the performance was optimal for each device as you can see the scores come in as:
+
+* **Performance**
+
+  - Desktop - 99
+  - Mobile - 94
+
+* **Accessibility**
+
+  - Desktop - 90
+  - Mobile - 90
+
+* **Best Practice**
+
+  - Desktop - 78
+  - Mobile - 79
+
+* **SEO**
+  
+   - Desktop - 91
+   - Mobile - 91
+ 
+From these findings, the Best Practices scores are in the high 70s on both desktop and mobile. While this could be improved, the main factor affecting the score is Stripe, a third-party payment API. Stripe injects scripts and sets third-party cookies (e.g., from js.stripe.com and m.stripe.com), which are flagged in Chrome DevTools. These are part of Stripe’s functionality and cannot be controlled or removed from my side, so the slightly lower score is expected and does not indicate an issue with the project itself.
+
 ## Feedback
 
 ### Packages

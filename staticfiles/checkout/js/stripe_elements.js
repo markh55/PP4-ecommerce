@@ -60,7 +60,7 @@ $(document).ready(function() {
 
         form.addEventListener('submit', function (ev) {
             ev.preventDefault();
-            
+
             // Prevent double submission
             if (submitting) {
                 return;
@@ -78,7 +78,7 @@ $(document).ready(function() {
             // Gather form data
             var saveInfo = $('#id-save-info').is(':checked');
             var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
-            
+
             var postData = {
                 'csrfmiddlewaretoken': csrfToken,
                 'client_secret': clientSecret,
@@ -135,7 +135,7 @@ $(document).ready(function() {
                     // Display error without reloading page
                     var errorDiv = document.getElementById('card-errors');
                     errorDiv.textContent = 'There was an error processing your payment. Please try again.';
-                    
+
                     // Re-enable form elements
                     card.update({ 'disabled': false });
                     submitButton.disabled = false;
@@ -143,7 +143,7 @@ $(document).ready(function() {
 
                     // Hide loading overlay
                     $('#loading-overlay').fadeOut(100);
-                    
+
                     // Log error for debugging
                     console.error('Cache checkout data error:', error);
                 });

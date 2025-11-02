@@ -42,7 +42,6 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"
       ></script>
-      <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
       <script src="https://js.stripe.com/v3/"></script>
     {% endblock %}
 
@@ -269,7 +268,7 @@
           // Initialize regular toasts
           const toastElList = [].slice.call(document.querySelectorAll('.toast'));
           toastElList.forEach(function(toastEl) {
-            const toast = new bootstrap.Toast(toastel, { delay: 4000 });
+            const toast = new bootstrap.Toast(toastEl, { delay: 4000 });
             toast.show();
           });
         });

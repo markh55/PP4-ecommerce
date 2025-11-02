@@ -394,12 +394,13 @@ From these findings, the Best Practices scores are in the high 70s on both deskt
 
 ## Feedback
 
-### Packages
+When testing my project with real users, I sent the link to friends and family to sign up and test for any bugs or potential improvements. The only feedback I received was:
 
-* Fewer clicks for users  
-* Clickable icons instead of buttons  
-* Intuitive interactions
+Keep the icon fonts consistent across Bronze, Silver, and Gold to avoid drawing unwanted attention, and reduce clicks by making the icons clickable in addition to the “More Details” button for a more intuitive experience.
 
+To address this, I resized all the icons, although the Platinum icon still appears slightly smaller due to the longer word. I also updated the package cards so that the entire card is clickable, rather than having a separate “More Details” button. This change reduces friction and makes the interface more intuitive, especially on mobile, where users expect tiles to be tappable. Although the Platinum icon remains slightly smaller, it doesn’t affect usability, and future updates could further refine the visual consistency.
+
+### Package
 #### Before
 
 Users had to click “More Details” to view package info.

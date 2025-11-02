@@ -213,6 +213,20 @@ with this project all i needed to do on github was create the PP4 repository as 
 <img width="1266" height="184" alt="Screenshot 2025-10-31 at 21 49 13" src="https://github.com/user-attachments/assets/a16287f4-9cec-466e-95b4-24e1a2f3ad09" />
 
 
+To complete the deployment of my Django app, I updated the ALLOWED_HOSTS list in the settings.py file to include my local development addresses and my deployed Heroku domain. This ensures that Django will accept requests from both environments.
+
+<img width="653" height="53" alt="Screenshot 2025-11-02 at 13 50 57" src="https://github.com/user-attachments/assets/c20a2620-abb8-4625-a08c-d0ae7e422382" />
+
+This tells Django which hosts are allowed to make requests to the app.
+
+* "127.0.0.1" and "localhost" allow the app to run locally without triggering errors during development.
+
+* The Heroku domain ("pp4-webworks-8ba6fd0af6ed.herokuapp.com") allows the deployed version of the app to respond to incoming requests on Heroku.
+
+If a request comes from a host not listed here, Django will block it and return a “400 Bad Request” error for security reasons.
+
+
+
 ### AWS
 
 For AWS i didnt get any screenshots of the process but all i did was set up S3, IAM, and linked everything to Django. Steps below:

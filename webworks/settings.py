@@ -8,8 +8,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 import dj_database_url
+import mimetypes
 from pathlib import Path
 from dotenv import load_dotenv
+
+mimetypes.add_type("image/webp", ".webp", True)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 

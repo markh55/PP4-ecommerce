@@ -151,6 +151,18 @@ The hero and contact sections feature a purple gradient image. I chose this beca
 
 ## Final Design
 
+**Homepage pt1**
+<img width="2550" height="1200" alt="Screenshot 2025-11-03 at 22 47 31" src="https://github.com/user-attachments/assets/992fbefa-f93c-4a64-b733-b0f3d9c39a9f" />
+
+**Homepage pt2**
+<img width="2554" height="1206" alt="Screenshot 2025-11-03 at 22 47 55" src="https://github.com/user-attachments/assets/3915b153-dfcc-4bcf-a4d0-81b057e4e54c" />
+
+**Packages**
+<img width="1168" height="739" alt="Screenshot 2025-11-03 at 22 48 14" src="https://github.com/user-attachments/assets/a94731c5-d7c5-42d4-a428-0d521bc2536b" />
+
+**Profile**
+<img width="1219" height="1025" alt="Screenshot 2025-11-03 at 22 49 24" src="https://github.com/user-attachments/assets/0a75054c-b5ac-4241-9659-acaeec32e797" />
+
 ## Features
 
 ### Authentication

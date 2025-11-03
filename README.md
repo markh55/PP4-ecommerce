@@ -161,7 +161,10 @@ The hero and contact sections feature a purple gradient image. I chose this beca
 <img width="1168" height="739" alt="Screenshot 2025-11-03 at 22 48 14" src="https://github.com/user-attachments/assets/a94731c5-d7c5-42d4-a428-0d521bc2536b" />
 
 **Profile**
-<img width="1219" height="1025" alt="Screenshot 2025-11-03 at 22 49 24" src="https://github.com/user-attachments/assets/0a75054c-b5ac-4241-9659-acaeec32e797" />
+<img width="1531" height="1288" alt="Screenshot 2025-11-03 at 23 26 34" src="https://github.com/user-attachments/assets/5afcd393-a10b-461a-877b-32b05bda749e" />
+
+**View / Save invoice**
+<img width="2544" height="942" alt="Screenshot 2025-11-03 at 23 14 00" src="https://github.com/user-attachments/assets/41ab813c-c4a4-40d6-a4db-b6cbf8a17917" />
 
 ## Features
 

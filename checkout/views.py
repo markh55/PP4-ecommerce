@@ -106,9 +106,29 @@ def checkout(request):
             stripe_pid=intent.id,
         )
 
+        # Save info to profile if checkbox was checked
+        if request.POST.get('save-info'):
+            profile = request.user.userprofile
+            profile.default_first_name = request.POST.get('first_name')
+            profile.default_surname = request.POST.get('surname')
+            profile.default_business_name = request.POST.get('business_name')
+            profile.default_email = request.POST.get('email')
+            profile.default_phone_number = request.POST.get('phone_number')
+            profile.save()
+
         request.session['bag'] = {}
         request.session['order_number'] = order.order_number
         return redirect('checkout:checkout_success')
+
+    # Get saved profile data to pre-fill form
+    profile = request.user.userprofile
+    profile_data = {
+        'first_name': profile.default_first_name or '',
+        'surname': profile.default_surname or '',
+        'business_name': profile.default_business_name or '',
+        'email': profile.default_email or request.user.email,
+        'phone_number': profile.default_phone_number or '',
+    }
 
     context = {
         'services_summary': services_summary,
@@ -116,6 +136,7 @@ def checkout(request):
         'grand_total': total,
         'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
         'client_secret': intent.client_secret,
+        'profile_data': profile_data,
     }
 
     return render(request, 'checkout/checkout.html', context)

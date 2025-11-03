@@ -69,6 +69,26 @@
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <label class="fw-bold text-dark mb-2">
+                                        <i class="fa fa-user me-1"></i> First Name
+                                    </label>
+                                    {% if form.default_first_name %}
+                                        {{ form.default_first_name }}
+                                    {% endif %}
+                                </div>
+
+                                <div class="col-md-6 mb-4">
+                                    <label class="fw-bold text-dark mb-2">
+                                        <i class="fa fa-user me-1"></i> Surname
+                                    </label>
+                                    {% if form.default_surname %}
+                                        {{ form.default_surname }}
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label class="fw-bold text-dark mb-2">
                                         <i class="fa fa-phone me-1"></i> Phone Number
                                     </label>
                                     {% if form.default_phone_number %}
@@ -98,9 +118,14 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-md-6 mb-2">
                                     <button type="submit" class="btn btn-teal w-100">
                                         <i class="fa fa-save me-2"></i> Save Changes
+                                    </button>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <button type="submit" name="clear_info" value="true" class="btn btn-outline-danger w-100">
+                                        <i class="fa fa-trash me-2"></i> Clear Saved Information
                                     </button>
                                 </div>
                             </div>

@@ -5,6 +5,8 @@ from django.dispatch import receiver
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    default_first_name = models.CharField(max_length=50, null=True, blank=True)
+    default_surname = models.CharField(max_length=50, null=True, blank=True)
     default_phone_number = models.CharField(max_length=20, null=True, blank=True)
     default_email = models.EmailField(max_length=254, null=True, blank=True)
     default_business_name = models.CharField(max_length=100, null=True, blank=True)

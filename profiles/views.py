@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
 from .models import UserProfile
 from .forms import UserProfileForm
 import ast
@@ -8,10 +9,22 @@ def profile(request):
     profile = get_object_or_404(UserProfile, user=request.user)
 
     if request.method == 'POST':
+        # Check if clear button was clicked
+        if request.POST.get('clear_info'):
+            profile.default_first_name = ''
+            profile.default_surname = ''
+            profile.default_phone_number = ''
+            profile.default_email = ''
+            profile.default_business_name = ''
+            profile.save()
+            messages.success(request, 'Your saved information has been cleared.')
+            return redirect('profiles:profile')
+        
         # Handle profile information form
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Profile updated successfully.')
     else:
         form = UserProfileForm(instance=profile)
 
